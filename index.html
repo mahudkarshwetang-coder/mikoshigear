@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Gear — iPhone cases, Toronto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --surface: #12151a;
+    --surface2: #171b21;
+    --ink: #e9e7e2;
+    --muted: #8b9099;
+    --line: #232830;
+    --accent: #35e0ff;
+    --accent2: #ff3d81;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #0b0d10; }
+  a { color: inherit; }
+  .mono { font-family: var(--mono); }
+
+  /* ---------- layout helpers ---------- */
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+  .overline {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .hud-tick {
+    position: absolute; width: 10px; height: 10px;
+    border: 1px solid var(--accent); opacity: 0.5;
+  }
+
+  /* ---------- nav ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,13,16,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .wordmark {
+    font-family: var(--mono); font-weight: 500; font-size: 15px;
+    letter-spacing: 0.08em; text-decoration: none;
+  }
+  .wordmark b { color: var(--accent); font-weight: 500; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 8px 16px; border-radius: 4px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent); color: #0b0d10; }
+  @media (max-width: 720px) {
+    .nav-links a { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; padding: 110px 0 90px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(53,224,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(53,224,255,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 340px; gap: 64px;
+    align-items: start; position: relative;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6.5vw, 84px);
+    font-weight: 700; line-height: 1.02; letter-spacing: -0.02em;
+    margin: 26px 0 28px;
+  }
+  .hero h1 .hl { color: var(--accent); }
+  .hero .sub {
+    font-size: 17px; color: var(--muted); max-width: 520px;
+    margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 26px; border-radius: 4px;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #0b0d10; }
+  .btn-primary:hover { background: #7deeff; }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ink); }
+
+  .hero-side {
+    border: 1px solid var(--line); background: var(--surface);
+    padding: 28px; border-radius: 6px; position: relative;
+  }
+  .hero-side::before {
+    content: ""; position: absolute; top: -1px; left: -1px;
+    width: 14px; height: 14px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);
+  }
+  .hero-side .term { font-size: 15px; margin-bottom: 10px; color: var(--ink); }
+  .hero-side .def { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .hero-side .pron {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.08em; margin-bottom: 14px;
+  }
+  .hero-side .sysline {
+    font-family: var(--mono); font-size: 11px; color: #4d545e;
+    border-top: 1px solid var(--line); padding-top: 14px; margin-top: 20px;
+  }
+  .hero-side .sysline .cursor {
+    display: inline-block; width: 7px; height: 13px; background: var(--accent);
+    vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero { padding: 70px 0 60px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-side .cursor { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- range ---------- */
+  .section { padding: 90px 0; border-top: 1px solid var(--line); }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px; gap: 20px; flex-wrap: wrap; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+  .section-head .note { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .range-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .range-card { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; overflow: hidden; }
+  .range-card .photo {
+    aspect-ratio: 4/3; background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--line); overflow: hidden;
+    position: relative;
+  }
+  .range-card .photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    filter: saturate(1.08) contrast(1.04) brightness(0.96);
+    transition: filter 0.2s;
+  }
+  .range-card:hover .photo img { filter: saturate(1.12) contrast(1.06) brightness(1); }
+  .range-card .photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(53,224,255,0.10) 0%, transparent 38%, transparent 62%, rgba(255,61,129,0.08) 100%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .range-card .photo .ph {
+    font-family: var(--mono); font-size: 11px; color: #4d545e; letter-spacing: 0.08em;
+  }
+  .range-card .body { padding: 20px; }
+  .range-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+  .range-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .range-card .sku { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-top: 14px; letter-spacing: 0.06em; }
+  .range-card .buy-row { display: flex; gap: 8px; margin-top: 12px; }
+  .range-card .buy {
+    flex: 1; text-align: center; padding: 8px 0; border-radius: 4px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none; transition: all 0.15s;
+  }
+  .buy-amazon { border: 1px solid var(--accent); color: var(--accent); }
+  .buy-amazon:hover { background: var(--accent); color: #0b0d10; }
+  .buy-ebay { border: 1px solid var(--line); color: var(--muted); }
+  .buy-ebay:hover { border-color: var(--ink); color: var(--ink); }
+  @media (max-width: 900px) {
+    .range-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .range-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- why ---------- */
+  .why { background: var(--surface); }
+  .why-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .why-item {
+    border: 1px solid var(--line); padding: 32px;
+    position: relative;
+  }
+  .why-item .num {
+    font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.14em;
+    display: block; margin-bottom: 16px;
+  }
+  .why-item h3 { font-size: 18px; font-weight: 500; margin-bottom: 10px; }
+  .why-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 800px) {
+    .why-list { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- wholesale ---------- */
+  .wholesale-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center; }
+  .wholesale h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; margin: 20px 0 22px; }
+  .wholesale .lede { font-size: 17px; color: var(--muted); max-width: 520px; margin-bottom: 28px; }
+  .wholesale-points { list-style: none; margin-bottom: 36px; }
+  .wholesale-points li {
+    font-family: var(--mono); font-size: 13px; color: var(--muted);
+    padding: 12px 0; border-top: 1px solid var(--line);
+    display: flex; gap: 14px;
+  }
+  .wholesale-points li::before { content: "▸"; color: var(--accent); }
+  .wholesale-points li:last-child { border-bottom: 1px solid var(--line); }
+  .contact-panel {
+    border: 1px solid var(--accent); border-radius: 6px; background: var(--surface);
+    padding: 32px; position: relative;
+  }
+  .contact-panel::before {
+    content: ""; position: absolute; bottom: -1px; right: -1px;
+    width: 14px; height: 14px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent);
+  }
+  .contact-panel .overline { margin-bottom: 16px; }
+  .contact-panel h3 { font-size: 20px; font-weight: 500; margin-bottom: 10px; }
+  .contact-panel p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .contact-email {
+    display: block; font-family: var(--mono); font-size: 15px; color: var(--accent);
+    text-decoration: none; margin-bottom: 10px; word-break: break-all;
+  }
+  .contact-email:hover { text-decoration: underline; }
+  .contact-phone { font-family: var(--mono); font-size: 14px; color: var(--ink); margin-bottom: 24px; }
+  @media (max-width: 800px) {
+    .wholesale-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; }
+  .footer-grid { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .footer-grid .mono { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .footer-grid .legal { font-family: var(--mono); font-size: 11px; color: #4d545e; text-align: right; }
+  .footer-grid b { color: var(--accent); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="#">MIKOSHI<b>▸</b>GEAR</a>
+    <nav class="nav-links">
+      <a href="#range">Range</a>
+      <a href="#why">Why Mikoshi</a>
+      <a href="#wholesale">Wholesale</a>
+      <a class="nav-cta" href="#wholesale">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hud-tick" style="top:80px; left:24px;"></span>
+  <span class="hud-tick" style="top:80px; right:24px;"></span>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="overline">Mikoshi Gear — Toronto · Est. 2026</p>
+      <h1>Your digital self<br>deserves <span class="hl">armor.</span></h1>
+      <p class="sub">We supply iPhone cases with one job: keep your phone — and everything on it — intact. Silicone magnetic, frosted glass, clear acrylic, lanyard sets. Built to drop, priced to sell.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#wholesale">Wholesale pricing</a>
+        <a class="btn btn-ghost" href="#range">See the range</a>
+      </div>
+    </div>
+    <aside class="hero-side">
+      <p class="pron">/ˌmɪˈkoʊʃi/</p>
+      <p class="term"><b>Mikoshi</b> <span style="color:var(--muted)">n.</span></p>
+      <p class="def">In Night City lore, the place your digital self lives on after the body is gone. Your phone is where your version of that lives right now. We build the shell around it. A little drama — but the cases are genuinely good.</p>
+      <p class="sysline">▸ mk@mikoshigear.ca <span class="cursor"></span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- RANGE -->
+<section class="section" id="range">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The range</h2>
+      <p class="note">01 / 04 — inventory in hand, Toronto</p>
+    </div>
+    <div class="range-grid">
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/silicone-magnetic.jpg" alt="Silicone magnetic case — orange" loading="lazy"></div>
+        <div class="body">
+          <h3>Silicone Magnetic</h3>
+          <p>Shockproof silicone with built-in camera lens protector and magnetic ring for wireless charging.</p>
+          <p class="sku">iPhone 17 Pro Max · 6 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20silicone%20magnetic%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20silicone%20magnetic%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/frosted-glass.jpg" alt="AG frosted glass case — gold" loading="lazy"></div>
+        <div class="body">
+          <h3>AG Frosted Glass</h3>
+          <p>Matte frosted glass back, magnetic, aurora colour shift. The premium shelf.</p>
+          <p class="sku">iPhone 14–17 Pro Max · 7 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20frosted%20glass%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20frosted%20glass%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/clear-acrylic.jpg" alt="Clear acrylic magnetic case — gold" loading="lazy"></div>
+        <div class="body">
+          <h3>Clear Acrylic Magnetic</h3>
+          <p>Slim, transparent, magnetic ring, wireless-charging friendly. Shows the phone, not the case.</p>
+          <p class="sku">iPhone 17 Pro / Pro Max</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20clear%20acrylic%20magnetic%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20clear%20acrylic%20magnetic%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/transparent-window.jpg" alt="Transparent large window case — orange" loading="lazy"></div>
+        <div class="body">
+          <h3>Transparent Large Window</h3>
+          <p>Frosted clear case with a large window back — the phone's finish does the talking.</p>
+          <p class="sku">iPhone 17 · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20transparent%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20transparent%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/slim-heat.jpg" alt="Slim heat-dissipating case — light green" loading="lazy"></div>
+        <div class="body">
+          <h3>Slim Heat-Dissipating</h3>
+          <p>Ultra-slim with heat-dissipation channels — for the heavy users.</p>
+          <p class="sku">iPhone 13–17 · 5 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20slim%20heat%20dissipating%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20slim%20heat%20dissipating%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/matte-armor.jpg" alt="Matte armor case — orange" loading="lazy"></div>
+        <div class="body">
+          <h3>Matte Armor</h3>
+          <p>Hard back, skin-feel finish, lens protective film. The daily-driver case.</p>
+          <p class="sku">iPhone 17 · 5 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20matte%20armor%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20matte%20armor%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/lanyard-set.jpg" alt="Lanyard set — camellia red" loading="lazy"></div>
+        <div class="body">
+          <h3>2pc Lanyard Set</h3>
+          <p>Case plus matching wrist strap — the anti-drop combo. Premium liquid silicone.</p>
+          <p class="sku">iPhone 17 Pro Max · SET OF 2</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20lanyard%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20lanyard%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/heat-mesh.jpg" alt="Heat dissipation mesh case — white" loading="lazy"></div>
+        <div class="body">
+          <h3>Heat Dissipation Mesh</h3>
+          <p>Mesh breathable back with heat-dissipation design. The gamer's pick.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20mesh%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20mesh%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><span class="ph">PHOTO — ARRIVING WITH SHIPMENT</span></div>
+        <div class="body">
+          <h3>Candy Suction Cup</h3>
+          <p>Strong-adhesion suction back — sticks to smooth surfaces. The novelty shelf.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20suction%20cup%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20suction%20cup%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/gradient.jpg" alt="Gradient case — purple" loading="lazy"></div>
+        <div class="body">
+          <h3>Gradient</h3>
+          <p>Luxury gradient soft case, magnetic charging, comfortable grip.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20gradient%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20gradient%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/anti-drop-lanyard.jpg" alt="Anti-drop lanyard case — orange" loading="lazy"></div>
+        <div class="body">
+          <h3>Anti-Drop Lanyard</h3>
+          <p>Transparent case with built-in lanyard loop — drop-proof by design.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20anti%20drop%20lanyard%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20anti%20drop%20lanyard%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><span class="ph">PHOTO — ARRIVING WITH SHIPMENT</span></div>
+        <div class="body">
+          <h3>Charming Eye Skin-Feel</h3>
+          <p>Skin-feel soft case with a charming eye design. The fashion pick.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20skin%20feel%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20skin%20feel%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/two-in-one-jelly.jpg" alt="Two-in-one jelly case — mix colour" loading="lazy"></div>
+        <div class="body">
+          <h3>Two-in-One Jelly</h3>
+          <p>Dual-tone jelly skin-feel with magnetic snap-on. Two looks, one case.</p>
+          <p class="sku">iPhone 17 Pro Max · MIX COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20jelly%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20jelly%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/luxury-matte.jpg" alt="Luxury upgrade matte case — grey" loading="lazy"></div>
+        <div class="body">
+          <h3>Luxury Upgrade Matte</h3>
+          <p>Upgraded matte soft case, shockproof, wireless-charging friendly.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20matte%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20matte%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+      <article class="range-card">
+        <div class="photo"><img src="mikoshi-img/ultra-thin.jpg" alt="Ultra-thin color-blocking case — grey" loading="lazy"></div>
+        <div class="body">
+          <h3>Ultra-Thin Color-Blocking</h3>
+          <p>Ultra-thin frosted soft case with color-blocking design.</p>
+          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
+      <div class="buy-row">
+        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20ultra%20thin%20case" target="_blank" rel="noopener">Amazon</a>
+        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20ultra%20thin%20case" target="_blank" rel="noopener">eBay</a>
+      </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why shops stock Mikoshi</h2>
+      <p class="note">02 / 04 — the boring part, done properly</p>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <span class="num">01</span>
+        <h3>In stock now</h3>
+        <p>Inventory is in Toronto today — no 6-week supplier wait for a first order. You stock shelves this week, reorder before you run dry.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">02</span>
+        <h3>Fit-tested, not guess-tested</h3>
+        <p>Every case is fitted on an iPhone 17 Pro Max before it's offered. No mis-cut camera holes, no dead magnets, no returns from customers who felt ripped off.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">03</span>
+        <h3>Clean and unbranded</h3>
+        <p>No logo rights issues, no counterfeit risk, no brand policing. Just good cases with clean margins that are yours to price.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">04</span>
+        <h3>A few weeks, not months</h3>
+        <p>Reorder lead time is honest: a few weeks from factory to Toronto. A small first order proves what sells at your counter before you commit deeper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHOLESALE -->
+<section class="section" id="wholesale">
+  <div class="wrap wholesale-grid">
+    <div class="wholesale">
+      <p class="overline">03 / 04 — wholesale</p>
+      <h2>Wholesale, the low-pressure way</h2>
+      <p class="lede">We already sell online to retail customers. Now we're opening B2B — and we'd rather earn your counter than talk you into it. Samples first, prices after you've held the cases.</p>
+      <ul class="wholesale-points">
+        <li>Samples by appointment — see them, feel them, drop-test them</li>
+        <li>No minimum first order and no commitment</li>
+        <li>Wholesale pricing open for discussion — volume tiers as you grow</li>
+        <li>Same-week delivery across the GTA</li>
+      </ul>
+      <div class="hero-ctas">
+        <a class="btn btn-ghost" href="#range">Back to the range</a>
+      </div>
+    </div>
+    <aside class="contact-panel">
+      <p class="overline">Contact</p>
+      <h3>Tang — Mikoshi Gear</h3>
+      <p>Torontonian, iPhone 17 Pro Max owner, and the person who will carry the samples to your door.</p>
+      <a class="contact-email" href="mailto:admin@mikoshigear.ca">admin@mikoshigear.ca</a>
+      <span class="contact-phone">437-333-8286</span>
+      <a href="mailto:admin@mikoshigear.ca" class="btn btn-primary" style="width:100%; text-align:center;">Email for samples</a>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
+    </div>
+    <div class="legal">
+      13718387 Canada Inc.<br>Toronto, Ontario · © 2026
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
