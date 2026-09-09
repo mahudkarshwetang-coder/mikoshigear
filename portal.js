@@ -5,6 +5,7 @@ window.onerror = function (msg, src, line) {
   if (el) el.textContent = "ERR: " + msg + (line ? " (line " + line + ")" : "");
   return false;
 };
+document.getElementById("boot-status").textContent = "JS loaded ✓";
 
 const SUPABASE_URL = "https://lnfcdtmcpiagyjnnobbo.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ZUiOJTEU0DtDyC_i-8oSWA_SnUN_d9M";
