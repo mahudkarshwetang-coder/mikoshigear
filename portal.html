@@ -181,9 +181,23 @@
 <div class="toast" id="toast"></div>
 
 <script>
+/* surface any JS error into the login card */
+window.onerror = function (msg, src, line) {
+  const el = document.getElementById("login-err");
+  if (el) el.textContent = "ERR: " + msg + (line ? " (line " + line + ")" : "");
+  return false;
+};
+
 const SUPABASE_URL = "https://lnfcdtmcpiagyjnnobbo.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ZUiOJTEU0DtDyC_i-8oSWA_SnUN_d9M";
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let supabase = null;
+try {
+  if (typeof window.supabase === "undefined") throw new Error("supabase-js failed to load — check network");
+  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+} catch (e) {
+  document.getElementById("login-err").textContent = "ERR: " + e.message;
+}
 
 const $ = id => document.getElementById(id);
 let allShops = [];
@@ -200,12 +214,24 @@ function toast(msg) {
 
 /* ---------- auth ---------- */
 async function login() {
+  const btn = $("login-btn");
   const email = $("login-email").value.trim();
   const pass = $("login-pass").value;
   $("login-err").textContent = "";
-  const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
-  if (error) { $("login-err").textContent = error.message; return; }
-  enterApp();
+  if (!supabase) { $("login-err").textContent = "ERR: client not initialized"; return; }
+  if (!email || !pass) { $("login-err").textContent = "Enter email and password"; return; }
+  btn.textContent = "Connecting…";
+  btn.disabled = true;
+  try {
+    const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
+    if (error) { $("login-err").textContent = error.message; return; }
+    enterApp();
+  } catch (e) {
+    $("login-err").textContent = "ERR: " + e.message;
+  } finally {
+    btn.textContent = "Enter";
+    btn.disabled = false;
+  }
 }
 $("login-btn").addEventListener("click", login);
 $("login-pass").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
