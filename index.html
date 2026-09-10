@@ -149,65 +149,24 @@
     html { scroll-behavior: auto; }
   }
 
-  /* ---------- range ---------- */
+  /* ---------- gallery ---------- */
   .section { padding: 90px 0; border-top: 1px solid var(--line); }
   .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px; gap: 20px; flex-wrap: wrap; }
   .section-head h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
   .section-head .note { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-  .range-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .range-card { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; overflow: hidden; }
-  .range-card .photo {
-    aspect-ratio: 1/1; background: var(--surface2);
-    display: flex; align-items: center; justify-content: center;
-    border-bottom: 1px solid var(--line); overflow: hidden;
-    position: relative;
-  }
-  .range-card .photo img {
-    width: 100%; height: 100%; object-fit: cover;
-    display: block;
-    filter: saturate(1.08) contrast(1.04) brightness(0.96);
-    transition: filter 0.2s;
-  }
-  .range-card:hover .photo img { filter: saturate(1.12) contrast(1.06) brightness(1); }
-  .range-card .photo::after {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(160deg, rgba(53,224,255,0.10) 0%, transparent 38%, transparent 62%, rgba(255,61,129,0.08) 100%);
-    mix-blend-mode: screen;
-    pointer-events: none;
-  }
-  .range-card .photo .ph {
-    font-family: var(--mono); font-size: 11px; color: #4d545e; letter-spacing: 0.08em;
-  }
-  .range-card .body { padding: 20px; }
-  .range-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
-  .range-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
-  .range-card .sku { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-top: 14px; letter-spacing: 0.06em; }
-  .range-card .buy-row { display: flex; gap: 8px; margin-top: 12px; }
-  .range-card .buy {
-    flex: 1; text-align: center; padding: 8px 0; border-radius: 4px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
-    text-transform: uppercase; text-decoration: none; transition: all 0.15s;
-  }
   .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-  .gallery-grid img {
+  .g-item { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--surface); }
+  .g-item img {
     width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
-    border: 1px solid var(--line); border-radius: 4px;
     filter: saturate(1.08) contrast(1.04) brightness(0.96);
     transition: filter 0.2s, transform 0.2s;
   }
-  .gallery-grid img:hover { filter: saturate(1.12) contrast(1.06) brightness(1); transform: scale(1.02); }
+  .g-item:hover img { filter: saturate(1.12) contrast(1.06) brightness(1); transform: scale(1.02); }
+  .g-item figcaption { padding: 10px 12px 12px; border-top: 1px solid var(--line); }
+  .g-item figcaption b { display: block; font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+  .g-item figcaption span { display: block; font-size: 11px; color: var(--muted); line-height: 1.4; }
   @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-  .buy-amazon { border: 1px solid var(--accent); color: var(--accent); }
-  .buy-amazon:hover { background: var(--accent); color: #0b0d10; }
-  .buy-ebay { border: 1px solid var(--line); color: var(--muted); }
-  .buy-ebay:hover { border-color: var(--ink); color: var(--ink); }
-  @media (max-width: 900px) {
-    .range-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 560px) {
-    .range-grid { grid-template-columns: 1fr; }
-  }
 
   /* ---------- why ---------- */
   .why { background: var(--surface); }
@@ -278,7 +237,7 @@
         <circle cx="22" cy="22" r="3" fill="#0b0d10"/>
       </svg>MIKOSHI<b>▸</b>GEAR</a>
     <nav class="nav-links">
-      <a href="#range">Range</a>
+      <a href="#gallery">Cases</a>
       <a href="#why">Why Mikoshi</a>
       <a href="#wholesale">Wholesale</a>
       <a class="nav-cta" href="#wholesale">Contact</a>
@@ -297,7 +256,7 @@
       <p class="sub">We find the tech accessories worth making room for — starting with iPhone cases built to drop, priced to sell. Silicone magnetic, frosted glass, clear acrylic, lanyard sets. In stock in Toronto.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#wholesale">Wholesale pricing</a>
-        <a class="btn btn-ghost" href="#range">See the range</a>
+        <a class="btn btn-ghost" href="#gallery">See the cases</a>
       </div>
     </div>
     <aside class="hero-side">
@@ -309,231 +268,114 @@
   </div>
 </section>
 
-<!-- RANGE -->
-<section class="section" id="range">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>The range</h2>
-      <p class="note">01 / 04 — inventory in hand, Toronto</p>
-    </div>
-    <div class="range-grid">
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/silicone-magnetic.jpg" alt="Silicone magnetic case — orange" loading="lazy"></div>
-        <div class="body">
-          <h3>Silicone Magnetic</h3>
-          <p>Shockproof silicone with built-in camera lens protector and magnetic ring for wireless charging.</p>
-          <p class="sku">iPhone 17 Pro Max · 6 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20silicone%20magnetic%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20silicone%20magnetic%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/frosted-glass.jpg" alt="AG frosted glass case — gold" loading="lazy"></div>
-        <div class="body">
-          <h3>AG Frosted Glass</h3>
-          <p>Matte frosted glass back, magnetic, aurora colour shift. The premium shelf.</p>
-          <p class="sku">iPhone 14–17 Pro Max · 7 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20frosted%20glass%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20frosted%20glass%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/clear-acrylic.jpg" alt="Clear acrylic magnetic case — gold" loading="lazy"></div>
-        <div class="body">
-          <h3>Clear Acrylic Magnetic</h3>
-          <p>Slim, transparent, magnetic ring, wireless-charging friendly. Shows the phone, not the case.</p>
-          <p class="sku">iPhone 17 Pro / Pro Max</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20clear%20acrylic%20magnetic%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20clear%20acrylic%20magnetic%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/transparent-window.jpg" alt="Transparent large window case — orange" loading="lazy"></div>
-        <div class="body">
-          <h3>Transparent Large Window</h3>
-          <p>Frosted clear case with a large window back — the phone's finish does the talking.</p>
-          <p class="sku">iPhone 17 · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20transparent%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20transparent%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/slim-heat.jpg" alt="Slim heat-dissipating case — light green" loading="lazy"></div>
-        <div class="body">
-          <h3>Slim Heat-Dissipating</h3>
-          <p>Ultra-slim with heat-dissipation channels — for the heavy users.</p>
-          <p class="sku">iPhone 13–17 · 5 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20slim%20heat%20dissipating%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20slim%20heat%20dissipating%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/matte-armor.jpg" alt="Matte armor case — orange" loading="lazy"></div>
-        <div class="body">
-          <h3>Matte Armor</h3>
-          <p>Hard back, skin-feel finish, lens protective film. The daily-driver case.</p>
-          <p class="sku">iPhone 17 · 5 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20matte%20armor%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20matte%20armor%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/lanyard-set.jpg" alt="Lanyard set — camellia red" loading="lazy"></div>
-        <div class="body">
-          <h3>2pc Lanyard Set</h3>
-          <p>Case plus matching wrist strap — the anti-drop combo. Premium liquid silicone.</p>
-          <p class="sku">iPhone 17 Pro Max · SET OF 2</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20lanyard%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20lanyard%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/heat-mesh.jpg" alt="Heat dissipation mesh case — white" loading="lazy"></div>
-        <div class="body">
-          <h3>Heat Dissipation Mesh</h3>
-          <p>Mesh breathable back with heat-dissipation design. The gamer's pick.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20mesh%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20mesh%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><span class="ph">PHOTO — ARRIVING WITH SHIPMENT</span></div>
-        <div class="body">
-          <h3>Candy Suction Cup</h3>
-          <p>Strong-adhesion suction back — sticks to smooth surfaces. The novelty shelf.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20suction%20cup%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20suction%20cup%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/gradient.jpg" alt="Gradient case — purple" loading="lazy"></div>
-        <div class="body">
-          <h3>Gradient</h3>
-          <p>Luxury gradient soft case, magnetic charging, comfortable grip.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20gradient%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20gradient%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/anti-drop-lanyard.jpg" alt="Anti-drop lanyard case — orange" loading="lazy"></div>
-        <div class="body">
-          <h3>Anti-Drop Lanyard</h3>
-          <p>Transparent case with built-in lanyard loop — drop-proof by design.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20anti%20drop%20lanyard%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20anti%20drop%20lanyard%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><span class="ph">PHOTO — ARRIVING WITH SHIPMENT</span></div>
-        <div class="body">
-          <h3>Charming Eye Skin-Feel</h3>
-          <p>Skin-feel soft case with a charming eye design. The fashion pick.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20skin%20feel%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20skin%20feel%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/two-in-one-jelly.jpg" alt="Two-in-one jelly case — mix colour" loading="lazy"></div>
-        <div class="body">
-          <h3>Two-in-One Jelly</h3>
-          <p>Dual-tone jelly skin-feel with magnetic snap-on. Two looks, one case.</p>
-          <p class="sku">iPhone 17 Pro Max · MIX COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20jelly%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20jelly%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/luxury-matte.jpg" alt="Luxury upgrade matte case — grey" loading="lazy"></div>
-        <div class="body">
-          <h3>Luxury Upgrade Matte</h3>
-          <p>Upgraded matte soft case, shockproof, wireless-charging friendly.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20matte%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20matte%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-      <article class="range-card">
-        <div class="photo"><img src="mikoshi-img/ultra-thin.jpg" alt="Ultra-thin color-blocking case — grey" loading="lazy"></div>
-        <div class="body">
-          <h3>Ultra-Thin Color-Blocking</h3>
-          <p>Ultra-thin frosted soft case with color-blocking design.</p>
-          <p class="sku">iPhone 17 Pro Max · 10 COLOURS</p>
-      <div class="buy-row">
-        <a class="buy buy-amazon" href="https://www.amazon.ca/s?k=iphone%2017%20pro%20max%20ultra%20thin%20case" target="_blank" rel="noopener">Amazon</a>
-        <a class="buy buy-ebay" href="https://www.ebay.ca/sch/i.html?_nkw=iphone%2017%20pro%20max%20ultra%20thin%20case" target="_blank" rel="noopener">eBay</a>
-      </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- GALLERY -->
 <section class="section" id="gallery">
   <div class="wrap">
     <div class="section-head">
-      <h2>Phone cases</h2>
+      <h2>iPhone Cases</h2>
       <p class="note">01b / 04 — every finish, every colour, in stock</p>
     </div>
     <div class="gallery-grid">
-      <img src="mikoshi-img/gallery/g01-green-silicone.jpg" alt="Silicone magnetic case — green" loading="lazy">
-      <img src="mikoshi-img/gallery/g02-gold-clear.jpg" alt="Clear acrylic case — gold" loading="lazy">
-      <img src="mikoshi-img/gallery/g03-mint-matte.jpg" alt="Matte case — mint" loading="lazy">
-      <img src="mikoshi-img/gallery/g04-peach-matte.jpg" alt="Matte case — peach" loading="lazy">
-      <img src="mikoshi-img/gallery/g05-pink-matte.jpg" alt="Matte case — pink" loading="lazy">
-      <img src="mikoshi-img/gallery/g06-white-matte.jpg" alt="Matte case — white" loading="lazy">
-      <img src="mikoshi-img/gallery/g07-white-textured.jpg" alt="Textured case — white" loading="lazy">
-      <img src="mikoshi-img/gallery/g08-purple-gradient.jpg" alt="Gradient case — purple" loading="lazy">
-      <img src="mikoshi-img/gallery/g09-orange-lanyard.jpg" alt="Lanyard set — orange" loading="lazy">
-      <img src="mikoshi-img/gallery/g10-orange-matte.jpg" alt="Matte case — orange" loading="lazy">
-      <img src="mikoshi-img/gallery/g11-yellow-matte.jpg" alt="Matte case — yellow" loading="lazy">
-      <img src="mikoshi-img/gallery/g12-black-matte.jpg" alt="Matte case — black" loading="lazy">
-      <img src="mikoshi-img/gallery/g13-grey-frosted.jpg" alt="Frosted glass case — grey" loading="lazy">
-      <img src="mikoshi-img/gallery/g14-lavender-frosted.jpg" alt="Frosted glass case — lavender" loading="lazy">
-      <img src="mikoshi-img/gallery/g15-white-frosted.jpg" alt="Frosted glass case — white" loading="lazy">
-      <img src="mikoshi-img/gallery/g16-blue-gradient.jpg" alt="Gradient case — blue" loading="lazy">
-      <img src="mikoshi-img/gallery/g17-orange-gradient.jpg" alt="Gradient case — orange" loading="lazy">
-      <img src="mikoshi-img/gallery/g18-pink-gradient.jpg" alt="Gradient case — pink" loading="lazy">
-      <img src="mikoshi-img/gallery/g19-orange-matte-dark.jpg" alt="Matte case — orange" loading="lazy">
-      <img src="mikoshi-img/gallery/g20-blue-matte-dark.jpg" alt="Matte case — blue" loading="lazy">
-      <img src="mikoshi-img/gallery/g21-black-matte-dark.jpg" alt="Matte case — black" loading="lazy">
-      <img src="mikoshi-img/gallery/g22-yellow-matte-dark.jpg" alt="Matte case — yellow" loading="lazy">
-      <img src="mikoshi-img/gallery/g23-purple-matte-dark.jpg" alt="Matte case — purple" loading="lazy">
-      <img src="mikoshi-img/gallery/g24-pink-matte-dark.jpg" alt="Matte case — pink" loading="lazy">
-      <img src="mikoshi-img/gallery/g25-red-matte-dark.jpg" alt="Matte case — red" loading="lazy">
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g01-green-silicone.jpg" alt="Silicone Magnetic — Green" loading="lazy">
+        <figcaption><b>Silicone Magnetic — Green</b><span>Soft-touch silicone, MagSafe ring, camera lens protector</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g02-gold-clear.jpg" alt="Clear Acrylic — Gold" loading="lazy">
+        <figcaption><b>Clear Acrylic — Gold</b><span>Slim transparent shell, magnetic ring, shows the phone</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g03-mint-matte.jpg" alt="Matte Silicone — Mint" loading="lazy">
+        <figcaption><b>Matte Silicone — Mint</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g04-peach-matte.jpg" alt="Matte Silicone — Peach" loading="lazy">
+        <figcaption><b>Matte Silicone — Peach</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g05-pink-matte.jpg" alt="Matte Silicone — Pink" loading="lazy">
+        <figcaption><b>Matte Silicone — Pink</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g06-white-matte.jpg" alt="Matte Silicone — White" loading="lazy">
+        <figcaption><b>Matte Silicone — White</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g07-white-textured.jpg" alt="Textured — White" loading="lazy">
+        <figcaption><b>Textured — White</b><span>Patterned back for extra grip</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g08-purple-gradient.jpg" alt="Gradient — Purple" loading="lazy">
+        <figcaption><b>Gradient — Purple</b><span>Colour-shift gradient back</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g09-orange-lanyard.jpg" alt="Lanyard Set — Orange" loading="lazy">
+        <figcaption><b>Lanyard Set — Orange</b><span>Case + matching braided lanyard</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g10-orange-matte.jpg" alt="Matte — Orange" loading="lazy">
+        <figcaption><b>Matte — Orange</b><span>Clean matte, no fingerprints</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g11-yellow-matte.jpg" alt="Matte — Yellow" loading="lazy">
+        <figcaption><b>Matte — Yellow</b><span>Clean matte, no fingerprints</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g12-black-matte.jpg" alt="Matte — Black" loading="lazy">
+        <figcaption><b>Matte — Black</b><span>Clean matte, no fingerprints</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g13-grey-frosted.jpg" alt="Frosted Glass — Grey" loading="lazy">
+        <figcaption><b>Frosted Glass — Grey</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g14-lavender-frosted.jpg" alt="Frosted Glass — Lavender" loading="lazy">
+        <figcaption><b>Frosted Glass — Lavender</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g15-white-frosted.jpg" alt="Frosted Glass — White" loading="lazy">
+        <figcaption><b>Frosted Glass — White</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g16-blue-gradient.jpg" alt="Gradient — Blue" loading="lazy">
+        <figcaption><b>Gradient — Blue</b><span>Colour-shift gradient back</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g17-orange-gradient.jpg" alt="Gradient — Orange" loading="lazy">
+        <figcaption><b>Gradient — Orange</b><span>Colour-shift gradient back</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g18-pink-gradient.jpg" alt="Gradient — Pink" loading="lazy">
+        <figcaption><b>Gradient — Pink</b><span>Colour-shift gradient back</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g19-orange-matte-dark.jpg" alt="Matte — Orange" loading="lazy">
+        <figcaption><b>Matte — Orange</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g20-blue-matte-dark.jpg" alt="Matte — Blue" loading="lazy">
+        <figcaption><b>Matte — Blue</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g21-black-matte-dark.jpg" alt="Matte — Black" loading="lazy">
+        <figcaption><b>Matte — Black</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g22-yellow-matte-dark.jpg" alt="Matte — Yellow" loading="lazy">
+        <figcaption><b>Matte — Yellow</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g23-purple-matte-dark.jpg" alt="Matte — Purple" loading="lazy">
+        <figcaption><b>Matte — Purple</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g24-pink-matte-dark.jpg" alt="Matte — Pink" loading="lazy">
+        <figcaption><b>Matte — Pink</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/gallery/g25-red-matte-dark.jpg" alt="Matte — Red" loading="lazy">
+        <figcaption><b>Matte — Red</b><span>Lifestyle shot, real-world feel</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -584,7 +426,7 @@
         <li>Same-week delivery across the GTA</li>
       </ul>
       <div class="hero-ctas">
-        <a class="btn btn-ghost" href="#range">Back to the range</a>
+        <a class="btn btn-ghost" href="#gallery">Back to the cases</a>
       </div>
     </div>
     <aside class="contact-panel">
