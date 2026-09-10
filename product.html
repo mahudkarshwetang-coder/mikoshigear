@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Gear — Product</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --surface: #12151a;
+    --surface2: #171b21;
+    --ink: #e9e7e2;
+    --muted: #8b9099;
+    --line: #232830;
+    --accent: #35e0ff;
+    --accent2: #ff3d81;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #0b0d10; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- nav ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,13,16,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .wordmark {
+    font-family: var(--mono); font-weight: 500; font-size: 15px;
+    letter-spacing: 0.08em; text-decoration: none;
+  }
+  .wordmark b { color: var(--accent); font-weight: 500; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 8px 16px; border-radius: 4px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent); color: #0b0d10; }
+  @media (max-width: 720px) { .nav-links a { display: none; } }
+
+  /* ---------- product ---------- */
+  .product { padding: 60px 0 90px; }
+  .back {
+    display: inline-block; margin-bottom: 32px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+  }
+  .back:hover { color: var(--accent); }
+  .product-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+    align-items: start;
+  }
+  .product-photo {
+    border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    background: var(--surface2);
+  }
+  .product-photo img { width: 100%; display: block; }
+  .product-info h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .product-info .desc { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
+  .p-block { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 20px 24px; margin-bottom: 16px; }
+  .p-block h3 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  .p-block .row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+  .p-block .row:last-child { border-bottom: none; }
+  .p-block .row span { color: var(--muted); }
+  .p-block .row b { font-weight: 500; }
+  .ph { color: #4d545e; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; }
+  .cta-row { display: flex; gap: 12px; margin-top: 24px; }
+  .btn {
+    flex: 1; text-align: center; padding: 14px 0; border-radius: 4px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #0b0d10; }
+  .btn-primary:hover { background: #7deeff; }
+  .btn-ghost { border: 1px solid var(--line); color: var(--muted); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+  @media (max-width: 800px) {
+    .product-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><svg width="22" height="22" viewBox="0 0 44 44" fill="none" style="vertical-align:-5px;margin-right:8px"><circle cx="22" cy="22" r="20" stroke="#35e0ff" stroke-width="2"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
+    <nav class="nav-links">
+      <a href="index.html#gallery">Cases</a>
+      <a href="index.html#why">Why Mikoshi</a>
+      <a href="index.html#wholesale">Wholesale</a>
+      <a class="nav-cta" href="index.html#wholesale">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap product">
+  <a class="back" href="index.html#gallery">◂ Back to cases</a>
+  <div class="product-grid">
+    <div class="product-photo">
+      <img id="p-img" src="" alt="">
+    </div>
+    <div class="product-info">
+      <h1 id="p-title">—</h1>
+      <p class="desc" id="p-desc">—</p>
+
+      <div class="p-block">
+        <h3>Specifications</h3>
+        <div class="row"><span>Material</span><b id="p-material" class="ph">TBD</b></div>
+        <div class="row"><span>MagSafe</span><b id="p-magsafe" class="ph">TBD</b></div>
+        <div class="row"><span>Camera protection</span><b id="p-camera" class="ph">TBD</b></div>
+        <div class="row"><span>Fit</span><b id="p-fit" class="ph">TBD</b></div>
+      </div>
+
+      <div class="p-block">
+        <h3>Colours</h3>
+        <p class="ph" id="p-colours">Full colour list coming soon</p>
+      </div>
+
+      <div class="p-block">
+        <h3>Wholesale pricing</h3>
+        <div class="row"><span>Per unit</span><b class="ph">TBD</b></div>
+        <div class="row"><span>Minimum order</span><b class="ph">TBD</b></div>
+        <div class="row"><span>Reorder lead time</span><b class="ph">A few weeks</b></div>
+      </div>
+
+      <div class="p-block">
+        <h3>Shipping</h3>
+        <p class="ph">GTA same-week delivery · Canada-wide courier · pickup in Toronto</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:admin@mikoshigear.ca">Email for samples</a>
+        <a class="btn btn-ghost" href="index.html#gallery">Back to cases</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+const PRODUCTS = {
+  "g01-green-silicone": { title: "Silicone Magnetic — Green", desc: "Soft-touch silicone, MagSafe ring, camera lens protector.", img: "mikoshi-img/gallery/g01-green-silicone.jpg" },
+  "g02-gold-clear": { title: "Clear Acrylic — Gold", desc: "Slim transparent shell, magnetic ring, shows the phone.", img: "mikoshi-img/gallery/g02-gold-clear.jpg" },
+  "g03-mint-matte": { title: "Matte Silicone — Mint", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g03-mint-matte.jpg" },
+  "g04-peach-matte": { title: "Matte Silicone — Peach", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g04-peach-matte.jpg" },
+  "g05-pink-matte": { title: "Matte Silicone — Pink", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g05-pink-matte.jpg" },
+  "g06-white-matte": { title: "Matte Silicone — White", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g06-white-matte.jpg" },
+  "g07-white-textured": { title: "Textured — White", desc: "Patterned back for extra grip.", img: "mikoshi-img/gallery/g07-white-textured.jpg" },
+  "g08-purple-gradient": { title: "Gradient — Purple", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g08-purple-gradient.jpg" },
+  "g09-orange-lanyard": { title: "Lanyard Set — Orange", desc: "Case + matching braided lanyard.", img: "mikoshi-img/gallery/g09-orange-lanyard.jpg" },
+  "g10-orange-matte": { title: "Matte — Orange", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g10-orange-matte.jpg" },
+  "g11-yellow-matte": { title: "Matte — Yellow", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g11-yellow-matte.jpg" },
+  "g12-black-matte": { title: "Matte — Black", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g12-black-matte.jpg" },
+  "g13-grey-frosted": { title: "Frosted Glass — Grey", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g13-grey-frosted.jpg" },
+  "g14-lavender-frosted": { title: "Frosted Glass — Lavender", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g14-lavender-frosted.jpg" },
+  "g15-white-frosted": { title: "Frosted Glass — White", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g15-white-frosted.jpg" },
+  "g16-blue-gradient": { title: "Gradient — Blue", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g16-blue-gradient.jpg" },
+  "g17-orange-gradient": { title: "Gradient — Orange", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g17-orange-gradient.jpg" },
+  "g18-pink-gradient": { title: "Gradient — Pink", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g18-pink-gradient.jpg" },
+  "g19-orange-matte-dark": { title: "Matte — Orange", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g19-orange-matte-dark.jpg" },
+  "g20-blue-matte-dark": { title: "Matte — Blue", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g20-blue-matte-dark.jpg" },
+  "g21-black-matte-dark": { title: "Matte — Black", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g21-black-matte-dark.jpg" },
+  "g22-yellow-matte-dark": { title: "Matte — Yellow", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g22-yellow-matte-dark.jpg" },
+  "g23-purple-matte-dark": { title: "Matte — Purple", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g23-purple-matte-dark.jpg" },
+  "g24-pink-matte-dark": { title: "Matte — Pink", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g24-pink-matte-dark.jpg" },
+  "g25-red-matte-dark": { title: "Matte — Red", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g25-red-matte-dark.jpg" },
+};
+
+const id = new URLSearchParams(location.search).get("id");
+const p = PRODUCTS[id];
+if (p) {
+  document.title = "Mikoshi Gear — " + p.title;
+  document.getElementById("p-img").src = p.img;
+  document.getElementById("p-img").alt = p.title;
+  document.getElementById("p-title").textContent = p.title;
+  document.getElementById("p-desc").textContent = p.desc;
+} else {
+  document.getElementById("p-title").textContent = "Case not found";
+  document.getElementById("p-desc").textContent = "This case doesn't exist — head back to the gallery.";
+}
+</script>
+</body>
+</html>
