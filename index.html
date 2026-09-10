@@ -188,6 +188,16 @@
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
     text-transform: uppercase; text-decoration: none; transition: all 0.15s;
   }
+  .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .gallery-grid img {
+    width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
+    border: 1px solid var(--line); border-radius: 4px;
+    filter: saturate(1.08) contrast(1.04) brightness(0.96);
+    transition: filter 0.2s, transform 0.2s;
+  }
+  .gallery-grid img:hover { filter: saturate(1.12) contrast(1.06) brightness(1); transform: scale(1.02); }
+  @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
   .buy-amazon { border: 1px solid var(--accent); color: var(--accent); }
   .buy-amazon:hover { background: var(--accent); color: #0b0d10; }
   .buy-ebay { border: 1px solid var(--line); color: var(--muted); }
@@ -487,6 +497,43 @@
       </div>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Colours in hand</h2>
+      <p class="note">01b / 04 — every finish, every colour, in stock</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="mikoshi-img/gallery/g01-green-silicone.jpg" alt="Silicone magnetic case — green" loading="lazy">
+      <img src="mikoshi-img/gallery/g02-gold-clear.jpg" alt="Clear acrylic case — gold" loading="lazy">
+      <img src="mikoshi-img/gallery/g03-mint-matte.jpg" alt="Matte case — mint" loading="lazy">
+      <img src="mikoshi-img/gallery/g04-peach-matte.jpg" alt="Matte case — peach" loading="lazy">
+      <img src="mikoshi-img/gallery/g05-pink-matte.jpg" alt="Matte case — pink" loading="lazy">
+      <img src="mikoshi-img/gallery/g06-white-matte.jpg" alt="Matte case — white" loading="lazy">
+      <img src="mikoshi-img/gallery/g07-white-textured.jpg" alt="Textured case — white" loading="lazy">
+      <img src="mikoshi-img/gallery/g08-purple-gradient.jpg" alt="Gradient case — purple" loading="lazy">
+      <img src="mikoshi-img/gallery/g09-orange-lanyard.jpg" alt="Lanyard set — orange" loading="lazy">
+      <img src="mikoshi-img/gallery/g10-orange-matte.jpg" alt="Matte case — orange" loading="lazy">
+      <img src="mikoshi-img/gallery/g11-yellow-matte.jpg" alt="Matte case — yellow" loading="lazy">
+      <img src="mikoshi-img/gallery/g12-black-matte.jpg" alt="Matte case — black" loading="lazy">
+      <img src="mikoshi-img/gallery/g13-grey-frosted.jpg" alt="Frosted glass case — grey" loading="lazy">
+      <img src="mikoshi-img/gallery/g14-lavender-frosted.jpg" alt="Frosted glass case — lavender" loading="lazy">
+      <img src="mikoshi-img/gallery/g15-white-frosted.jpg" alt="Frosted glass case — white" loading="lazy">
+      <img src="mikoshi-img/gallery/g16-blue-gradient.jpg" alt="Gradient case — blue" loading="lazy">
+      <img src="mikoshi-img/gallery/g17-orange-gradient.jpg" alt="Gradient case — orange" loading="lazy">
+      <img src="mikoshi-img/gallery/g18-pink-gradient.jpg" alt="Gradient case — pink" loading="lazy">
+      <img src="mikoshi-img/gallery/g19-orange-matte-dark.jpg" alt="Matte case — orange" loading="lazy">
+      <img src="mikoshi-img/gallery/g20-blue-matte-dark.jpg" alt="Matte case — blue" loading="lazy">
+      <img src="mikoshi-img/gallery/g21-black-matte-dark.jpg" alt="Matte case — black" loading="lazy">
+      <img src="mikoshi-img/gallery/g22-yellow-matte-dark.jpg" alt="Matte case — yellow" loading="lazy">
+      <img src="mikoshi-img/gallery/g23-purple-matte-dark.jpg" alt="Matte case — purple" loading="lazy">
+      <img src="mikoshi-img/gallery/g24-pink-matte-dark.jpg" alt="Matte case — pink" loading="lazy">
+      <img src="mikoshi-img/gallery/g25-red-matte-dark.jpg" alt="Matte case — red" loading="lazy">
     </div>
   </div>
 </section>
