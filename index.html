@@ -43,10 +43,6 @@
     text-transform: uppercase;
     color: var(--accent);
   }
-  .hud-tick {
-    position: absolute; width: 10px; height: 10px;
-    border: 1px solid var(--accent); opacity: 0.5;
-  }
 
   /* ---------- nav ---------- */
   header {
@@ -82,30 +78,7 @@
     .nav-links a { display: none; }
   }
 
-  /* ---------- hero ---------- */
-  .hero { position: relative; padding: 110px 0 90px; overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(53,224,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(53,224,255,0.04) 1px, transparent 1px);
-    background-size: 56px 56px;
-    pointer-events: none;
-  }
-  .hero-grid {
-    display: grid;
-    align-items: start; position: relative;
-  }
-  .hero h1 {
-    font-size: clamp(42px, 6.5vw, 84px);
-    font-weight: 700; line-height: 1.02; letter-spacing: -0.02em;
-    margin: 26px 0 28px;
-  }
-  .hero h1 .hl { color: var(--accent); }
-  .hero .sub {
-    font-size: 17px; color: var(--muted); max-width: 560px;
-    margin-bottom: 40px;
-  }
+  /* ---------- buttons (nav-adjacent + wholesale CTAs) ---------- */
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn {
     display: inline-block; padding: 14px 26px; border-radius: 4px;
@@ -116,11 +89,6 @@
   .btn-primary:hover { background: #7deeff; }
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--ink); }
-
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero { padding: 70px 0 60px; }
-  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
@@ -233,24 +201,6 @@
     </nav>
   </div>
 </header>
-
-<!-- HERO -->
-<section class="hero">
-  <span class="hud-tick" style="top:80px; left:24px;"></span>
-  <span class="hud-tick" style="top:80px; right:24px;"></span>
-  <div class="wrap hero-grid">
-    <div>
-      <p class="overline">Mikoshi Gear — Toronto · Wholesale catalog</p>
-      <h1>We test &amp; curate<br><span class="hl">phone accessories.</span></h1>
-      <p class="sub">The wholesale catalog for GTA shops — iPhone cases with real prices, 100W braided cables and ETL-certified 20W GaN chargers. Fit-tested in Toronto, in stock, priced for your counter.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#gallery">Cases</a>
-        <a class="btn btn-ghost" href="cables.html">Cables</a>
-        <a class="btn btn-ghost" href="adapters.html">Adapters</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- GALLERY: CASES -->
 <section class="section" id="gallery">
