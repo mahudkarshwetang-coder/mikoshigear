@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mikoshi Gear — iPhone cases, Toronto</title>
+<title>Mikoshi Gear — wholesale iPhone cases, cables, chargers — Toronto</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,7 +103,7 @@
   }
   .hero h1 .hl { color: var(--accent); }
   .hero .sub {
-    font-size: 17px; color: var(--muted); max-width: 520px;
+    font-size: 17px; color: var(--muted); max-width: 560px;
     margin-bottom: 40px;
   }
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -149,7 +149,7 @@
     html { scroll-behavior: auto; }
   }
 
-  /* ---------- gallery ---------- */
+  /* ---------- gallery / catalog ---------- */
   .section { padding: 90px 0; border-top: 1px solid var(--line); }
   .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px; gap: 20px; flex-wrap: wrap; }
   .section-head h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
@@ -166,8 +166,19 @@
   .g-item figcaption { padding: 10px 12px 12px; border-top: 1px solid var(--line); }
   .g-item figcaption b { display: block; font-size: 13px; font-weight: 500; margin-bottom: 2px; }
   .g-item figcaption span { display: block; font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .g-item figcaption .g-price {
+    display: block; margin-top: 6px; padding-top: 6px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+  }
+  .g-item figcaption .g-price i { font-style: normal; color: var(--muted); }
   @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- power (cables & chargers) ---------- */
+  .power-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 860px; }
+  .power-grid .g-item img { background: var(--surface2); }
+  @media (max-width: 700px) { .power-grid { grid-template-columns: 1fr; } }
 
   /* ---------- why ---------- */
   .why { background: var(--surface); }
@@ -189,7 +200,7 @@
   /* ---------- wholesale ---------- */
   .wholesale-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center; }
   .wholesale h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; margin: 20px 0 22px; }
-  .wholesale .lede { font-size: 17px; color: var(--muted); max-width: 520px; margin-bottom: 28px; }
+  .wholesale .lede { font-size: 17px; color: var(--muted); max-width: 560px; margin-bottom: 28px; }
   .wholesale-points { list-style: none; margin-bottom: 36px; }
   .wholesale-points li {
     font-family: var(--mono); font-size: 13px; color: var(--muted);
@@ -239,6 +250,7 @@
       </svg>MIKOSHI<b>▸</b>GEAR</a>
     <nav class="nav-links">
       <a href="#gallery">Cases</a>
+      <a href="#power">Power</a>
       <a href="#why">Why Mikoshi</a>
       <a href="#wholesale">Wholesale</a>
       <a class="nav-cta" href="#wholesale">Contact</a>
@@ -252,131 +264,126 @@
   <span class="hud-tick" style="top:80px; right:24px;"></span>
   <div class="wrap hero-grid">
     <div>
-      <p class="overline">Mikoshi Gear — Toronto · Est. 2026</p>
-      <h1>Gear from<br>the <span class="hl">future.</span></h1>
-      <p class="sub">We find the tech accessories worth making room for — starting with iPhone cases built to drop, priced to sell. Silicone magnetic, frosted glass, clear acrylic, lanyard sets. In stock in Toronto.</p>
+      <p class="overline">Mikoshi Gear — Toronto · Wholesale catalog</p>
+      <h1>Stock the<br><span class="hl">future.</span></h1>
+      <p class="sub">The wholesale catalog for GTA shops — iPhone cases with real prices, 100W braided cables and ETL-certified 20W GaN chargers. Fit-tested in Toronto, in stock, priced for your counter.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#wholesale">Wholesale pricing</a>
-        <a class="btn btn-ghost" href="#gallery">See the cases</a>
+        <a class="btn btn-primary" href="#gallery">Wholesale pricing</a>
+        <a class="btn btn-ghost" href="#power">Cables &amp; chargers</a>
       </div>
     </div>
     <aside class="hero-side">
       <p class="pron">/ˌmɪˈkoʊʃi/</p>
       <p class="term"><b>Mikoshi</b> <span style="color:var(--muted)">n.</span></p>
-      <p class="def">The vault of consciousness in Night City lore — where your digital self lives on. We take the idea literally: the tech you carry is your digital self, and it deserves real gear. A little drama — but the cases are genuinely good.</p>
+      <p class="def">The vault of consciousness in Night City lore — where your digital self lives on. We take the idea literally: the tech you carry is your digital self, and it deserves real gear. A little drama — but the stock is genuinely good.</p>
       <p class="sysline">▸ admin@mikoshigear.ca <span class="cursor"></span></p>
     </aside>
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALLERY: CASES -->
 <section class="section" id="gallery">
   <div class="wrap">
     <div class="section-head">
       <h2>iPhone Cases</h2>
-      <p class="note">01b / 04 — every finish, every colour, in stock</p>
+      <p class="note">01 / 04 — every finish priced wholesale</p>
     </div>
     <div class="gallery-grid">
+
       <figure class="g-item">
         <a href="product.html?id=g01-green-silicone" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g01-green-silicone.jpg" alt="Silicone Magnetic — Green" loading="lazy"></a>
-        <figcaption><b>Silicone Magnetic — Green</b><span>Soft-touch silicone, MagSafe ring, camera lens protector</span></figcaption>
+        <figcaption><b>Silicone Magnetic — Green</b><span>MagSafe ring &amp; lens protector</span><span class="g-price">W $10.50 <i>·</i> 10 pc $8.93</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g02-gold-clear" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g02-gold-clear.jpg" alt="Clear Acrylic — Gold" loading="lazy"></a>
-        <figcaption><b>Clear Acrylic — Gold</b><span>Slim transparent shell, magnetic ring, shows the phone</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g03-mint-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g03-mint-matte.jpg" alt="Matte Silicone — Mint" loading="lazy"></a>
-        <figcaption><b>Matte Silicone — Mint</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g04-peach-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g04-peach-matte.jpg" alt="Matte Silicone — Peach" loading="lazy"></a>
-        <figcaption><b>Matte Silicone — Peach</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g05-pink-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g05-pink-matte.jpg" alt="Matte Silicone — Pink" loading="lazy"></a>
-        <figcaption><b>Matte Silicone — Pink</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g06-white-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g06-white-matte.jpg" alt="Matte Silicone — White" loading="lazy"></a>
-        <figcaption><b>Matte Silicone — White</b><span>Grippy matte finish, anti-fingerprint</span></figcaption>
+        <a href="product.html?id=g06-white-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g06-white-matte.jpg" alt="Matte — White" loading="lazy"></a>
+        <figcaption><b>Matte — White</b><span>Anti-fingerprint</span><span class="g-price">W $15.00 <i>·</i> 10 pc $12.75</span></figcaption>
       </figure>
       <figure class="g-item">
         <a href="product.html?id=g07-white-textured" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g07-white-textured.jpg" alt="Textured — White" loading="lazy"></a>
-        <figcaption><b>Textured — White</b><span>Patterned back for extra grip</span></figcaption>
+        <figcaption><b>Textured — White</b><span>Extra grip pattern</span><span class="g-price">W $10.50 <i>·</i> 10 pc $8.93</span></figcaption>
       </figure>
       <figure class="g-item">
         <a href="product.html?id=g08-purple-gradient" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g08-purple-gradient.jpg" alt="Gradient — Purple" loading="lazy"></a>
-        <figcaption><b>Gradient — Purple</b><span>Colour-shift gradient back</span></figcaption>
+        <figcaption><b>Gradient — Purple</b><span>Colour-shift back</span><span class="g-price">W $15.00 <i>·</i> 10 pc $12.75</span></figcaption>
       </figure>
       <figure class="g-item">
         <a href="product.html?id=g09-orange-lanyard" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g09-orange-lanyard.jpg" alt="Lanyard Set — Orange" loading="lazy"></a>
-        <figcaption><b>Lanyard Set — Orange</b><span>Case + matching braided lanyard</span></figcaption>
+        <figcaption><b>Lanyard Set — Orange</b><span>Case + braided strap</span><span class="g-price">W $16.00 <i>·</i> 10 pc $13.60</span></figcaption>
       </figure>
+
       <figure class="g-item">
         <a href="product.html?id=g10-orange-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g10-orange-matte.jpg" alt="Matte — Orange" loading="lazy"></a>
-        <figcaption><b>Matte — Orange</b><span>Clean matte, no fingerprints</span></figcaption>
+        <figcaption><b>Matte — Orange</b><span>Anti-fingerprint</span><span class="g-price">W $13.00 <i>·</i> 10 pc $11.05</span></figcaption>
       </figure>
       <figure class="g-item">
         <a href="product.html?id=g11-yellow-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g11-yellow-matte.jpg" alt="Matte — Yellow" loading="lazy"></a>
-        <figcaption><b>Matte — Yellow</b><span>Clean matte, no fingerprints</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g12-black-matte" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g12-black-matte.jpg" alt="Matte — Black" loading="lazy"></a>
-        <figcaption><b>Matte — Black</b><span>Clean matte, no fingerprints</span></figcaption>
+        <figcaption><b>Matte — Yellow</b><span>Anti-fingerprint</span><span class="g-price">W $12.50 <i>·</i> 10 pc $10.63</span></figcaption>
       </figure>
       <figure class="g-item">
         <a href="product.html?id=g13-grey-frosted" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g13-grey-frosted.jpg" alt="Frosted Glass — Grey" loading="lazy"></a>
-        <figcaption><b>Frosted Glass — Grey</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+        <figcaption><b>Frosted Glass — Grey</b><span>Magnetic, aurora finish</span><span class="g-price">W $16.00 <i>·</i> 10 pc $13.60</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g14-lavender-frosted" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g14-lavender-frosted.jpg" alt="Frosted Glass — Lavender" loading="lazy"></a>
-        <figcaption><b>Frosted Glass — Lavender</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+        <a href="product.html?id=g19-orange-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g19-orange-matte-dark.jpg" alt="Metallic — Orange" loading="lazy"></a>
+        <figcaption><b>Metallic — Orange</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g15-white-frosted" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g15-white-frosted.jpg" alt="Frosted Glass — White" loading="lazy"></a>
-        <figcaption><b>Frosted Glass — White</b><span>AG frosted glass, aurora colour shift</span></figcaption>
+        <a href="product.html?id=g20-blue-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g20-blue-matte-dark.jpg" alt="Metallic — Dark Blue" loading="lazy"></a>
+        <figcaption><b>Metallic — Dark Blue</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <a href="product.html?id=g21-black-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g21-black-matte-dark.jpg" alt="Metallic — Black" loading="lazy"></a>
+        <figcaption><b>Metallic — Black</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g16-blue-gradient" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g16-blue-gradient.jpg" alt="Gradient — Blue" loading="lazy"></a>
-        <figcaption><b>Gradient — Blue</b><span>Colour-shift gradient back</span></figcaption>
+        <a href="product.html?id=g22-yellow-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g22-yellow-matte-dark.jpg" alt="Metallic — Gold" loading="lazy"></a>
+        <figcaption><b>Metallic — Gold</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g17-orange-gradient" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g17-orange-gradient.jpg" alt="Gradient — Orange" loading="lazy"></a>
-        <figcaption><b>Gradient — Orange</b><span>Colour-shift gradient back</span></figcaption>
+        <a href="product.html?id=g23-purple-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g23-purple-matte-dark.jpg" alt="Metallic — Dark Purple" loading="lazy"></a>
+        <figcaption><b>Metallic — Dark Purple</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g18-pink-gradient" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g18-pink-gradient.jpg" alt="Gradient — Pink" loading="lazy"></a>
-        <figcaption><b>Gradient — Pink</b><span>Colour-shift gradient back</span></figcaption>
+        <a href="product.html?id=g24-pink-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g24-pink-matte-dark.jpg" alt="Metallic — Gray" loading="lazy"></a>
+        <figcaption><b>Metallic — Gray</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
       <figure class="g-item">
-        <a href="product.html?id=g19-orange-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g19-orange-matte-dark.jpg" alt="Matte — Orange" loading="lazy"></a>
-        <figcaption><b>Matte — Orange</b><span>Lifestyle shot, real-world feel</span></figcaption>
+        <a href="product.html?id=g25-red-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g25-red-matte-dark.jpg" alt="Metallic — Rose Red" loading="lazy"></a>
+        <figcaption><b>Metallic — Rose Red</b><span>Metallic glossy finish</span><span class="g-price">W $17.50 <i>·</i> 10 pc $14.88</span></figcaption>
       </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- POWER: CABLES & CHARGERS -->
+<section class="section" id="power">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cables &amp; Chargers</h2>
+      <p class="note">02 / 04 — certified power</p>
+    </div>
+    <div class="power-grid">
+
       <figure class="g-item">
-        <a href="product.html?id=g20-blue-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g20-blue-matte-dark.jpg" alt="Matte — Blue" loading="lazy"></a>
-        <figcaption><b>Matte — Blue</b><span>Lifestyle shot, real-world feel</span></figcaption>
+        <a href="product.html?id=cable-100w" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/cable-100w.svg" alt="100W USB-C cable" loading="lazy"></a>
+        <figcaption>
+          <b>USB-C Cable — 100W</b>
+          <span>Nylon braided · E-marker chip · 5A fast charge · 1m / 2m / 3m</span>
+          <span class="g-price">Wholesale <i>—</i> on request</span>
+        </figcaption>
       </figure>
+
       <figure class="g-item">
-        <a href="product.html?id=g21-black-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g21-black-matte-dark.jpg" alt="Matte — Black" loading="lazy"></a>
-        <figcaption><b>Matte — Black</b><span>Lifestyle shot, real-world feel</span></figcaption>
+        <a href="product.html?id=charger-20w-gan" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/charger-20w-gan.svg" alt="20W GaN charger" loading="lazy"></a>
+        <figcaption>
+          <b>20W GaN Charger — USB-C PD</b>
+          <span>ETL certified · PD 3.0 + QC3.0 · mini size · 5 colours</span>
+          <span class="g-price">Wholesale <i>—</i> on request</span>
+        </figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g22-yellow-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g22-yellow-matte-dark.jpg" alt="Matte — Yellow" loading="lazy"></a>
-        <figcaption><b>Matte — Yellow</b><span>Lifestyle shot, real-world feel</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g23-purple-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g23-purple-matte-dark.jpg" alt="Matte — Purple" loading="lazy"></a>
-        <figcaption><b>Matte — Purple</b><span>Lifestyle shot, real-world feel</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g24-pink-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g24-pink-matte-dark.jpg" alt="Matte — Pink" loading="lazy"></a>
-        <figcaption><b>Matte — Pink</b><span>Lifestyle shot, real-world feel</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <a href="product.html?id=g25-red-matte-dark" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/g25-red-matte-dark.jpg" alt="Matte — Red" loading="lazy"></a>
-        <figcaption><b>Matte — Red</b><span>Lifestyle shot, real-world feel</span></figcaption>
-      </figure>
+
     </div>
   </div>
 </section>
@@ -386,7 +393,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Why shops stock Mikoshi</h2>
-      <p class="note">02 / 04 — the boring part, done properly</p>
+      <p class="note">03 / 04 — the boring part, done properly</p>
     </div>
     <div class="why-list">
       <div class="why-item">
@@ -397,12 +404,12 @@
       <div class="why-item">
         <span class="num">02</span>
         <h3>Fit-tested, not guess-tested</h3>
-        <p>Every case is fitted on an iPhone 17 Pro Max before it's offered. No mis-cut camera holes, no dead magnets, no returns from customers who felt ripped off.</p>
+        <p>Every case is fitted on an iPhone 17 Pro Max before it's offered — and every cable is a real E-marker 100W unit, every charger ETL-certified. No dead stock, no returns from customers who felt ripped off.</p>
       </div>
       <div class="why-item">
         <span class="num">03</span>
         <h3>Clean and unbranded</h3>
-        <p>No logo rights issues, no counterfeit risk, no brand policing. Just good cases with clean margins that are yours to price.</p>
+        <p>No logo rights issues, no counterfeit risk, no brand policing. Just good gear with clean margins that are yours to price.</p>
       </div>
       <div class="why-item">
         <span class="num">04</span>
@@ -417,17 +424,18 @@
 <section class="section" id="wholesale">
   <div class="wrap wholesale-grid">
     <div class="wholesale">
-      <p class="overline">03 / 04 — wholesale</p>
+      <p class="overline">04 / 04 — wholesale</p>
       <h2>Wholesale, the low-pressure way</h2>
-      <p class="lede">We already sell online to retail customers. Now we're opening B2B — and we'd rather earn your counter than talk you into it. Samples first, prices after you've held the cases.</p>
+      <p class="lede">Everything above has a wholesale price — that's the point of this page. We already sell online to retail customers. We'd rather earn your counter than talk you into it: samples first, then build your order around the 10-piece tier.</p>
       <ul class="wholesale-points">
         <li>Samples by appointment — see them, feel them, drop-test them</li>
-        <li>No minimum first order and no commitment</li>
+        <li>10-piece tier, any mix of colours — 15% off per piece</li>
         <li>Wholesale pricing open for discussion — volume tiers as you grow</li>
+        <li>Send your buyers this link — orders by email or WhatsApp</li>
         <li>Same-week delivery across the GTA</li>
       </ul>
       <div class="hero-ctas">
-        <a class="btn btn-ghost" href="#gallery">Back to the cases</a>
+        <a class="btn btn-ghost" href="#gallery">Back to the catalog</a>
       </div>
     </div>
     <aside class="contact-panel">

@@ -168,6 +168,8 @@
 
 <script>
 const PRODUCTS = {
+  "cable-100w": { title: "USB-C Cable — 100W", desc: "Nylon braided, E-marker chip, 20V/5A PD fast charging, 480Mbps data. 1m / 2m / 3m.", img: "mikoshi-img/gallery/cable-100w.svg", spec: { "Connector": "USB-C to USB-C", "Power": "100W (20V/5A, E-marker EPR)", "Data": "USB 2.0 · 480Mbps", "Jacket": "Nylon braid, tinned copper", "Lengths": "1m / 2m / 3m" } },
+  "charger-20w-gan": { title: "20W GaN Charger — USB-C PD", desc: "ETL-certified GaN brick, PD 3.0 + QC3.0, mini size, five colours, 12-month warranty.", img: "mikoshi-img/gallery/charger-20w-gan.svg", spec: { "Output": "5V/3A · 9V/3A · 12V/2.5A · 15V/2A · 20V/1.5A", "Protocol": "PD 3.0 / PD 2.0 / QC3.0", "Certification": "ETL · FCC · RoHS · CE", "Size": "48.5 × 30.5 × 30.5 mm", "Colours": "White, black, pink, purple, blue", "Warranty": "12 months" } },
   "g01-green-silicone": { title: "Silicone Magnetic — Green", desc: "Soft-touch silicone, MagSafe ring, camera lens protector.", img: "mikoshi-img/gallery/g01-green-silicone.jpg" },
   "g02-gold-clear": { title: "Clear Acrylic — Gold", desc: "Slim transparent shell, magnetic ring, shows the phone.", img: "mikoshi-img/gallery/g02-gold-clear.jpg" },
   "g03-mint-matte": { title: "Matte Silicone — Mint", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g03-mint-matte.jpg" },
@@ -203,6 +205,16 @@ if (p) {
   document.getElementById("p-img").alt = p.title;
   document.getElementById("p-title").textContent = p.title;
   document.getElementById("p-desc").textContent = p.desc;
+
+  // fill spec rows when provided (power products), keep TBD for cases
+  if (p.spec) {
+    const block = document.querySelectorAll(".p-block")[0];
+    block.innerHTML = "<h3>Specifications</h3>" + Object.entries(p.spec).map(([k, v]) =>
+      `<div class="row"><span>${k}</span><b>${v}</b></div>`).join("");
+    // hide the Colours block for power products (colours shown in spec instead)
+    const blocks = document.querySelectorAll(".p-block");
+    if (blocks[1]) blocks[1].style.display = "none";
+  }
 } else {
   document.getElementById("p-title").textContent = "Case not found";
   document.getElementById("p-desc").textContent = "This case doesn't exist — head back to the gallery.";
