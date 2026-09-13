@@ -151,6 +151,10 @@
   @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 
+  /* ---------- power cards (cables & adapters) ---------- */
+  .power-grid { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 460px; }
+  .power-grid .g-item img { background: var(--surface2); }
+
   /* ---------- why ---------- */
   .why { background: var(--surface); }
   .why-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
@@ -237,8 +241,9 @@
       <h1>We test &amp; curate<br><span class="hl">phone accessories.</span></h1>
       <p class="sub">The wholesale catalog for GTA shops — iPhone cases with real prices, 100W braided cables and ETL-certified 20W GaN chargers. Fit-tested in Toronto, in stock, priced for your counter.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#gallery">Wholesale pricing</a>
-        <a class="btn btn-ghost" href="power.html">Cables &amp; adapters</a>
+        <a class="btn btn-primary" href="#gallery">Cases</a>
+        <a class="btn btn-ghost" href="#cables">Cables</a>
+        <a class="btn btn-ghost" href="#adapters">Adapters</a>
       </div>
     </div>
   </div>
@@ -249,7 +254,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>iPhone Cases</h2>
-      <p class="note">01 / 03 — every finish priced wholesale</p>
+      <p class="note">01 / 05 — every finish priced wholesale</p>
     </div>
     <div class="gallery-grid">
 
@@ -320,12 +325,52 @@
   </div>
 </section>
 
+<!-- CABLES -->
+<section class="section" id="cables">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cables</h2>
+      <p class="note">02 / 05 — certified power</p>
+    </div>
+    <div class="power-grid">
+      <figure class="g-item">
+        <a href="product.html?id=cable-100w" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/cable-100w.png" alt="100W USB-C cable" loading="lazy"></a>
+        <figcaption>
+          <b>USB-C Cable — 100W</b>
+          <span>Nylon braided · E-marker chip · 5A fast charge · 1m / 2m / 3m</span>
+          <span class="g-price">Wholesale <i>—</i> on request</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ADAPTERS -->
+<section class="section" id="adapters">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Adapters</h2>
+      <p class="note">03 / 05 — certified power</p>
+    </div>
+    <div class="power-grid">
+      <figure class="g-item">
+        <a href="product.html?id=charger-20w-gan" target="_blank" rel="noopener"><img src="mikoshi-img/gallery/charger-20w-gan.png" alt="20W GaN charger" loading="lazy"></a>
+        <figcaption>
+          <b>20W GaN Charger — USB-C PD</b>
+          <span>ETL certified · PD 3.0 + QC3.0 · mini size · 5 colours</span>
+          <span class="g-price">Wholesale <i>—</i> on request</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="section why" id="why">
   <div class="wrap">
     <div class="section-head">
       <h2>Why shops stock Mikoshi</h2>
-      <p class="note">02 / 03 — the boring part, done properly</p>
+      <p class="note">04 / 05 — the boring part, done properly</p>
     </div>
     <div class="why-list">
       <div class="why-item">
@@ -356,7 +401,7 @@
 <section class="section" id="wholesale">
   <div class="wrap wholesale-grid">
     <div class="wholesale">
-      <p class="overline">03 / 03 — wholesale</p>
+      <p class="overline">05 / 05 — wholesale</p>
       <h2>Wholesale, the low-pressure way</h2>
       <p class="lede">Everything above has a wholesale price — that's the point of this page. We already sell online to retail customers. We'd rather earn your counter than talk you into it: samples first, then build your order around the 10-piece tier.</p>
       <ul class="wholesale-points">
