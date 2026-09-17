@@ -94,7 +94,10 @@
   <div class="wrap">
     <div class="topbar">
       <h1>Catalog media</h1>
-      <span class="note" id="load-status"></span>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <button class="btn btn-ghost" id="seed-btn">Seed all from static</button>
+        <span class="note" id="load-status"></span>
+      </div>
     </div>
     <div class="picker" id="picker"></div>
     <div id="no-table" style="display:none;border:1px dashed var(--line);border-radius:6px;padding:40px;text-align:center;color:var(--muted);font-size:14px;">
@@ -252,6 +255,27 @@
     draft.unshift(m);
     paintStrip();
   }
+
+  $("seed-btn").onclick = async () => {
+    const st = $("load-status");
+    st.textContent = "seeding all products from static galleries…";
+    try {
+      const h = await api();
+      const rows = Object.entries(window.MIKOSHI_IMAGES).map(([pid, urls]) => ({
+        product_id: pid,
+        image_urls: urls,
+        thumb_index: 0,
+        updated_at: new Date().toISOString(),
+      }));
+      const { error } = await supabase.from(TABLE).upsert(rows, { onConflict: "product_id" });
+      if (error) throw error;
+      st.textContent = "seeded " + rows.length + " products ✓";
+      await loadAll();
+      if (current) renderEditor(current);
+    } catch (e) {
+      st.textContent = "seed failed: " + e.message;
+    }
+  };
 
   $("save-btn").onclick = async () => {
     const st = $("save-status");
