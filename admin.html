@@ -29,6 +29,11 @@
   .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--muted);}
   .btn-ghost:hover{border-color:var(--ink);color:var(--ink);}
   .err{color:var(--accent2);font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px;}
+  .upload-row{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap;}
+  .upload-btn{display:inline-block;padding:9px 16px;border:1px dashed var(--accent);color:var(--accent);border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all .15s;}
+  .upload-btn:hover{background:rgba(53,224,255,0.08);}
+  .upload-row input[type=file]{display:none;}
+  .upload-hint{font-family:var(--mono);font-size:11px;color:var(--muted);}
   .hint{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:16px;line-height:1.6;}
 
   #app-view{display:none;min-height:100vh;}
@@ -61,7 +66,8 @@
   .slot button{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:6px 12px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;cursor:pointer;transition:all .15s;flex-shrink:0;}
   .slot button:hover{border-color:var(--accent);color:var(--accent);}
   .slot button.thumb-btn.on{border-color:var(--accent);color:var(--accent);background:rgba(53,224,255,0.08);}
-  .save-row{display:flex;align-items:center;gap:16px;margin-top:20px;}
+  .slot button.del-btn:hover{border-color:var(--accent2);color:var(--accent2);}
+  .save-row{display:flex;align-items:center;gap:16px;margin-top:20px;flex-wrap:wrap;}
   .save-row .status{font-family:var(--mono);font-size:12px;color:var(--muted);}
   .save-row .status.ok{color:#7ee787;}
   .save-row .status.err{color:var(--accent2);}
@@ -109,6 +115,11 @@
         <span id="ed-sub"></span>
       </div>
       <div class="strip" id="strip"></div>
+      <div class="upload-row">
+        <label class="upload-btn" for="upfile">＋ Add image</label>
+        <input type="file" id="upfile" accept="image/*" multiple>
+        <span class="upload-hint">JPEG/PNG/WebP — auto-downscaled to 800px, uploaded to the site, saves instantly</span>
+      </div>
       <div class="save-row">
         <button class="btn btn-primary" id="save-btn" style="width:auto;margin-top:0;">Save order</button>
         <span class="status" id="save-status"></span>

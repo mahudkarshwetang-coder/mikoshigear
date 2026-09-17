@@ -119,8 +119,10 @@
         '<span class="idx' + (isThumb ? " is-thumb" : "") + '">' + (isThumb ? "★" : "#" + (i + 1)) + "</span>" +
         '<img src="' + url + '">' +
         '<div class="meta"><b>' + (isThumb ? "Thumbnail / hero" : "Image " + (i + 1)) + "</b><span>" + url.split("/").pop() + "</span></div>" +
-        '<button class="thumb-btn' + (isThumb ? " on" : "") + '">Set as thumbnail</button>';
+        '<button class="thumb-btn' + (isThumb ? " on" : "") + '">Set as thumbnail</button>' +
+        '<button class="del-btn" title="Delete this image">Delete</button>';
       slot.querySelector(".thumb-btn").onclick = () => { moveToTop(i); };
+      slot.querySelector(".del-btn").onclick = () => { deleteAt(i); };
       slot.addEventListener("dragstart", () => { dragIdx = i; slot.classList.add("drag"); });
       slot.addEventListener("dragend", () => { slot.classList.remove("drag"); dragIdx = -1; });
       slot.addEventListener("dragover", (e) => { e.preventDefault(); });
@@ -132,6 +134,18 @@
     const [m] = draft.splice(i, 1);
     draft.unshift(m);
     paintStrip();
+  }
+  function deleteAt(i) {
+    const url = draft[i];
+    if (!confirm("Delete this image from the product?\n" + url.split("/").pop())) return;
+    draft.splice(i, 1);
+    paintStrip();
+    // only delete from storage if it lives in the catalog bucket (not a static /mikoshi-img asset)
+    const m = url.match(/\/catalog\/([^/]+)\/([^/?#]+)/);
+    if (m) {
+      sb.storage.from("catalog").remove([m[1] + "/" + decodeURIComponent(m[2])])
+        .then(({ error }) => { if (error) console.warn("storage delete failed (metadata still saved):", error.message); });
+    }
   }
 
   $("seed-btn").onclick = async () => {
@@ -154,6 +168,53 @@
       st.textContent = "seed failed: " + e.message;
     }
   };
+
+  // ---------- upload ----------
+  function downscale(file, max = 800) {
+    return new Promise((res, rej) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        const s = Math.min(1, max / Math.max(img.width, img.height));
+        const cv = document.createElement("canvas");
+        cv.width = Math.max(1, Math.round(img.width * s));
+        cv.height = Math.max(1, Math.round(img.height * s));
+        cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height);
+        URL.revokeObjectURL(url);
+        cv.toBlob((b) => (b ? res(b) : rej(new Error("canvas encode failed"))), "image/jpeg", 0.82);
+      };
+      img.onerror = () => { URL.revokeObjectURL(url); rej(new Error("unreadable image")); };
+      img.src = url;
+    });
+  }
+  async function uploadAll(files) {
+    for (const f of files) {
+      const blob = await downscale(f);
+      const stamp = Date.now();
+      const key = current + "/" + stamp + "-" + f.name.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-60);
+      const { error } = await sb.storage.from("catalog").upload(key, blob, { contentType: "image/jpeg" });
+      if (error) throw error;
+      draft.push(SUPABASE_URL + "/storage/v1/object/public/catalog/" + key);
+    }
+    paintStrip();
+    await saveRow();
+    $("save-status").textContent = files.length + " image" + (files.length > 1 ? "s" : "") + " added ✓ live";
+    $("save-status").className = "status ok";
+  }
+  $("upfile").addEventListener("change", async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    const st = $("save-status");
+    st.textContent = "uploading " + files.length + "…";
+    st.className = "status";
+    try {
+      await uploadAll(files);
+    } catch (err) {
+      st.textContent = "upload failed: " + err.message;
+      st.className = "status err";
+    }
+    e.target.value = "";
+  });
 
   $("save-btn").onclick = async () => {
     const st = $("save-status");
