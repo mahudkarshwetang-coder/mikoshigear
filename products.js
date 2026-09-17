@@ -39,67 +39,67 @@ window.MIKOSHI_PRODUCTS = {
   "notes": "iPhone 11\u201317 + XR/XS/XS Max \u00b7 matte skin-feel \u00b7 eye graphic \u00b7 metallic accent ring \u00b7 3 colours"
  },
  "2in1-wireless": {
-  "name": "Toocki 2-in-1 100W + Wireless Cable",
+  "name": "2-in-1 100W + Wireless Cable",
   "cat": "cable",
   "price": "Wholesale $12.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C 100W + 2.5W wireless puck (watch/earbuds) \u00b7 E-Marker \u00b7 braided \u00b7 ships by Oct 14"
  },
  "240w-display": {
-  "name": "Toocki 240W Display Cable (live wattage)",
+  "name": "240W Display Cable (live wattage)",
   "cat": "cable",
   "price": "Wholesale $4.00\u20138.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 real-time W readout \u00b7 braided + metal housing \u00b7 480Mbps \u00b7 1/2m \u00b7 ships by Oct 14"
  },
  "240w-elbow": {
-  "name": "Toocki 240W Elbow 90\u00b0 Cable",
+  "name": "240W Elbow 90\u00b0 Cable",
   "cat": "cable",
   "price": "Wholesale $7.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 L-shaped elbow \u00b7 zinc-alloy shell \u00b7 braided nylon \u00b7 1.5m"
  },
  "240w-straight": {
-  "name": "Toocki 240W Max Cable",
+  "name": "240W Max Cable",
   "cat": "cable",
   "price": "Wholesale $7.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 zinc-alloy shell \u00b7 reinforced strain relief \u00b7 braided \u00b7 1.5m"
  },
  "100w-realcore": {
-  "name": "Toocki 100W Real-Core Cable",
+  "name": "100W Real-Core Cable",
   "cat": "cable",
   "price": "Wholesale $3.00\u20135.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 six-strand core \u00b7 anti-interference \u00b7 gold-plated \u00b7 4 colours"
  },
  "6a-multilength": {
-  "name": "Toocki 6A Multi-Length Cable",
+  "name": "6A Multi-Length Cable",
   "cat": "cable",
   "price": "Wholesale $3.00\u20134.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 TPE jacket \u00b7 6A fast charge \u00b7 0.25\u20133m lengths"
  },
  "spring-cable": {
-  "name": "Toocki Spring 6A Digital Cable",
+  "name": "Spring 6A Digital Cable",
   "cat": "cable",
   "price": "Wholesale $5.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u00b7 1.8m stretchable coil \u00b7 braided+TPE \u00b7 pure copper \u00b7 ships by Oct 14 \u00b7 2 colours"
  },
  "3in1": {
-  "name": "Toocki 3-in-1 Multi-Interface Cable",
+  "name": "3-in-1 Multi-Interface Cable",
   "cat": "cable",
   "price": "Wholesale $2.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C \u2192 Lightning + USB-C + Micro \u00b7 braided nylon \u00b7 legacy coverage \u00b7 0.6\u20131.5m"
  },
  "a2c-braided": {
-  "name": "Toocki Braided A\u2192C Cable",
+  "name": "Braided A\u2192C Cable",
   "cat": "cable",
   "price": "Wholesale $3.00\u20135.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-A \u2192 USB-C \u00b7 knurled metal housing \u00b7 cable tie \u00b7 4 colours \u00b7 1\u20133m"
  },
  "otg-adapter": {
-  "name": "Toocki Smart Visual PD Adapter",
+  "name": "Smart Visual PD Adapter",
   "cat": "adapter",
   "price": "Wholesale $3.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "USB-C passthrough + live wattage display \u00b7 100W PD \u00b7 480Mbps \u00b7 car/travel \u00b7 ships by Oct 14"
  },
  "arc-lighter": {
-  "name": "Toocki USB-C Arc Lighter (XG01)",
+  "name": "USB-C Arc Lighter (XG01)",
   "cat": "novelty",
   "price": "Wholesale $6.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "Windproof plasma arc \u00b7 aluminium alloy \u00b7 8g \u00b7 long-press safety \u00b7 ships by Oct 17"

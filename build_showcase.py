@@ -30,28 +30,28 @@ add("slim-heat", "case", "Slim Solid-Color Heat-Dissipating Case", "Wholesale $4
 add("charming-eye", "case", "Skin-Feel 'Charming Eye' Case", "Wholesale $4.10 · MOQ 20 — samples available",
     "iPhone 11–17 + XR/XS/XS Max · matte skin-feel · eye graphic · metallic accent ring · 3 colours", "p06-charming-eye.jpg")
 
-add("2in1-wireless", "cable", "Toocki 2-in-1 100W + Wireless Cable", "Wholesale $12.50 · MOQ 20 — samples available",
+add("2in1-wireless", "cable", "2-in-1 100W + Wireless Cable", "Wholesale $12.50 · MOQ 20 — samples available",
     "USB-C 100W + 2.5W wireless puck (watch/earbuds) · E-Marker · braided · ships by Oct 14", "p15-2in1-wireless.jpg")
-add("240w-display", "cable", "Toocki 240W Display Cable (live wattage)", "Wholesale $4.00–8.00 · MOQ 20 — samples available",
+add("240w-display", "cable", "240W Display Cable (live wattage)", "Wholesale $4.00–8.00 · MOQ 20 — samples available",
     "USB-C · real-time W readout · braided + metal housing · 480Mbps · 1/2m · ships by Oct 14", "p09-240w-display.jpg")
-add("240w-elbow", "cable", "Toocki 240W Elbow 90° Cable", "Wholesale $7.00 · MOQ 20 — samples available",
+add("240w-elbow", "cable", "240W Elbow 90° Cable", "Wholesale $7.00 · MOQ 20 — samples available",
     "USB-C · L-shaped elbow · zinc-alloy shell · braided nylon · 1.5m", "p08-240w-elbow.jpg")
-add("240w-straight", "cable", "Toocki 240W Max Cable", "Wholesale $7.00 · MOQ 20 — samples available",
+add("240w-straight", "cable", "240W Max Cable", "Wholesale $7.00 · MOQ 20 — samples available",
     "USB-C · zinc-alloy shell · reinforced strain relief · braided · 1.5m", "p07-240w-straight.jpg")
-add("100w-realcore", "cable", "Toocki 100W Real-Core Cable", "Wholesale $3.00–5.50 · MOQ 20 — samples available",
+add("100w-realcore", "cable", "100W Real-Core Cable", "Wholesale $3.00–5.50 · MOQ 20 — samples available",
     "USB-C · six-strand core · anti-interference · gold-plated · 4 colours", "p10-100w-realcore.jpg")
-add("6a-multilength", "cable", "Toocki 6A Multi-Length Cable", "Wholesale $3.00–4.50 · MOQ 20 — samples available",
+add("6a-multilength", "cable", "6A Multi-Length Cable", "Wholesale $3.00–4.50 · MOQ 20 — samples available",
     "USB-C · TPE jacket · 6A fast charge · 0.25–3m lengths", None)
-add("spring-cable", "cable", "Toocki Spring 6A Digital Cable", "Wholesale $5.50 · MOQ 20 — samples available",
+add("spring-cable", "cable", "Spring 6A Digital Cable", "Wholesale $5.50 · MOQ 20 — samples available",
     "USB-C · 1.8m stretchable coil · braided+TPE · pure copper · ships by Oct 14 · 2 colours", "p16-spring.jpg")
-add("3in1", "cable", "Toocki 3-in-1 Multi-Interface Cable", "Wholesale $2.50 · MOQ 20 — samples available",
+add("3in1", "cable", "3-in-1 Multi-Interface Cable", "Wholesale $2.50 · MOQ 20 — samples available",
     "USB-C → Lightning + USB-C + Micro · braided nylon · legacy coverage · 0.6–1.5m", "p13-3in1.jpg")
-add("a2c-braided", "cable", "Toocki Braided A→C Cable", "Wholesale $3.00–5.00 · MOQ 20 — samples available",
+add("a2c-braided", "cable", "Braided A→C Cable", "Wholesale $3.00–5.00 · MOQ 20 — samples available",
     "USB-A → USB-C · knurled metal housing · cable tie · 4 colours · 1–3m", "p12-a2c-braided.jpg")
 
-add("otg-adapter", "adapter", "Toocki Smart Visual PD Adapter", "Wholesale $3.50 · MOQ 20 — samples available",
+add("otg-adapter", "adapter", "Smart Visual PD Adapter", "Wholesale $3.50 · MOQ 20 — samples available",
     "USB-C passthrough + live wattage display · 100W PD · 480Mbps · car/travel · ships by Oct 14", "p14-otg-adapter.jpg")
-add("arc-lighter", "novelty", "Toocki USB-C Arc Lighter (XG01)", "Wholesale $6.50 · MOQ 20 — samples available",
+add("arc-lighter", "novelty", "USB-C Arc Lighter (XG01)", "Wholesale $6.50 · MOQ 20 — samples available",
     "Windproof plasma arc · aluminium alloy · 8g · long-press safety · ships by Oct 17", "p17-arc-lighter.jpg")
 
 DETAIL_DIRS = {  # staged per-product gallery dirs (images resolved at seed time)
@@ -215,7 +215,7 @@ cables = [p for p in P if p["cat"] == "cable"]
 adapters = [p for p in P if p["cat"] in ("adapter", "novelty")]
 
 (HERE / "cases.html").write_text(page("Cases", "6 case families — every finish priced wholesale", cases, "cases"))
-(HERE / "cables.html").write_text(page("Cables", "9 Toocki lines — full cable ladder, samples available", cables, "cables"))
+(HERE / "cables.html").write_text(page("Cables", "9 cable lines — full ladder, samples available", cables, "cables"))
 (HERE / "adapters.html").write_text(page("Adapters + More", "PD adapter + USB-C lighter — counter pieces", adapters, "adapters"))
 emit_products_js()
 
