@@ -1,6 +1,6 @@
   const SUPABASE_URL = "https://lnfcdtmcpiagyjnnobbo.supabase.co";
   const SUPABASE_KEY = "sb_publishable_ZUiOJTEU0DtDyC_i-8oSWA_SnUN_d9M";
-  let supabase = null;
+  let sb = null;
 
   window.onerror = function (msg, src, line) {
     const el = document.getElementById("login-err");
@@ -8,7 +8,7 @@
     return false;
   };
   try {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   } catch (e) {
     document.getElementById("login-err").textContent = "supabase-js failed: " + e.message;
   }
@@ -28,18 +28,18 @@
   }
   $("login-btn").onclick = async () => {
     $("login-err").textContent = "";
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await sb.auth.signInWithPassword({
       email: $("email").value.trim(), password: $("pass").value,
     });
     if (error) { $("login-err").textContent = error.message; return; }
     showApp();
   };
-  $("logout-btn").onclick = async () => { await supabase.auth.signOut(); location.reload(); };
+  $("logout-btn").onclick = async () => { await sb.auth.signOut(); location.reload(); };
 
   /* ---------- data ---------- */
   const TABLE = "catalog_media";
   async function api() {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await sb.auth.getSession();
     const h = { apikey: SUPABASE_KEY, Authorization: "Bearer " + (session ? session.access_token : SUPABASE_KEY) };
     return h;
   }
@@ -47,7 +47,7 @@
     $("load-status").textContent = "loading…";
     try {
       const h = await api();
-      const { data, error } = await supabase.from(TABLE).select("product_id,image_urls,thumb_index");
+      const { data, error } = await sb.from(TABLE).select("product_id,image_urls,thumb_index");
       if (error) throw error;
       window.__media = {};
       (data || []).forEach((r) => { window.__media[r.product_id] = r; });
@@ -62,7 +62,7 @@
   async function saveRow() {
     if (!window.__media) return;
     const h = await api();
-    const { error } = await supabase.from(TABLE).upsert({
+    const { error } = await sb.from(TABLE).upsert({
       product_id: current,
       image_urls: draft,
       thumb_index: 0,
@@ -145,7 +145,7 @@
         thumb_index: 0,
         updated_at: new Date().toISOString(),
       }));
-      const { error } = await supabase.from(TABLE).upsert(rows, { onConflict: "product_id" });
+      const { error } = await sb.from(TABLE).upsert(rows, { onConflict: "product_id" });
       if (error) throw error;
       st.textContent = "seeded " + rows.length + " products ✓";
       await loadAll();
@@ -170,6 +170,6 @@
   };
 
   /* ---------- resume session ---------- */
-  supabase.auth.getSession().then(({ data }) => {
+  sb.auth.getSession().then(({ data }) => {
     if (data.session) showApp();
   });

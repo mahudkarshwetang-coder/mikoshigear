@@ -9,10 +9,10 @@ document.getElementById("boot-status").textContent = "JS loaded ✓";
 const SUPABASE_URL = "https://lnfcdtmcpiagyjnnobbo.supabase.co";
 const SUPABASE_KEY = "sb_publishable_ZUiOJTEU0DtDyC_i-8oSWA_SnUN_d9M";
 
-let supabase = null;
+let sb = null;
 try {
   if (typeof window.supabase === "undefined") throw new Error("supabase-js failed to load — check network");
-  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 } catch (e) {
   document.getElementById("login-err").textContent = "ERR: " + e.message;
 }
@@ -36,12 +36,12 @@ async function login() {
   const email = $("login-email").value.trim();
   const pass = $("login-pass").value;
   $("login-err").textContent = "";
-  if (!supabase) { $("login-err").textContent = "ERR: client not initialized"; return; }
+  if (!sb) { $("login-err").textContent = "ERR: client not initialized"; return; }
   if (!email || !pass) { $("login-err").textContent = "Enter email and password"; return; }
   btn.textContent = "Connecting…";
   btn.disabled = true;
   try {
-    const { error } = await supabase.auth.signInWithPassword({ email, password: pass });
+    const { error } = await sb.auth.signInWithPassword({ email, password: pass });
     if (error) { $("login-err").textContent = error.message; return; }
     enterApp();
   } catch (e) {
@@ -54,7 +54,7 @@ async function login() {
 $("login-btn").addEventListener("click", login);
 $("login-pass").addEventListener("keydown", e => { if (e.key === "Enter") login(); });
 $("logout-btn").addEventListener("click", async () => {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   $("app-view").style.display = "none";
   $("login-view").style.display = "flex";
 });
@@ -62,14 +62,14 @@ $("logout-btn").addEventListener("click", async () => {
 async function enterApp() {
   $("login-view").style.display = "none";
   $("app-view").style.display = "block";
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await sb.auth.getUser();
   $("whoami").textContent = user ? user.email : "";
   await loadShops();
 }
 
 /* ---------- data ---------- */
 async function loadShops() {
-  const { data, error } = await supabase.from("shops").select("*").order("name");
+  const { data, error } = await sb.from("shops").select("*").order("name");
   if (error) {
     $("rows").innerHTML = `<tr><td colspan="4" class="empty">${error.message}</td></tr>`;
     return;
@@ -124,7 +124,7 @@ $("rows").addEventListener("change", async e => {
   const id = el.dataset.id;
   const field = el.dataset.field;
   const value = field === "status" ? el.value : el.value;
-  const { error } = await supabase.from("shops").update({ [field]: value }).eq("id", id);
+  const { error } = await sb.from("shops").update({ [field]: value }).eq("id", id);
   if (error) { toast("ERR: " + error.message); return; }
   if (field === "status") {
     el.className = "status-pill st-" + value;
@@ -142,6 +142,6 @@ $("prev").addEventListener("click", () => { page--; render(); });
 $("next").addEventListener("click", () => { page++; render(); });
 
 /* ---------- session restore ---------- */
-supabase.auth.getSession().then(({ data }) => {
+sb.auth.getSession().then(({ data }) => {
   if (data.session) enterApp();
 });
