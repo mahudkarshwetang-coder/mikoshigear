@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Admin — Catalog Media</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="supabase-js.min.js"></script>
+<style>
+  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--accent2:#ff3d81;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"Space Grotesk",-apple-system,sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+  .mono{font-family:var(--mono);}
+  #login-view{min-height:100vh;display:flex;align-items:center;justify-content:center;background-image:linear-gradient(rgba(53,224,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(53,224,255,0.04) 1px,transparent 1px);background-size:56px 56px;}
+  .login-card{width:380px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:40px;position:relative;}
+  .login-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--accent);border-left:2px solid var(--accent);}
+  .login-card .brand{font-family:var(--mono);font-weight:500;font-size:18px;letter-spacing:0.06em;margin-bottom:6px;}
+  .login-card .brand b{color:var(--accent);font-weight:500;}
+  .login-card .sub{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:28px;}
+  .login-card label{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin:16px 0 6px;}
+  .login-card input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:4px;color:var(--ink);font-family:var(--mono);font-size:14px;padding:10px 12px;outline:none;}
+  .login-card input:focus{border-color:var(--accent);}
+  .btn{display:inline-block;padding:12px 20px;border-radius:4px;border:none;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;transition:all .15s;}
+  .btn-primary{background:var(--accent);color:#0b0d10;width:100%;margin-top:24px;}
+  .btn-primary:hover{background:#7deeff;}
+  .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--muted);}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink);}
+  .err{color:var(--accent2);font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px;}
+  .hint{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:16px;line-height:1.6;}
+
+  #app-view{display:none;min-height:100vh;}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1160px;margin:0 auto;padding:0 32px;}
+  .wordmark{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:0.08em;text-decoration:none;color:var(--ink);}
+  .wordmark b{color:var(--accent);font-weight:500;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin:36px 0 28px;gap:16px;flex-wrap:wrap;}
+  .topbar h1{font-size:24px;font-weight:700;letter-spacing:-0.01em;}
+  .topbar .note{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .picker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+  .pick{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:8px 14px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.06em;cursor:pointer;transition:all .15s;}
+  .pick:hover{color:var(--ink);}
+  .pick.on{border-color:var(--accent);color:var(--accent);}
+  #editor{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:24px;margin-bottom:28px;}
+  #editor .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:12px;flex-wrap:wrap;}
+  #editor .head h2{font-size:17px;font-weight:500;}
+  #editor .head span{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .strip{display:flex;flex-direction:column;gap:8px;}
+  .slot{border:1px dashed var(--line);border-radius:6px;background:var(--surface2);padding:10px;display:flex;align-items:center;gap:16px;cursor:grab;transition:border-color .15s,background .15s;}
+  .slot:hover{border-color:var(--muted);}
+  .slot.drag{border-color:var(--accent);background:#17202a;opacity:.9;}
+  .slot .idx{font-family:var(--mono);font-size:12px;color:var(--muted);width:34px;text-align:center;flex-shrink:0;}
+  .slot .idx.is-thumb{color:var(--accent);}
+  .slot img{width:72px;height:72px;object-fit:cover;border-radius:4px;border:1px solid var(--line);flex-shrink:0;}
+  .slot .meta{flex:1;min-width:0;}
+  .slot .meta b{display:block;font-size:13px;font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .slot .meta span{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .slot button{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:6px 12px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;cursor:pointer;transition:all .15s;flex-shrink:0;}
+  .slot button:hover{border-color:var(--accent);color:var(--accent);}
+  .slot button.thumb-btn.on{border-color:var(--accent);color:var(--accent);background:rgba(53,224,255,0.08);}
+  .save-row{display:flex;align-items:center;gap:16px;margin-top:20px;}
+  .save-row .status{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .save-row .status.ok{color:#7ee787;}
+  .save-row .status.err{color:var(--accent2);}
+  #noproduct{border:1px dashed var(--line);border-radius:6px;padding:40px;text-align:center;color:var(--muted);font-size:14px;}
+</style>
+</head>
+<body>
+
+<div id="login-view">
+  <div class="login-card">
+    <div class="brand">MIKOSHI<b>▸</b>GEAR</div>
+    <div class="sub">Catalog media admin</div>
+    <label>Email</label>
+    <input id="email" type="email" autocomplete="username">
+    <label>Password</label>
+    <input id="pass" type="password" autocomplete="current-password">
+    <button class="btn btn-primary" id="login-btn">Sign in</button>
+    <div class="err" id="login-err"></div>
+    <div class="hint">Uses the same Supabase login as the Mikoshi portal. Reorder images by dragging; the first slot is the thumbnail on the card &amp; hero on the detail page.</div>
+  </div>
+</div>
+
+<div id="app-view">
+  <header>
+    <div class="nav">
+      <a class="wordmark" href="index.html">MIKOSHI<b>▸</b>GEAR</a>
+      <button class="btn btn-ghost" id="logout-btn">Sign out</button>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="topbar">
+      <h1>Catalog media</h1>
+      <span class="note" id="load-status"></span>
+    </div>
+    <div class="picker" id="picker"></div>
+    <div id="no-table" style="display:none;border:1px dashed var(--line);border-radius:6px;padding:40px;text-align:center;color:var(--muted);font-size:14px;">
+      No <b>catalog_media</b> rows found yet — run the seed SQL (or save once) to populate.
+    </div>
+    <div id="editor" style="display:none;">
+      <div class="head">
+        <h2 id="ed-name"></h2>
+        <span id="ed-sub"></span>
+      </div>
+      <div class="strip" id="strip"></div>
+      <div class="save-row">
+        <button class="btn btn-primary" id="save-btn" style="width:auto;margin-top:0;">Save order</button>
+        <span class="status" id="save-status"></span>
+      </div>
+    </div>
+    <div id="noproduct" style="display:none;">Select a product to manage its images.</div>
+  </div>
+</div>
+
+<script src="products.js"></script>
+<script>
+  const SUPABASE_URL = "https://lnfcdtmcpiagyjnnobbo.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_ZUiOJTEU0DtDyC_i-8oSWA_SnUN_d9M";
+  let supabase = null;
+
+  window.onerror = function (msg, src, line) {
+    const el = document.getElementById("login-err");
+    if (el) el.textContent = "ERR: " + msg + (line ? " (line " + line + ")" : "");
+    return false;
+  };
+  try {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  } catch (e) {
+    document.getElementById("login-err").textContent = "supabase-js failed: " + e.message;
+  }
+
+  const $ = (id) => document.getElementById(id);
+  const loginView = $("login-view"), appView = $("app-view");
+  let current = null;       // product_id being edited
+  let draft = [];           // current ordered urls (working copy)
+  let dragIdx = -1;
+
+  /* ---------- auth ---------- */
+  async function showApp() {
+    loginView.style.display = "none";
+    appView.style.display = "block";
+    buildPicker();
+    await loadAll();
+  }
+  $("login-btn").onclick = async () => {
+    $("login-err").textContent = "";
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $("email").value.trim(), password: $("pass").value,
+    });
+    if (error) { $("login-err").textContent = error.message; return; }
+    showApp();
+  };
+  $("logout-btn").onclick = async () => { await supabase.auth.signOut(); location.reload(); };
+
+  /* ---------- data ---------- */
+  const TABLE = "catalog_media";
+  async function api() {
+    const { data: { session } } = await supabase.auth.getSession();
+    const h = { apikey: SUPABASE_KEY, Authorization: "Bearer " + (session ? session.access_token : SUPABASE_KEY) };
+    return h;
+  }
+  async function loadAll() {
+    $("load-status").textContent = "loading…";
+    try {
+      const h = await api();
+      const { data, error } = await supabase.from(TABLE).select("product_id,image_urls,thumb_index");
+      if (error) throw error;
+      window.__media = {};
+      (data || []).forEach((r) => { window.__media[r.product_id] = r; });
+      const n = Object.keys(window.__media).length;
+      $("load-status").textContent = n + " products loaded";
+      $("no-table").style.display = n ? "none" : "block";
+      if (current) renderEditor(current);
+    } catch (e) {
+      $("load-status").textContent = "load failed: " + e.message;
+    }
+  }
+  async function saveRow() {
+    if (!window.__media) return;
+    const h = await api();
+    const { error } = await supabase.from(TABLE).upsert({
+      product_id: current,
+      image_urls: draft,
+      thumb_index: 0,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "product_id" });
+    if (error) throw error;
+    if (!window.__media[current]) window.__media[current] = {};
+    window.__media[current].image_urls = draft.slice();
+    window.__media[current].thumb_index = 0;
+  }
+
+  /* ---------- picker ---------- */
+  function buildPicker() {
+    const picker = $("picker");
+    picker.innerHTML = "";
+    Object.keys(window.MIKOSHI_PRODUCTS).forEach((pid) => {
+      const b = document.createElement("button");
+      b.className = "pick";
+      b.textContent = window.MIKOSHI_PRODUCTS[pid].name;
+      b.onclick = () => { current = pid; renderEditor(pid); markPicker(b); };
+      picker.appendChild(b);
+    });
+  }
+  function markPicker(activeBtn) {
+    document.querySelectorAll(".pick").forEach((b) => b.classList.remove("on"));
+    if (activeBtn) activeBtn.classList.add("on");
+  }
+
+  /* ---------- editor ---------- */
+  function renderEditor(pid) {
+    const rec = (window.__media && window.__media[pid]);
+    const stored = rec && rec.image_urls && rec.image_urls.length ? rec.image_urls : null;
+    const fallback = window.MIKOSHI_IMAGES[pid] || [];
+    draft = stored ? stored.slice() : fallback.slice();
+    const p = window.MIKOSHI_PRODUCTS[pid];
+    $("ed-name").textContent = p.name;
+    $("ed-sub").textContent = pid + (stored ? " · saved order" : " · fallback order (not yet saved)");
+    paintStrip();
+    $("editor").style.display = "block";
+    $("noproduct").style.display = "none";
+    $("save-status").textContent = "";
+    $("save-status").className = "status";
+  }
+  function paintStrip() {
+    const strip = $("strip");
+    strip.innerHTML = "";
+    draft.forEach((url, i) => {
+      const slot = document.createElement("div");
+      slot.className = "slot";
+      slot.draggable = true;
+      slot.dataset.i = i;
+      const isThumb = i === 0;
+      slot.innerHTML =
+        '<span class="idx' + (isThumb ? " is-thumb" : "") + '">' + (isThumb ? "★" : "#" + (i + 1)) + "</span>" +
+        '<img src="' + url + '">' +
+        '<div class="meta"><b>' + (isThumb ? "Thumbnail / hero" : "Image " + (i + 1)) + "</b><span>" + url.split("/").pop() + "</span></div>" +
+        '<button class="thumb-btn' + (isThumb ? " on" : "") + '">Set as thumbnail</button>';
+      slot.querySelector(".thumb-btn").onclick = () => { moveToTop(i); };
+      slot.addEventListener("dragstart", () => { dragIdx = i; slot.classList.add("drag"); });
+      slot.addEventListener("dragend", () => { slot.classList.remove("drag"); dragIdx = -1; });
+      slot.addEventListener("dragover", (e) => { e.preventDefault(); });
+      slot.addEventListener("drop", () => { if (dragIdx >= 0 && dragIdx !== i) { const [m] = draft.splice(dragIdx, 1); draft.splice(i, 0, m); paintStrip(); } });
+      strip.appendChild(slot);
+    });
+  }
+  function moveToTop(i) {
+    const [m] = draft.splice(i, 1);
+    draft.unshift(m);
+    paintStrip();
+  }
+
+  $("save-btn").onclick = async () => {
+    const st = $("save-status");
+    st.textContent = "saving…";
+    st.className = "status";
+    try {
+      await saveRow();
+      st.textContent = "saved ✓ live on mikoshigear.ca";
+      st.className = "status ok";
+    } catch (e) {
+      st.textContent = "save failed: " + e.message;
+      st.className = "status err";
+    }
+  };
+
+  /* ---------- resume session ---------- */
+  supabase.auth.getSession().then(({ data }) => {
+    if (data.session) showApp();
+  });
+</script>
+</body>
+</html>

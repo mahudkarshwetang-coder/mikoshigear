@@ -3,119 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mikoshi Gear — Product</title>
+<title>Mikoshi Gear — Product — Toronto</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0b0d10;
-    --surface: #12151a;
-    --surface2: #171b21;
-    --ink: #e9e7e2;
-    --muted: #8b9099;
-    --line: #232830;
-    --accent: #35e0ff;
-    --accent2: #ff3d81;
-    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    --sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--accent); color: #0b0d10; }
-  a { color: inherit; }
-
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
-
-  /* ---------- nav ---------- */
-  header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(11,13,16,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .wordmark {
-    font-family: var(--mono); font-weight: 500; font-size: 15px;
-    letter-spacing: 0.08em; text-decoration: none;
-  }
-  .wordmark b { color: var(--accent); font-weight: 500; }
-  .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-links a {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); text-decoration: none;
-    transition: color 0.15s;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-cta {
-    border: 1px solid var(--accent); color: var(--accent);
-    padding: 8px 16px; border-radius: 4px;
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
-    text-transform: uppercase; text-decoration: none; transition: background 0.15s;
-  }
-  .nav-cta:hover { background: var(--accent); color: #0b0d10; }
-  @media (max-width: 720px) { .nav-links a { display: none; } }
-
-  /* ---------- product ---------- */
-  .product { padding: 60px 0 90px; }
-  .back {
-    display: inline-block; margin-bottom: 32px;
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted); text-decoration: none;
-  }
-  .back:hover { color: var(--accent); }
-  .product-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
-    align-items: start;
-  }
-  .product-photo {
-    border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
-    background: var(--surface2);
-  }
-  .product-photo img { width: 100%; display: block; }
-  .product-info h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
-  .product-info .desc { font-size: 16px; color: var(--muted); margin-bottom: 32px; }
-  .p-block { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 20px 24px; margin-bottom: 16px; }
-  .p-block h3 {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
-  }
-  .p-block .row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
-  .p-block .row:last-child { border-bottom: none; }
-  .p-block .row span { color: var(--muted); }
-  .p-block .row b { font-weight: 500; }
-  .ph { color: #4d545e; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; }
-  .cta-row { display: flex; gap: 12px; margin-top: 24px; }
-  .btn {
-    flex: 1; text-align: center; padding: 14px 0; border-radius: 4px;
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
-    text-transform: uppercase; text-decoration: none; transition: all 0.15s;
-  }
-  .btn-primary { background: var(--accent); color: #0b0d10; }
-  .btn-primary:hover { background: #7deeff; }
-  .btn-ghost { border: 1px solid var(--line); color: var(--muted); }
-  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
-  @media (max-width: 800px) {
-    .product-grid { grid-template-columns: 1fr; gap: 32px; }
-  }
+  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--accent2:#ff3d81;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .mono{font-family:var(--mono);}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .wordmark{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:0.08em;text-decoration:none;}
+  .wordmark b{color:var(--accent);font-weight:500;}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .15s;}
+  .nav-cta:hover{background:var(--accent);color:#0b0d10;}
+  @media(max-width:720px){.nav-links a{display:none;}}
+  .back{margin:40px 0 0;}
+  .back a{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .back a:hover{color:var(--accent);}
+  .detail{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;padding:44px 0 90px;align-items:start;}
+  @media(max-width:900px){.detail{grid-template-columns:1fr;gap:32px;}}
+  .hero-img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);border-radius:4px;background:var(--surface);display:block;}
+  .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px;}
+  @media(max-width:560px){.thumbs{grid-template-columns:repeat(4,1fr);}}
+  .thumbs img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);border-radius:4px;cursor:pointer;opacity:.75;transition:opacity .15s,border-color .15s;background:var(--surface2);}
+  .thumbs img:hover{opacity:1;}
+  .thumbs img.on{border-color:var(--accent);opacity:1;}
+  .info .overline{font-family:var(--mono);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);}
+  .info h1{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-0.01em;margin:14px 0 10px;line-height:1.15;}
+  .info .notes{font-size:15px;color:var(--muted);margin-bottom:20px;}
+  .info .price{font-family:var(--mono);font-size:16px;color:var(--accent);border-top:1px dashed var(--line);padding-top:18px;margin-bottom:28px;}
+  .info .blob{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:22px;font-size:14px;color:var(--muted);}
+  .info .blob b{color:var(--ink);font-weight:500;}
+  footer{border-top:1px solid var(--line);padding:40px 0 56px;}
+  .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .footer-grid .mono{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
+  .footer-grid .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
 </style>
 </head>
 <body>
+
 <header>
   <div class="wrap nav">
-    <a class="wordmark" href="index.html"><svg width="22" height="22" viewBox="0 0 44 44" fill="none" style="vertical-align:-5px;margin-right:8px"><circle cx="22" cy="22" r="20" stroke="#35e0ff" stroke-width="2"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
+    <a class="wordmark" href="index.html"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" style="vertical-align:-6px;margin-right:8px"><path d="M4 8 L40 22 L4 36 Z" fill="none" stroke="#35e0ff" stroke-width="2.5"/><path d="M12 15 L28 22 L12 29 Z" fill="#35e0ff"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
     <nav class="nav-links">
       <a href="cases.html">Cases</a>
+      <a href="cables.html">Cables</a>
+      <a href="adapters.html">Adapters</a>
       <a href="index.html#why">Why Mikoshi</a>
       <a href="index.html#wholesale">Wholesale</a>
       <a class="nav-cta" href="index.html#wholesale">Contact</a>
@@ -123,102 +65,65 @@
   </div>
 </header>
 
-<main class="wrap product">
-  <a class="back" href="cases.html">◂ Back to cases</a>
-  <div class="product-grid">
-    <div class="product-photo">
-      <img id="p-img" src="" alt="">
-    </div>
-    <div class="product-info">
-      <h1 id="p-title">—</h1>
-      <p class="desc" id="p-desc">—</p>
+<div class="wrap back"><a id="back-link" href="cases.html">← Back to catalog</a></div>
 
-      <div class="p-block">
-        <h3>Specifications</h3>
-        <div class="row"><span>Material</span><b id="p-material" class="ph">TBD</b></div>
-        <div class="row"><span>MagSafe</span><b id="p-magsafe" class="ph">TBD</b></div>
-        <div class="row"><span>Camera protection</span><b id="p-camera" class="ph">TBD</b></div>
-        <div class="row"><span>Fit</span><b id="p-fit" class="ph">TBD</b></div>
-      </div>
-
-      <div class="p-block">
-        <h3>Colours</h3>
-        <p class="ph" id="p-colours">Full colour list coming soon</p>
-      </div>
-
-      <div class="p-block">
-        <h3>Wholesale pricing</h3>
-        <div class="row"><span>Per unit</span><b class="ph">TBD</b></div>
-        <div class="row"><span>Minimum order</span><b class="ph">TBD</b></div>
-        <div class="row"><span>Reorder lead time</span><b class="ph">A few weeks</b></div>
-      </div>
-
-      <div class="p-block">
-        <h3>Shipping</h3>
-        <p class="ph">GTA same-week delivery · Canada-wide courier · pickup in Toronto</p>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn btn-primary" href="mailto:admin@mikoshigear.ca">Email for samples</a>
-        <a class="btn btn-ghost" href="cases.html">Back to cases</a>
-      </div>
-    </div>
+<section class="detail">
+  <div class="wrap media">
+    <img id="hero" class="hero-img" alt="">
+    <div id="thumbs" class="thumbs"></div>
   </div>
-</main>
+  <div class="wrap info">
+    <div class="overline" id="cat">Mikoshi Gear</div>
+    <h1 id="title">Product</h1>
+    <p class="notes" id="notes"></p>
+    <p class="price" id="price"></p>
+    <div class="blob" id="blob"><b>Wholesale, direct.</b> MOQ 20 — samples available · To order · freight confirmed per line. Contact us on WhatsApp for a firm quote.</div>
+  </div>
+</section>
 
+<footer>
+  <div class="wrap footer-grid">
+    <div><p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p></div>
+    <div class="legal">13718387 Canada Inc.<br>Toronto, Ontario · © 2026</div>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="catalog-media.js"></script>
 <script>
-const PRODUCTS = {
-  "cable-100w": { title: "USB-C Cable — 100W", desc: "Nylon braided, E-marker chip, 20V/5A PD fast charging, 480Mbps data. 1m / 2m / 3m.", img: "mikoshi-img/gallery/cable-100w.png", spec: { "Connector": "USB-C to USB-C", "Power": "100W (20V/5A, E-marker EPR)", "Data": "USB 2.0 · 480Mbps", "Jacket": "Nylon braid, tinned copper", "Lengths": "1m / 2m / 3m" } },
-  "charger-20w-gan": { title: "20W GaN Charger — USB-C PD", desc: "ETL-certified GaN brick, PD 3.0 + QC3.0, mini size, five colours, 12-month warranty.", img: "mikoshi-img/gallery/charger-20w-gan.png", spec: { "Output": "5V/3A · 9V/3A · 12V/2.5A · 15V/2A · 20V/1.5A", "Protocol": "PD 3.0 / PD 2.0 / QC3.0", "Certification": "ETL · FCC · RoHS · CE", "Size": "48.5 × 30.5 × 30.5 mm", "Colours": "White, black, pink, purple, blue", "Warranty": "12 months" } },
-  "g01-green-silicone": { title: "Silicone Magnetic — Green", desc: "Soft-touch silicone, MagSafe ring, camera lens protector.", img: "mikoshi-img/gallery/g01-green-silicone.jpg" },
-  "g02-gold-clear": { title: "Clear Acrylic — Gold", desc: "Slim transparent shell, magnetic ring, shows the phone.", img: "mikoshi-img/gallery/g02-gold-clear.jpg" },
-  "g03-mint-matte": { title: "Matte Silicone — Mint", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g03-mint-matte.jpg" },
-  "g04-peach-matte": { title: "Matte Silicone — Peach", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g04-peach-matte.jpg" },
-  "g05-pink-matte": { title: "Matte Silicone — Pink", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g05-pink-matte.jpg" },
-  "g06-white-matte": { title: "Matte Silicone — White", desc: "Grippy matte finish, anti-fingerprint.", img: "mikoshi-img/gallery/g06-white-matte.jpg" },
-  "g07-white-textured": { title: "Textured — White", desc: "Patterned back for extra grip.", img: "mikoshi-img/gallery/g07-white-textured.jpg" },
-  "g08-purple-gradient": { title: "Gradient — Purple", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g08-purple-gradient.jpg" },
-  "g09-orange-lanyard": { title: "Lanyard Set — Orange", desc: "Case + matching braided lanyard.", img: "mikoshi-img/gallery/g09-orange-lanyard.jpg" },
-  "g10-orange-matte": { title: "Matte — Orange", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g10-orange-matte.jpg" },
-  "g11-yellow-matte": { title: "Matte — Yellow", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g11-yellow-matte.jpg" },
-  "g12-black-matte": { title: "Matte — Black", desc: "Clean matte, no fingerprints.", img: "mikoshi-img/gallery/g12-black-matte.jpg" },
-  "g13-grey-frosted": { title: "Frosted Glass — Grey", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g13-grey-frosted.jpg" },
-  "g14-lavender-frosted": { title: "Frosted Glass — Lavender", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g14-lavender-frosted.jpg" },
-  "g15-white-frosted": { title: "Frosted Glass — White", desc: "AG frosted glass, aurora colour shift.", img: "mikoshi-img/gallery/g15-white-frosted.jpg" },
-  "g16-blue-gradient": { title: "Gradient — Blue", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g16-blue-gradient.jpg" },
-  "g17-orange-gradient": { title: "Gradient — Orange", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g17-orange-gradient.jpg" },
-  "g18-pink-gradient": { title: "Gradient — Pink", desc: "Colour-shift gradient back.", img: "mikoshi-img/gallery/g18-pink-gradient.jpg" },
-  "g19-orange-matte-dark": { title: "Matte — Orange", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g19-orange-matte-dark.jpg" },
-  "g20-blue-matte-dark": { title: "Matte — Blue", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g20-blue-matte-dark.jpg" },
-  "g21-black-matte-dark": { title: "Matte — Black", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g21-black-matte-dark.jpg" },
-  "g22-yellow-matte-dark": { title: "Matte — Yellow", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g22-yellow-matte-dark.jpg" },
-  "g23-purple-matte-dark": { title: "Matte — Purple", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g23-purple-matte-dark.jpg" },
-  "g24-pink-matte-dark": { title: "Matte — Pink", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g24-pink-matte-dark.jpg" },
-  "g25-red-matte-dark": { title: "Matte — Red", desc: "Lifestyle shot, real-world feel.", img: "mikoshi-img/gallery/g25-red-matte-dark.jpg" },
-};
+  const id = new URLSearchParams(location.search).get("id");
+  const p = window.MIKOSHI_PRODUCTS[id];
+  if (!p) {
+    document.getElementById("title").textContent = "Product not found";
+    document.getElementById("notes").textContent = "This product doesn't exist — head back to the catalog.";
+  } else {
+    document.title = "Mikoshi Gear — " + p.name;
+    document.getElementById("cat").textContent = p.cat || "Mikoshi Gear";
+    document.getElementById("title").textContent = p.name;
+    document.getElementById("notes").textContent = p.notes;
+    document.getElementById("price").textContent = p.price;
+    const catPage = { case: "cases.html", cable: "cables.html", adapter: "adapters.html", novelty: "adapters.html" }[p.cat] || "cases.html";
+    document.getElementById("back-link").href = catPage;
 
-const id = new URLSearchParams(location.search).get("id");
-const p = PRODUCTS[id];
-if (p) {
-  document.title = "Mikoshi Gear — " + p.title;
-  document.getElementById("p-img").src = p.img;
-  document.getElementById("p-img").alt = p.title;
-  document.getElementById("p-title").textContent = p.title;
-  document.getElementById("p-desc").textContent = p.desc;
-
-  // fill spec rows when provided (power products), keep TBD for cases
-  if (p.spec) {
-    const block = document.querySelectorAll(".p-block")[0];
-    block.innerHTML = "<h3>Specifications</h3>" + Object.entries(p.spec).map(([k, v]) =>
-      `<div class="row"><span>${k}</span><b>${v}</b></div>`).join("");
-    // hide the Colours block for power products (colours shown in spec instead)
-    const blocks = document.querySelectorAll(".p-block");
-    if (blocks[1]) blocks[1].style.display = "none";
+    MIKOSHI_MEDIA.load([id]).then(([m]) => {
+      const hero = document.getElementById("hero");
+      const thumbs = document.getElementById("thumbs");
+      let idx = Math.min(m.thumb, m.urls.length - 1);
+      function paint() {
+        hero.src = m.urls[idx];
+        hero.alt = p.name;
+        thumbs.innerHTML = "";
+        m.urls.forEach((u, i) => {
+          const t = document.createElement("img");
+          t.src = u; t.alt = (i + 1);
+          if (i === idx) t.className = "on";
+          t.onclick = () => { idx = i; paint(); };
+          thumbs.appendChild(t);
+        });
+      }
+      if (m.urls.length) paint();
+    });
   }
-} else {
-  document.getElementById("p-title").textContent = "Case not found";
-  document.getElementById("p-desc").textContent = "This case doesn't exist — head back to the gallery.";
-}
 </script>
 </body>
 </html>

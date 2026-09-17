@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mikoshi Gear — Cables — Toronto</title><link rel="icon" type="image/svg+xml" href="favicon.svg">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Gear — Cables — Toronto</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--accent2:#ff3d81;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
@@ -31,7 +37,6 @@
   @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
   .g-item{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface);}
-  .g-item a{display:block;}
   .g-item img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.04) brightness(0.96);transition:filter .2s,transform .2s;}
   .g-item:hover img{filter:saturate(1.12) contrast(1.06) brightness(1);transform:scale(1.02);}
   .g-item .ph{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--surface2);border-bottom:1px solid var(--line);}
@@ -41,69 +46,90 @@
   .g-item figcaption b{display:block;font-size:15px;font-weight:500;margin-bottom:4px;}
   .g-item figcaption span{display:block;font-size:12px;color:var(--muted);line-height:1.5;}
   .g-item figcaption .g-price{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;color:var(--accent);}
-  .g-item figcaption .view{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent2);}
   .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
   .footer-grid .mono{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
   .footer-grid .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
-</style></head><body>
+</style>
+</head>
+<body>
 <header>
   <div class="wrap nav">
     <a class="wordmark" href="index.html"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" style="vertical-align:-6px;margin-right:8px"><path d="M4 8 L40 22 L4 36 Z" fill="none" stroke="#35e0ff" stroke-width="2.5"/><path d="M12 15 L28 22 L12 29 Z" fill="#35e0ff"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
     <nav class="nav-links">
-      <a href="cases.html">Cases</a>
-      <a href="cables.html">Cables</a>
-      <a href="adapters.html">Adapters</a>
-      <a href="index.html#why">Why Mikoshi</a>
+      <a class="" href="cases.html">Cases</a><a class="active" href="cables.html">Cables</a><a class="" href="adapters.html">Adapters</a><a class="" href="index.html#why">Why Mikoshi</a><a class="" href="index.html#why">Wholesale</a>
       <a class="nav-cta" href="index.html#wholesale">Contact</a>
     </nav>
   </div>
 </header>
-<section class="section"><div class="wrap">
-  <div class="section-head"><h2>Cables</h2><p class="note">tap any card for full gallery</p></div>
-  <div class="gallery-grid">
-      <figure class="g-item">
-        <a href="product/p15-2in1-wireless.html"><img src="mikoshi-img/products/p15-2in1-wireless/img-01.jpg" alt="Toocki 2-in-1 100W + Wireless Cable" loading="lazy"></a>
-        <figcaption><b>Toocki 2-in-1 100W + Wireless Cable</b><span>USB-C 100W + 2.5W wireless puck (watch/earbuds) · E-Marker · braided · ships by Oct 14</span><span class="g-price">Wholesale $12.50 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cables</h2>
+      <p class="note">9 Toocki lines — full cable ladder, samples available</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g-item" data-product="2in1-wireless">
+        <a href="product.html?id=2in1-wireless"><img src="mikoshi-img/showcase/p15-2in1-wireless.jpg" alt="Toocki 2-in-1 100W + Wireless Cable" loading="lazy"></a>
+        <figcaption><b>Toocki 2-in-1 100W + Wireless Cable</b><span>USB-C 100W + 2.5W wireless puck (watch/earbuds) · E-Marker · braided · ships by Oct 14</span><span class="g-price">Wholesale $12.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p09-240w-display.html"><img src="mikoshi-img/products/p09-240w-display/img-01.jpg" alt="Toocki 240W Display Cable (live wattage)" loading="lazy"></a>
-        <figcaption><b>Toocki 240W Display Cable (live wattage)</b><span>USB-C · real-time W readout · braided + metal housing · 480Mbps · 1/2m · ships by Oct 14</span><span class="g-price">Wholesale $4.00–8.00 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="240w-display">
+        <a href="product.html?id=240w-display"><img src="mikoshi-img/showcase/p09-240w-display.jpg" alt="Toocki 240W Display Cable (live wattage)" loading="lazy"></a>
+        <figcaption><b>Toocki 240W Display Cable (live wattage)</b><span>USB-C · real-time W readout · braided + metal housing · 480Mbps · 1/2m · ships by Oct 14</span><span class="g-price">Wholesale $4.00–8.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p08-240w-elbow.html"><img src="mikoshi-img/products/p08-240w-elbow/img-01.jpg" alt="Toocki 240W Elbow 90° Cable" loading="lazy"></a>
-        <figcaption><b>Toocki 240W Elbow 90° Cable</b><span>USB-C · L-shaped elbow · zinc-alloy shell · braided nylon · 1.5m</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="240w-elbow">
+        <a href="product.html?id=240w-elbow"><img src="mikoshi-img/showcase/p08-240w-elbow.jpg" alt="Toocki 240W Elbow 90° Cable" loading="lazy"></a>
+        <figcaption><b>Toocki 240W Elbow 90° Cable</b><span>USB-C · L-shaped elbow · zinc-alloy shell · braided nylon · 1.5m</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p07-240w-straight.html"><img src="mikoshi-img/products/p07-240w-straight/img-01.jpg" alt="Toocki 240W Max Cable" loading="lazy"></a>
-        <figcaption><b>Toocki 240W Max Cable</b><span>USB-C · zinc-alloy shell · reinforced strain relief · braided · 1.5m</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="240w-straight">
+        <a href="product.html?id=240w-straight"><img src="mikoshi-img/showcase/p07-240w-straight.jpg" alt="Toocki 240W Max Cable" loading="lazy"></a>
+        <figcaption><b>Toocki 240W Max Cable</b><span>USB-C · zinc-alloy shell · reinforced strain relief · braided · 1.5m</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p10-100w-realcore.html"><img src="mikoshi-img/products/p10-100w-realcore/img-01.jpg" alt="Toocki 100W Real-Core Cable" loading="lazy"></a>
-        <figcaption><b>Toocki 100W Real-Core Cable</b><span>USB-C · six-strand core · anti-interference · gold-plated · 4 colours</span><span class="g-price">Wholesale $3.00–5.50 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="100w-realcore">
+        <a href="product.html?id=100w-realcore"><img src="mikoshi-img/showcase/p10-100w-realcore.jpg" alt="Toocki 100W Real-Core Cable" loading="lazy"></a>
+        <figcaption><b>Toocki 100W Real-Core Cable</b><span>USB-C · six-strand core · anti-interference · gold-plated · 4 colours</span><span class="g-price">Wholesale $3.00–5.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p11-6a-multilen.html"><div class='ph'><b>ARRIVING</b><span>with shipment</span></div></a>
+      <figure class="g-item" data-product="6a-multilength">
+        <div class='ph'><b>ARRIVING</b><span>with shipment</span></div>
         <figcaption><b>Toocki 6A Multi-Length Cable</b><span>USB-C · TPE jacket · 6A fast charge · 0.25–3m lengths</span><span class="g-price">Wholesale $3.00–4.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p16-spring.html"><img src="mikoshi-img/products/p16-spring/img-01.jpg" alt="Toocki Spring 6A Digital Cable" loading="lazy"></a>
-        <figcaption><b>Toocki Spring 6A Digital Cable</b><span>USB-C · 1.8m stretchable coil · braided+TPE · pure copper · ships by Oct 14 · 2 colours</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="spring-cable">
+        <a href="product.html?id=spring-cable"><img src="mikoshi-img/showcase/p16-spring.jpg" alt="Toocki Spring 6A Digital Cable" loading="lazy"></a>
+        <figcaption><b>Toocki Spring 6A Digital Cable</b><span>USB-C · 1.8m stretchable coil · braided+TPE · pure copper · ships by Oct 14 · 2 colours</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p13-3in1.html"><img src="mikoshi-img/products/p13-3in1/img-01.jpg" alt="Toocki 3-in-1 Multi-Interface Cable" loading="lazy"></a>
-        <figcaption><b>Toocki 3-in-1 Multi-Interface Cable</b><span>USB-C → Lightning + USB-C + Micro · braided nylon · legacy coverage · 0.6–1.5m</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="3in1">
+        <a href="product.html?id=3in1"><img src="mikoshi-img/showcase/p13-3in1.jpg" alt="Toocki 3-in-1 Multi-Interface Cable" loading="lazy"></a>
+        <figcaption><b>Toocki 3-in-1 Multi-Interface Cable</b><span>USB-C → Lightning + USB-C + Micro · braided nylon · legacy coverage · 0.6–1.5m</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <a href="product/p12-a2c-braided.html"><img src="mikoshi-img/products/p12-a2c-braided/img-01.jpg" alt="Toocki Braided A→C Cable" loading="lazy"></a>
-        <figcaption><b>Toocki Braided A→C Cable</b><span>USB-A → USB-C · knurled metal housing · cable tie · 4 colours · 1–3m</span><span class="g-price">Wholesale $3.00–5.00 · MOQ 20 — samples available</span><span class="view">view gallery →</span></figcaption>
+      <figure class="g-item" data-product="a2c-braided">
+        <a href="product.html?id=a2c-braided"><img src="mikoshi-img/showcase/p12-a2c-braided.jpg" alt="Toocki Braided A→C Cable" loading="lazy"></a>
+        <figcaption><b>Toocki Braided A→C Cable</b><span>USB-A → USB-C · knurled metal housing · cable tie · 4 colours · 1–3m</span><span class="g-price">Wholesale $3.00–5.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
+    </div>
   </div>
-</div></section>
+</section>
 <footer>
   <div class="wrap footer-grid">
     <div><p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p></div>
     <div class="legal">13718387 Canada Inc.<br>Toronto, Ontario · © 2026</div>
   </div>
 </footer>
-</body></html>
+<script src="products.js"></script>
+<script src="catalog-media.js"></script>
+<script>
+  /* live card thumbnails: catalog_media order wins, static fallback otherwise */
+  window.addEventListener("DOMContentLoaded", function () {
+    var slugs = Array.prototype.map.call(document.querySelectorAll("[data-product]"), function (f) { return f.getAttribute("data-product"); });
+    if (!slugs.length) return;
+    MIKOSHI_MEDIA.load(slugs).then(function (rows) {
+      rows.forEach(function (m) {
+        if (!m.urls.length) return;
+        var fig = document.querySelector('[data-product="' + m.pid + '"]');
+        var img = fig && fig.querySelector("img");
+        if (img) img.src = m.urls[Math.min(m.thumb, m.urls.length - 1)];
+      });
+    });
+  });
+</script>
+</body>
+</html>
