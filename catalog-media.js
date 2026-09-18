@@ -8,7 +8,9 @@
 
   async function fetchMedia(products) {
     try {
-      const qs = products.map((p) => `product_id=eq.${encodeURIComponent(p)}`).join(",");
+      /* PostgREST: comma-joined eq filters are invalid and silently return [];
+         use in.(...) for multi-product reads. */
+      const qs = "product_id=in.(" + products.map((p) => encodeURIComponent(p)).join(",") + ")";
       const res = await fetch(
         `${URL}/rest/v1/catalog_media?select=product_id,image_urls,thumb_index&${qs}`,
         { headers: { apikey: KEY, Authorization: `Bearer ${KEY}` } }
