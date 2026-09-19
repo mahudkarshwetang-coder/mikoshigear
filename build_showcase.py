@@ -17,7 +17,7 @@ P = []
 def add(slug, cat, name, price, notes, img):
     P.append(dict(slug=slug, cat=cat, name=name, price=price, notes=notes, img=img))
 
-add("ins-style", "case", "Ins Style Aesthetic Case (Korean / Japanese)", "Wholesale $4.50 · MOQ 20 — samples available",
+add("ins-style", "case", "Ins Style Aesthetic Case (Korean / Japanese)", "Wholesale $3.50 · MOQ 20 — samples available",
     "iPhone 11–17 · TPU+PC soft-hard hybrid · full coverage · raised camera bezel · anti-dirt · pink shown", "p01-ins-style.jpg")
 add("candy-popit", "case", "Candy Pop-It Suction Case", "Wholesale $3.70 · MOQ 20 — samples available",
     "iPhone 18/17 Air–11 · matte soft-touch · pop-it fidget grid · flat-surface grip · pastel yellow shown", "p02-popit.jpg")

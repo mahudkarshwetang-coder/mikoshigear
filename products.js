@@ -5,7 +5,7 @@ window.MIKOSHI_PRODUCTS = {
  "ins-style": {
   "name": "Ins Style Aesthetic Case (Korean / Japanese)",
   "cat": "case",
-  "price": "Wholesale $4.50 \u00b7 MOQ 20 \u2014 samples available",
+  "price": "Wholesale $3.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 11\u201317 \u00b7 TPU+PC soft-hard hybrid \u00b7 full coverage \u00b7 raised camera bezel \u00b7 anti-dirt \u00b7 pink shown"
  },
  "candy-popit": {
