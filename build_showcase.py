@@ -25,7 +25,7 @@ add("candy-double-mag", "case", "Candy Double-Layer Magnetic Case", "Wholesale $
     "iPhone 11–17 · shockproof TPU+PC · transparent matte · MagSafe · 6 colours: pink·sage·grey·sky·mint·cream", "p03-double-layer-mag.jpg")
 add("ultra-thin-contrast", "case", "Ultra-Thin Contrast Magnetic Case", "Wholesale $4.00 · MOQ 20 — samples available",
     "iPhone 13–18 (Pro/Pro Max/17 Air) · ultra-thin matte · orange accent ring · MagSafe · 3 colours", "p04-ultra-thin-contrast.jpg")
-add("slim-heat", "case", "Slim Solid-Color Heat-Dissipating Case", "Wholesale $4.00 · MOQ 20 — samples available",
+add("slim-heat", "case", "Slim Solid-Color Heat-Dissipating Case", "Wholesale $4.40 · MOQ 20 — samples available",
     "iPhone 13–17 · ultra-slim matte hard-shell · heat-dissipation ring · scratch-resistant · cream shown", "p05-slim-heat.jpg")
 add("charming-eye", "case", "Skin-Feel 'Charming Eye' Case", "Wholesale $4.10 · MOQ 20 — samples available",
     "iPhone 11–17 + XR/XS/XS Max · matte skin-feel · eye graphic · metallic accent ring · 3 colours", "p06-charming-eye.jpg")

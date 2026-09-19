@@ -29,7 +29,7 @@ window.MIKOSHI_PRODUCTS = {
  "slim-heat": {
   "name": "Slim Solid-Color Heat-Dissipating Case",
   "cat": "case",
-  "price": "Wholesale $4.00 \u00b7 MOQ 20 \u2014 samples available",
+  "price": "Wholesale $4.40 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 13\u201317 \u00b7 ultra-slim matte hard-shell \u00b7 heat-dissipation ring \u00b7 scratch-resistant \u00b7 cream shown"
  },
  "charming-eye": {
