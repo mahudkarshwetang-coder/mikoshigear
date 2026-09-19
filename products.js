@@ -23,7 +23,7 @@ window.MIKOSHI_PRODUCTS = {
  "ultra-thin-contrast": {
   "name": "Ultra-Thin Contrast Magnetic Case",
   "cat": "case",
-  "price": "Wholesale $5.00 \u00b7 MOQ 20 \u2014 samples available",
+  "price": "Wholesale $4.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 13\u201318 (Pro/Pro Max/17 Air) \u00b7 ultra-thin matte \u00b7 orange accent ring \u00b7 MagSafe \u00b7 3 colours"
  },
  "slim-heat": {
