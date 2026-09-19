@@ -21,7 +21,7 @@ add("ins-style", "case", "Ins Style Aesthetic Case (Korean / Japanese)", "Wholes
     "iPhone 11–17 · TPU+PC soft-hard hybrid · full coverage · raised camera bezel · anti-dirt · pink shown", "p01-ins-style.jpg")
 add("candy-popit", "case", "Candy Pop-It Suction Case", "Wholesale $3.70 · MOQ 20 — samples available",
     "iPhone 18/17 Air–11 · matte soft-touch · pop-it fidget grid · flat-surface grip · pastel yellow shown", "p02-popit.jpg")
-add("candy-double-mag", "case", "Candy Double-Layer Magnetic Case", "Wholesale $3.00 · MOQ 20 — samples available",
+add("candy-double-mag", "case", "Candy Double-Layer Magnetic Case", "Wholesale $3.50 · MOQ 20 — samples available",
     "iPhone 11–17 · shockproof TPU+PC · transparent matte · MagSafe · 6 colours: pink·sage·grey·sky·mint·cream", "p03-double-layer-mag.jpg")
 add("ultra-thin-contrast", "case", "Ultra-Thin Contrast Magnetic Case", "Wholesale $5.00 · MOQ 20 — samples available",
     "iPhone 13–18 (Pro/Pro Max/17 Air) · ultra-thin matte · orange accent ring · MagSafe · 3 colours", "p04-ultra-thin-contrast.jpg")

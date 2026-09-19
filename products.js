@@ -17,7 +17,7 @@ window.MIKOSHI_PRODUCTS = {
  "candy-double-mag": {
   "name": "Candy Double-Layer Magnetic Case",
   "cat": "case",
-  "price": "Wholesale $3.00 \u00b7 MOQ 20 \u2014 samples available",
+  "price": "Wholesale $3.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 11\u201317 \u00b7 shockproof TPU+PC \u00b7 transparent matte \u00b7 MagSafe \u00b7 6 colours: pink\u00b7sage\u00b7grey\u00b7sky\u00b7mint\u00b7cream"
  },
  "ultra-thin-contrast": {
