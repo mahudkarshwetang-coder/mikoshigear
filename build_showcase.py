@@ -19,8 +19,6 @@ def add(slug, cat, name, price, notes, img):
 
 add("ins-style", "case", "Ins Style Aesthetic Case (Korean / Japanese)", "Wholesale $3.50 · MOQ 20 — samples available",
     "iPhone 11–17 · TPU+PC soft-hard hybrid · full coverage · raised camera bezel · anti-dirt · pink shown", "p01-ins-style.jpg")
-add("candy-popit", "case", "Candy Pop-It Suction Case", "Wholesale $3.70 · MOQ 20 — samples available",
-    "iPhone 18/17 Air–11 · matte soft-touch · pop-it fidget grid · flat-surface grip · pastel yellow shown", "p02-popit.jpg")
 add("candy-double-mag", "case", "Candy Double-Layer Magnetic Case", "Wholesale $3.50 · MOQ 20 — samples available",
     "iPhone 11–17 · shockproof TPU+PC · transparent matte · MagSafe · 6 colours: pink·sage·grey·sky·mint·cream", "p03-double-layer-mag.jpg")
 add("ultra-thin-contrast", "case", "Ultra-Thin Contrast Magnetic Case", "Wholesale $4.00 · MOQ 20 — samples available",
@@ -55,7 +53,7 @@ add("arc-lighter", "novelty", "USB-C Arc Lighter (XG01)", "Wholesale $6.50 · MO
     "Windproof plasma arc · aluminium alloy · 8g · long-press safety · ships by Oct 17", "p17-arc-lighter.jpg")
 
 DETAIL_DIRS = {  # staged per-product gallery dirs (images resolved at seed time)
-    "ins-style": "ins-style", "candy-popit": "candy-popit", "candy-double-mag": "candy-double-mag",
+    "ins-style": "ins-style", "candy-double-mag": "candy-double-mag",
     "ultra-thin-contrast": "ultra-thin-contrast", "slim-heat": "slim-heat", "charming-eye": "charming-eye",
     "2in1-wireless": "2in1-wireless", "240w-display": "240w-display", "240w-elbow": "240w-elbow",
     "240w-straight": "240w-straight", "100w-realcore": "100w-realcore", "spring-cable": "spring-cable",
@@ -214,7 +212,7 @@ cases = [p for p in P if p["cat"] == "case"]
 cables = [p for p in P if p["cat"] == "cable"]
 adapters = [p for p in P if p["cat"] in ("adapter", "novelty")]
 
-(HERE / "cases.html").write_text(page("Cases", "6 case families — every finish priced wholesale", cases, "cases"))
+(HERE / "cases.html").write_text(page("Cases", "5 case families — every finish priced wholesale", cases, "cases"))
 (HERE / "cables.html").write_text(page("Cables", "9 cable lines — full ladder, samples available", cables, "cables"))
 (HERE / "adapters.html").write_text(page("Adapters + More", "PD adapter + USB-C lighter — counter pieces", adapters, "adapters"))
 emit_products_js()

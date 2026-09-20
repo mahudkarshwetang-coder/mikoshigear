@@ -8,12 +8,6 @@ window.MIKOSHI_PRODUCTS = {
   "price": "Wholesale $3.50 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 11\u201317 \u00b7 TPU+PC soft-hard hybrid \u00b7 full coverage \u00b7 raised camera bezel \u00b7 anti-dirt \u00b7 pink shown"
  },
- "candy-popit": {
-  "name": "Candy Pop-It Suction Case",
-  "cat": "case",
-  "price": "Wholesale $3.70 \u00b7 MOQ 20 \u2014 samples available",
-  "notes": "iPhone 18/17 Air\u201311 \u00b7 matte soft-touch \u00b7 pop-it fidget grid \u00b7 flat-surface grip \u00b7 pastel yellow shown"
- },
  "candy-double-mag": {
   "name": "Candy Double-Layer Magnetic Case",
   "cat": "case",
@@ -117,14 +111,6 @@ window.MIKOSHI_IMAGES = {
   "https://mikoshigear.ca/mikoshi-img/detail/ins-style/img-08.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/ins-style/img-09.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/ins-style/img-10.jpg"
- ],
- "candy-popit": [
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-01.jpg",
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-02.jpg",
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-03.jpg",
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-04.jpg",
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-05.jpg",
-  "https://mikoshigear.ca/mikoshi-img/detail/candy-popit/img-06.jpg"
  ],
  "candy-double-mag": [
   "https://mikoshigear.ca/mikoshi-img/detail/candy-double-mag/img-01.jpg",
