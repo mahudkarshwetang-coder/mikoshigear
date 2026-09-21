@@ -44,6 +44,12 @@ window.MIKOSHI_PRODUCTS = {
   "price": "Wholesale $20.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 13\u201317 Pro Max \u00b7 aluminium alloy exoskeleton \u00b7 X-back structural frame \u00b7 bezel-less bare design \u00b7 open back for air cooling \u00b7 5 colours: gold\u00b7silver\u00b7orange\u00b7grey\u00b7blue"
  },
+ "ringstand-magnetic": {
+  "name": "2-in-1 Magnetic Ring Stand Case",
+  "cat": "case",
+  "price": "Wholesale $5.00 \u00b7 MOQ 20 \u2014 samples available",
+  "notes": "iPhone 17/16/15/14/13/12/11 Pro Max \u00b7 TPU+PC 2-in-1 \u00b7 frosted finish \u00b7 hinged magnetic ring (grip + kickstand) \u00b7 shockproof \u00b7 orange accent trim \u00b7 5 colours: navy\u00b7rose\u00b7black\u00b7green\u00b7clear"
+ },
  "2in1-wireless": {
   "name": "2-in-1 100W + Wireless Cable",
   "cat": "cable",
@@ -177,6 +183,13 @@ window.MIKOSHI_IMAGES = {
   "https://mikoshigear.ca/mikoshi-img/detail/xframe-aluminum/img-03.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/xframe-aluminum/img-04.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/xframe-aluminum/img-05.jpg"
+ ],
+ "ringstand-magnetic": [
+  "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-01.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-02.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-03.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-04.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-05.jpg"
  ],
  "2in1-wireless": [
   "https://mikoshigear.ca/mikoshi-img/detail/2in1-wireless/img-01.jpg",
