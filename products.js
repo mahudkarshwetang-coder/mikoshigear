@@ -50,6 +50,12 @@ window.MIKOSHI_PRODUCTS = {
   "price": "Wholesale $5.00 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 17/16/15/14/13/12/11 Pro Max \u00b7 TPU+PC 2-in-1 \u00b7 frosted finish \u00b7 hinged magnetic ring (grip + kickstand) \u00b7 shockproof \u00b7 orange accent trim \u00b7 5 colours: navy\u00b7rose\u00b7black\u00b7green\u00b7clear"
  },
+ "alloy-bumper-luxe": {
+  "name": "Alloy Bumper Luxury Frame Case",
+  "cat": "case",
+  "price": "Wholesale $12.45 \u00b7 MOQ 20 \u2014 samples available",
+  "notes": "iPhone 17 Air/16/15 Plus/14/13/12 Pro Max \u00b7 aluminium alloy frame \u00b7 sculpted wavy corners \u00b7 raised camera bezel \u00b7 open back \u00b7 electroplate finish \u00b7 4 colours: gold\u00b7silver\u00b7black\u00b7navy"
+ },
  "2in1-wireless": {
   "name": "2-in-1 100W + Wireless Cable",
   "cat": "cable",
@@ -190,6 +196,15 @@ window.MIKOSHI_IMAGES = {
   "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-03.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-04.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/ringstand-magnetic/img-05.jpg"
+ ],
+ "alloy-bumper-luxe": [
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-01.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-02.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-03.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-04.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-05.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-06.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/alloy-bumper-luxe/img-07.jpg"
  ],
  "2in1-wireless": [
   "https://mikoshigear.ca/mikoshi-img/detail/2in1-wireless/img-01.jpg",

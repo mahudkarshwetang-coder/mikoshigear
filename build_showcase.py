@@ -33,6 +33,8 @@ add("xframe-aluminum", "case", "Aluminum X-Frame Bare Case", "Wholesale $20.00 �
     "iPhone 13–17 Pro Max · aluminium alloy exoskeleton · X-back structural frame · bezel-less bare design · open back for air cooling · 5 colours: gold·silver·orange·grey·blue", "p19-xframe.jpg")
 add("ringstand-magnetic", "case", "2-in-1 Magnetic Ring Stand Case", "Wholesale $5.00 · MOQ 20 — samples available",
     "iPhone 17/16/15/14/13/12/11 Pro Max · TPU+PC 2-in-1 · frosted finish · hinged magnetic ring (grip + kickstand) · shockproof · orange accent trim · 5 colours: navy·rose·black·green·clear", "p20-ringstand.jpg")
+add("alloy-bumper-luxe", "case", "Alloy Bumper Luxury Frame Case", "Wholesale $12.45 · MOQ 20 — samples available",
+    "iPhone 17 Air/16/15 Plus/14/13/12 Pro Max · aluminium alloy frame · sculpted wavy corners · raised camera bezel · open back · electroplate finish · 4 colours: gold·silver·black·navy", "p21-alloy-bumper.jpg")
 
 add("2in1-wireless", "cable", "2-in-1 100W + Wireless Cable", "Wholesale $12.50 · MOQ 20 — samples available",
     "USB-C 100W + 2.5W wireless puck (watch/earbuds) · E-Marker · braided · ships by Oct 14", "p15-2in1-wireless.jpg")
@@ -64,6 +66,7 @@ DETAIL_DIRS = {  # staged per-product gallery dirs (images resolved at seed time
     "shockproof-matte-luxury": "shockproof-matte-luxury",
     "xframe-aluminum": "xframe-aluminum",
     "ringstand-magnetic": "ringstand-magnetic",
+    "alloy-bumper-luxe": "alloy-bumper-luxe",
     "2in1-wireless": "2in1-wireless", "240w-display": "240w-display", "240w-elbow": "240w-elbow",
     "240w-straight": "240w-straight", "100w-realcore": "100w-realcore", "spring-cable": "spring-cable",
     "3in1": "3in1", "a2c-braided": "a2c-braided", "otg-adapter": "otg-adapter", "arc-lighter": "arc-lighter",
@@ -221,7 +224,7 @@ cases = [p for p in P if p["cat"] == "case"]
 cables = [p for p in P if p["cat"] == "cable"]
 adapters = [p for p in P if p["cat"] in ("adapter", "novelty")]
 
-(HERE / "cases.html").write_text(page("Cases", "8 case families — every finish priced wholesale", cases, "cases"))
+(HERE / "cases.html").write_text(page("Cases", "9 case families — every finish priced wholesale", cases, "cases"))
 (HERE / "cables.html").write_text(page("Cables", "9 cable lines — full ladder, samples available", cables, "cables"))
 (HERE / "adapters.html").write_text(page("Adapters + More", "PD adapter + USB-C lighter — counter pieces", adapters, "adapters"))
 emit_products_js()
