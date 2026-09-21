@@ -32,6 +32,12 @@ window.MIKOSHI_PRODUCTS = {
   "price": "Wholesale $4.10 \u00b7 MOQ 20 \u2014 samples available",
   "notes": "iPhone 11\u201317 + XR/XS/XS Max \u00b7 matte skin-feel \u00b7 eye graphic \u00b7 metallic accent ring \u00b7 3 colours"
  },
+ "shockproof-matte-luxury": {
+  "name": "Shockproof Matte Luxury Case",
+  "cat": "case",
+  "price": "Wholesale $3.50 \u00b7 MOQ 20 \u2014 samples available",
+  "notes": "iPhone 17/16/15/14/13/12/11 Pro Max/XS/7/8 Plus/SE \u00b7 PC shockproof + waterproof \u00b7 electroplate colour frame \u00b7 translucent matte back \u00b7 5 colours"
+ },
  "2in1-wireless": {
   "name": "2-in-1 100W + Wireless Cable",
   "cat": "cable",
@@ -150,6 +156,14 @@ window.MIKOSHI_IMAGES = {
   "https://mikoshigear.ca/mikoshi-img/detail/charming-eye/img-04.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/charming-eye/img-05.jpg",
   "https://mikoshigear.ca/mikoshi-img/detail/charming-eye/img-06.jpg"
+ ],
+ "shockproof-matte-luxury": [
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-01.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-02.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-03.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-04.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-05.jpg",
+  "https://mikoshigear.ca/mikoshi-img/detail/shockproof-matte-luxury/img-06.jpg"
  ],
  "2in1-wireless": [
   "https://mikoshigear.ca/mikoshi-img/detail/2in1-wireless/img-01.jpg",

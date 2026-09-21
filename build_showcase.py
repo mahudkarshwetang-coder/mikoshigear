@@ -27,6 +27,8 @@ add("slim-heat", "case", "Slim Solid-Color Heat-Dissipating Case", "Wholesale $4
     "iPhone 13–17 · ultra-slim matte hard-shell · heat-dissipation ring · scratch-resistant · cream shown", "p05-slim-heat.jpg")
 add("charming-eye", "case", "Skin-Feel 'Charming Eye' Case", "Wholesale $4.10 · MOQ 20 — samples available",
     "iPhone 11–17 + XR/XS/XS Max · matte skin-feel · eye graphic · metallic accent ring · 3 colours", "p06-charming-eye.jpg")
+add("shockproof-matte-luxury", "case", "Shockproof Matte Luxury Case", "Wholesale $3.50 · MOQ 20 — samples available",
+    "iPhone 17/16/15/14/13/12/11 Pro Max/XS/7/8 Plus/SE · PC shockproof + waterproof · electroplate colour frame · translucent matte back · 5 colours", "p18-shockproof.jpg")
 
 add("2in1-wireless", "cable", "2-in-1 100W + Wireless Cable", "Wholesale $12.50 · MOQ 20 — samples available",
     "USB-C 100W + 2.5W wireless puck (watch/earbuds) · E-Marker · braided · ships by Oct 14", "p15-2in1-wireless.jpg")
@@ -55,6 +57,7 @@ add("arc-lighter", "novelty", "USB-C Arc Lighter (XG01)", "Wholesale $6.50 · MO
 DETAIL_DIRS = {  # staged per-product gallery dirs (images resolved at seed time)
     "ins-style": "ins-style", "candy-double-mag": "candy-double-mag",
     "ultra-thin-contrast": "ultra-thin-contrast", "slim-heat": "slim-heat", "charming-eye": "charming-eye",
+    "shockproof-matte-luxury": "shockproof-matte-luxury",
     "2in1-wireless": "2in1-wireless", "240w-display": "240w-display", "240w-elbow": "240w-elbow",
     "240w-straight": "240w-straight", "100w-realcore": "100w-realcore", "spring-cable": "spring-cable",
     "3in1": "3in1", "a2c-braided": "a2c-braided", "otg-adapter": "otg-adapter", "arc-lighter": "arc-lighter",
@@ -212,7 +215,7 @@ cases = [p for p in P if p["cat"] == "case"]
 cables = [p for p in P if p["cat"] == "cable"]
 adapters = [p for p in P if p["cat"] in ("adapter", "novelty")]
 
-(HERE / "cases.html").write_text(page("Cases", "5 case families — every finish priced wholesale", cases, "cases"))
+(HERE / "cases.html").write_text(page("Cases", "6 case families — every finish priced wholesale", cases, "cases"))
 (HERE / "cables.html").write_text(page("Cables", "9 cable lines — full ladder, samples available", cables, "cables"))
 (HERE / "adapters.html").write_text(page("Adapters + More", "PD adapter + USB-C lighter — counter pieces", adapters, "adapters"))
 emit_products_js()
