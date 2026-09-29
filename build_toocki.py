@@ -115,8 +115,9 @@ def curated_card(p):
     inner = (f'<img src="{img}" alt="{esc(p["name"])}" loading="lazy">' if img
              else "<div class='ph'><b>ARRIVING</b><span>with shipment</span></div>")
     media = f'<a href="product.html?id={p["slug"]}">{inner}</a>'
+    badge = '<span class="badge cur">in stock</span>' if img else '<span class="badge desc">arriving</span>'
     return (f'      <figure class="g-item cur" data-product="{p["slug"]}">\n        {media}\n'
-            f'        <figcaption><span class="badge cur">in stock</span><b>{esc(p["name"])}</b>'
+            f'        <figcaption>{badge}<b>{esc(p["name"])}</b>'
             f'<span class="sku">view details \u2192</span>'
             f'<span class="notes">{esc(p["notes"])[:130]}</span>'
             f'<span class="g-price">{esc(p["price"])}</span></figcaption>\n      </figure>')
