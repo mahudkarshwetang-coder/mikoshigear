@@ -1,112 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mikoshi Gear — Chargers — Toronto</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--accent2:#ff3d81;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"Space Grotesk",-apple-system,"Segoe UI",sans-serif;}
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;}
   ::selection{background:var(--accent);color:#0b0d10;}
   a{color:inherit;}
-  .mono{font-family:var(--mono);}
   .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
-  .overline{font-family:var(--mono);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);}
-  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .wordmark{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:0.08em;text-decoration:none;}
+  .wordmark{font-family:var(--mono);font-size:15px;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
   .wordmark b{color:var(--accent);font-weight:500;}
-  .nav-links{display:flex;gap:26px;align-items:center;}
-  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
   .nav-links a:hover{color:var(--ink);}
-  .nav-links a.active{color:var(--accent);}
-  .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .15s;}
+  .nav-links a.on{color:var(--accent);}
+  .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
   .nav-cta:hover{background:var(--accent);color:#0b0d10;}
-  @media(max-width:820px){.nav-links a{display:none;}}
-  .section{padding:64px 0 90px;border-top:1px solid var(--line);}
-  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:20px;flex-wrap:wrap;}
-  .section-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.01em;}
-  .section-head .note{font-family:var(--mono);font-size:12px;color:var(--muted);}
-  .lede{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:36px;}
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
-  .filters button{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:4px;padding:8px 14px;cursor:pointer;transition:all .15s;}
-  .filters button:hover{color:var(--ink);border-color:var(--ink);}
-  .filters button.on{background:var(--accent);color:#0b0d10;border-color:var(--accent);}
-  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none;}}
+  .jump{position:sticky;top:64px;z-index:40;background:rgba(11,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .jump-in{display:flex;gap:8px;overflow-x:auto;padding:11px 0;scrollbar-width:none;}
+  .jump-in::-webkit-scrollbar{display:none;}
+  .jump a{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 13px;text-decoration:none;white-space:nowrap;transition:.15s;}
+  .jump a:hover{color:var(--ink);border-color:var(--ink);}
+  .jump a b{color:var(--accent);font-weight:500;margin-left:6px;}
+  .hero{padding:50px 0 24px;}
+  .hero h1{font-size:clamp(30px,4.4vw,48px);font-weight:700;letter-spacing:-.01em;margin-bottom:14px;}
+  .hero p{color:var(--muted);max-width:680px;font-size:16px;}
+  .sec{padding:34px 0 40px;border-top:1px solid var(--line);scroll-margin-top:130px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px;}
+  .sec-head h2{font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-.01em;}
+  .sec-head .n{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:4px 11px;}
+  .sec-desc{color:var(--muted);font-size:14px;margin-bottom:24px;max-width:620px;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr;}}
   .g-item{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;}
-  .g-item img{width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:#fff;transition:transform .2s;}
+  .g-item img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block;transition:transform .2s;}
   .g-item:hover img{transform:scale(1.03);}
   .g-item .ph{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--surface2);border-bottom:1px solid var(--line);}
-  .g-item .ph b{font-family:var(--mono);font-size:13px;letter-spacing:0.18em;color:var(--accent);}
+  .g-item .ph b{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:var(--accent);}
   .g-item .ph span{font-family:var(--mono);font-size:11px;color:var(--muted);}
   .g-item figcaption{padding:12px 14px 14px;border-top:1px solid var(--line);flex:1;display:flex;flex-direction:column;}
-  .g-item figcaption b{display:block;font-size:14px;font-weight:500;margin-bottom:4px;line-height:1.35;}
-  .g-item figcaption .sku{display:block;font-family:var(--mono);font-size:10px;color:#5a6270;letter-spacing:0.06em;margin-bottom:6px;}
-  .g-item figcaption span.notes{display:block;font-size:12px;color:var(--muted);line-height:1.45;}
+  .g-item figcaption b{display:block;font-size:13.5px;font-weight:500;line-height:1.35;margin-bottom:4px;}
+  .g-item figcaption .sku{display:block;font-family:var(--mono);font-size:10px;color:#5a6270;letter-spacing:.06em;margin-bottom:6px;}
+  .g-item figcaption .notes{display:block;font-size:12px;color:var(--muted);line-height:1.45;}
   .g-item figcaption .g-price{display:block;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;color:var(--accent);}
-  .badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;}
+  .badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;}
+  .badge.cur{background:#0e2a33;color:var(--accent);border:1px solid #1d4d5c;}
   .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
   .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
-  .badge.cur{background:#0e2a33;color:#35e0ff;border:1px solid #1d4d5c;}
   .g-item.cur{border-color:#1d4d5c;}
   .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
-  .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
-  .footer-grid .mono{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
-  .footer-grid .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
-  .footer-grid b{color:var(--accent);font-weight:500;}
+  .fg{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .mono{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;}
+  footer .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
+  footer b{color:var(--accent);font-weight:500;}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <a class="wordmark" href="index.html"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" style="vertical-align:-6px;margin-right:8px"><path d="M4 8 L40 22 L4 36 Z" fill="none" stroke="#35e0ff" stroke-width="2.5"/><path d="M12 15 L28 22 L12 29 Z" fill="#35e0ff"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
-    <nav class="nav-links">
-      <a class="" href="cables.html">Cables</a><a class="active" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="" href="adapters.html">Adapters</a>
-      <a class="nav-cta" href="index.html#wholesale">Contact</a>
-    </nav>
+    <a class="wordmark" href="index.html">MIKOSHI<b>▸</b>GEAR</a>
+    <nav class="nav-links"><a class="" href="cables.html">Cables</a><a class="on" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="" href="adapters.html">Adapters</a><a class="nav-cta" href="index.html#wholesale">Contact</a></nav>
   </div>
 </header>
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Chargers</h2>
-      <p class="note">wall, GaN, wireless, car</p>
-    </div>
-    <p class="lede">The power shelf. GaN wall chargers from 20W to 140W, plus wireless and car charging.</p>
-    <div class="gallery-grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/20130002.jpg" alt="Toocki 100W Car Charger 1A2C Silver Grey" loading="lazy">
-        <figcaption><b>Toocki 100W Car Charger 1A2C Silver Grey</b><span class="sku">20130002</span><span class="notes">100W · PC · car · silver</span><span class="g-price">Wholesale $19.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCT100-XRB01.jpg" alt="Toocki 100W Charger 2C1A European Standard Black" loading="lazy">
-        <figcaption><b>Toocki 100W Charger 2C1A European Standard Black</b><span class="sku">TCT100-XRB01</span><span class="notes">100W · GaN III + PC Fireproof Shell · black</span><span class="g-price">Wholesale $42.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCT100-XRC01.jpg" alt="Toocki 100W Charger 2C1AUK Plug Black" loading="lazy">
-        <figcaption><b>Toocki 100W Charger 2C1AUK Plug Black</b><span class="sku">TCT100-XRC01</span><span class="notes">100W · GaN III + PC Fireproof Shell · black</span><span class="g-price">Wholesale $43.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCT100-XRC02.jpg" alt="Toocki 100W Charger 2C1AUK Plug White" loading="lazy">
-        <figcaption><b>Toocki 100W Charger 2C1AUK Plug White</b><span class="sku">TCT100-XRC02</span><span class="notes">100W · GaN III + PC Fireproof Shell · white</span><span class="g-price">Wholesale $43.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCCACX-YW01.jpg" alt="Toocki 110W A+C+Type-C Spring Cable Car Charger Black" loading="lazy">
-        <figcaption><b>Toocki 110W A+C+Type-C Spring Cable Car Charger Black</b><span class="sku">TCCACX-YW01</span><span class="notes">110W · Aluminum alloy + PC · spring coil · car · black</span><span class="g-price">Wholesale $15.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130015.jpg" alt="Toocki 130W 3-Port Car charger" loading="lazy">
-        <figcaption><b>Toocki 130W 3-Port Car charger</b><span class="sku">40130015</span><span class="notes">130W · car · car charger · DC 12-24V</span><span class="g-price">Wholesale $25.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
+<div class="jump"><div class="wrap jump-in"><a href="#s0">140W — desktop and travel<b>15</b></a><a href="#s1">100W — high power wall<b>6</b></a><a href="#s2">67W / 65W — GaN wall<b>11</b></a><a href="#s3">45W and under — everyday wall<b>32</b></a><a href="#s4">Car chargers<b>18</b></a><a href="#s5">Wireless charging<b>5</b></a><a href="#s6">Bluetooth and audio<b>1</b></a><a href="#s7">Everything else<b>7</b></a></div></div>
+<div class="wrap hero">
+  <h1>Chargers</h1>
+  <p>Wall, car and wireless charging — grouped by power so you can find the bracket you stock. 95 lines across 8 families.</p>
+</div>
+<section class="sec" id="s0" style="border-top:0">
+  <div class="sec-head"><h2>140W — desktop and travel</h2><span class="n">15 lines</span></div>
+  <p class="sec-desc">Multi-port desktop bricks for desks and counters.</p>
+  <div class="grid">
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TCCAC-TT0H.jpg" alt="Toocki 140W 2C1A Digital Display Car Charger Deep Space Grey" loading="lazy">
         <figcaption><b>Toocki 140W 2C1A Digital Display Car Charger Deep Space Grey</b><span class="sku">TCCAC-TT0H</span><span class="notes">140W · ABS + Aluminum alloy · display · car · grey</span><span class="g-price">Wholesale $23.50 · MOQ 20 — samples available</span></figcaption>
@@ -148,6 +124,112 @@
         <figcaption><b>Toocki 150W 3-Port Car charger</b><span class="sku">40130014</span><span class="notes">150W · car · car charger · DC 12-24V</span><span class="g-price">Wholesale $24.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220007.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger American Standard" loading="lazy">
+        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger American Standard</b><span class="sku">40220007</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220010.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger Australian Standard" loading="lazy">
+        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger Australian Standard</b><span class="sku">40220010</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220008.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger British Standard" loading="lazy">
+        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger British Standard</b><span class="sku">40220008</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220006.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger EUStandard Black" loading="lazy">
+        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger EUStandard Black</b><span class="sku">40220006</span><span class="notes">240W · PC Output · 1.5m · desktop · black</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220009.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger Korean Standard" loading="lazy">
+        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger Korean Standard</b><span class="sku">40220009</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s1">
+  <div class="sec-head"><h2>100W — high power wall</h2><span class="n">6 lines</span></div>
+  <p class="sec-desc">Laptop-class wall charging.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/20130002.jpg" alt="Toocki 100W Car Charger 1A2C Silver Grey" loading="lazy">
+        <figcaption><b>Toocki 100W Car Charger 1A2C Silver Grey</b><span class="sku">20130002</span><span class="notes">100W · PC · car · silver</span><span class="g-price">Wholesale $19.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT100-XRB01.jpg" alt="Toocki 100W Charger 2C1A European Standard Black" loading="lazy">
+        <figcaption><b>Toocki 100W Charger 2C1A European Standard Black</b><span class="sku">TCT100-XRB01</span><span class="notes">100W · GaN III + PC Fireproof Shell · black</span><span class="g-price">Wholesale $42.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT100-XRC01.jpg" alt="Toocki 100W Charger 2C1AUK Plug Black" loading="lazy">
+        <figcaption><b>Toocki 100W Charger 2C1AUK Plug Black</b><span class="sku">TCT100-XRC01</span><span class="notes">100W · GaN III + PC Fireproof Shell · black</span><span class="g-price">Wholesale $43.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT100-XRC02.jpg" alt="Toocki 100W Charger 2C1AUK Plug White" loading="lazy">
+        <figcaption><b>Toocki 100W Charger 2C1AUK Plug White</b><span class="sku">TCT100-XRC02</span><span class="notes">100W · GaN III + PC Fireproof Shell · white</span><span class="g-price">Wholesale $43.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/10100285.jpg" alt="Toocki Beling 1 3 C to C+L+Apple Watch Wireless Charger Data Cable 100W 1" loading="lazy">
+        <figcaption><b>Toocki Beling 1 3 C to C+L+Apple Watch Wireless Charger Data Cable 100W 1</b><span class="sku">10100285</span><span class="notes">100W · USB-C to USB-C · TPE + Aluminum Alloy + Braided Wire · wireless</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100170.jpg" alt="Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1" loading="lazy">
+        <figcaption><b>Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1</b><span class="sku">40100170</span><span class="notes">100W · USB-C to USB-C · TPE + Aluminum Alloy + Braided Wire · 480Mbps · wireless</span><span class="g-price">Wholesale $13.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s2">
+  <div class="sec-head"><h2>67W / 65W — GaN wall</h2><span class="n">11 lines</span></div>
+  <p class="sec-desc">The GaN sweet spot for phones and tablets.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/60140006.jpg" alt="Toocki 65W 2C1A Non-Digital Charger Korean Standard Grounded Black" loading="lazy">
+        <figcaption><b>Toocki 65W 2C1A Non-Digital Charger Korean Standard Grounded Black</b><span class="sku">60140006</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $29.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140028.jpg" alt="Toocki 65W 3C1A Black" loading="lazy">
+        <figcaption><b>Toocki 65W 3C1A Black</b><span class="sku">40140028</span><span class="notes">000W · PC · black · wall charger</span><span class="g-price">Wholesale $40.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/10130001.jpg" alt="Toocki 65W Car Charger 1A2C Silver Grey" loading="lazy">
+        <figcaption><b>Toocki 65W Car Charger 1A2C Silver Grey</b><span class="sku">10130001</span><span class="notes">65W · PC · car · silver</span><span class="g-price">Wholesale $9.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140001.jpg" alt="Toocki 65W Charger 2C1A European Standard Black" loading="lazy">
+        <figcaption><b>Toocki 65W Charger 2C1A European Standard Black</b><span class="sku">40140001</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140004.jpg" alt="Toocki 65W Charger 2C1A US Version Black" loading="lazy">
+        <figcaption><b>Toocki 65W Charger 2C1A US Version Black</b><span class="sku">40140004</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140005.jpg" alt="Toocki 65W Charger 2C1A US Version White" loading="lazy">
+        <figcaption><b>Toocki 65W Charger 2C1A US Version White</b><span class="sku">40140005</span><span class="notes">65W · PC · white · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/60140003.jpg" alt="Toocki 67W Charger 1A1C+TYPE-C Retractable Cable Korean Standard Black" loading="lazy">
+        <figcaption><b>Toocki 67W Charger 1A1C+TYPE-C Retractable Cable Korean Standard Black</b><span class="sku">60140003</span><span class="notes">67W · PC · retractable · black</span><span class="g-price">Wholesale $32.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140011.jpg" alt="Toocki 67W Charger 1A1C+TYPE-C Retractable Cable US Standard Black" loading="lazy">
+        <figcaption><b>Toocki 67W Charger 1A1C+TYPE-C Retractable Cable US Standard Black</b><span class="sku">40140011</span><span class="notes">67W · PC · retractable · black</span><span class="g-price">Wholesale $32.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT67-XRD01.jpg" alt="Toocki 67W GaN Charger 2C1A with Display Korean Version" loading="lazy">
+        <figcaption><b>Toocki 67W GaN Charger 2C1A with Display Korean Version</b><span class="sku">TCT67-XRD01</span><span class="notes">67W · PC + ABS · display · GaN</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT67-XRA01.jpg" alt="Toocki 67W GaN Charger 2C1A with Display US Version" loading="lazy">
+        <figcaption><b>Toocki 67W GaN Charger 2C1A with Display US Version</b><span class="sku">TCT67-XRA01</span><span class="notes">67W · PC + ABS · display · GaN</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140010.jpg" alt="Toocki Digital Display 67W Charger 1A1C+TYPE-C Retractable Cable EUStandard" loading="lazy">
+        <figcaption><b>Toocki Digital Display 67W Charger 1A1C+TYPE-C Retractable Cable EUStandard</b><span class="sku">40140010</span><span class="notes">67W · PC · display · retractable</span><span class="g-price">Wholesale $33.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s3">
+  <div class="sec-head"><h2>45W and under — everyday wall</h2><span class="n">32 lines</span></div>
+  <p class="sec-desc">Single and multi-port chargers for daily use.</p>
+  <div class="grid">
+      <figure class="g-item">
         <img src="mikoshi-img/toocki/40140025.jpg" alt="Toocki 20W 2C1A Black" loading="lazy">
         <figcaption><b>Toocki 20W 2C1A Black</b><span class="sku">40140025</span><span class="notes">000W · PC · black · wall charger</span><span class="g-price">Wholesale $20.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
@@ -170,14 +252,6 @@
       <figure class="g-item">
         <img src="mikoshi-img/toocki/80130085.jpg" alt="Toocki 25W Wireless Charging Car Holder" loading="lazy">
         <figcaption><b>Toocki 25W Wireless Charging Car Holder</b><span class="sku">80130085</span><span class="notes">25W · PC · wireless · mount · car</span><span class="g-price">Wholesale $50.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200020.jpg" alt="Toocki 3-in-1 Wireless Charging Station — GY-ZJ05" loading="lazy">
-        <figcaption><b>Toocki 3-in-1 Wireless Charging Station — GY-ZJ05</b><span class="sku">40200020</span><span class="notes">PC Input Type-C: 9V 3A 12V 3A 15V 3A · wireless · 3-in-1</span><span class="g-price">Wholesale $51.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200017.jpg" alt="Toocki 3-in-1 Wireless Charging Station — GY-W24" loading="lazy">
-        <figcaption><b>Toocki 3-in-1 Wireless Charging Station — GY-W24</b><span class="sku">40200017</span><span class="notes">wireless · 3-in-1 · wireless charging</span><span class="g-price">Wholesale $62.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/40200019.jpg" alt="Toocki 3-in-1 Wireless Charging Station — 10W (40200019)" loading="lazy">
@@ -248,152 +322,12 @@
         <figcaption><b>Toocki 45W GaN Single-C Charger European Standard Black</b><span class="sku">40140012</span><span class="notes">45W · PC · GaN · black</span><span class="g-price">Wholesale $18.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCCACX-HR0D.jpg" alt="Toocki 60W Aluminum Car Charger with A+C+Type-C Cable - All Black" loading="lazy">
-        <figcaption><b>Toocki 60W Aluminum Car Charger with A+C+Type-C Cable - All Black</b><span class="sku">TCCACX-HR0D</span><span class="notes">30W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCCACX-HR03.jpg" alt="Toocki 60W Aluminum Transparent Car Charger with A+C+Type-C Cable - Black" loading="lazy">
-        <figcaption><b>Toocki 60W Aluminum Transparent Car Charger with A+C+Type-C Cable - Black</b><span class="sku">TCCACX-HR03</span><span class="notes">30W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCC60-LL01.jpg" alt="Toocki 60W Car Charger A+C Black and Brown" loading="lazy">
-        <figcaption><b>Toocki 60W Car Charger A+C Black and Brown</b><span class="sku">TCC60-LL01</span><span class="notes">60W · ABS + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/60140006.jpg" alt="Toocki 65W 2C1A Non-Digital Charger Korean Standard Grounded Black" loading="lazy">
-        <figcaption><b>Toocki 65W 2C1A Non-Digital Charger Korean Standard Grounded Black</b><span class="sku">60140006</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $29.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140028.jpg" alt="Toocki 65W 3C1A Black" loading="lazy">
-        <figcaption><b>Toocki 65W 3C1A Black</b><span class="sku">40140028</span><span class="notes">000W · PC · black · wall charger</span><span class="g-price">Wholesale $40.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10130001.jpg" alt="Toocki 65W Car Charger 1A2C Silver Grey" loading="lazy">
-        <figcaption><b>Toocki 65W Car Charger 1A2C Silver Grey</b><span class="sku">10130001</span><span class="notes">65W · PC · car · silver</span><span class="g-price">Wholesale $9.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140001.jpg" alt="Toocki 65W Charger 2C1A European Standard Black" loading="lazy">
-        <figcaption><b>Toocki 65W Charger 2C1A European Standard Black</b><span class="sku">40140001</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140004.jpg" alt="Toocki 65W Charger 2C1A US Version Black" loading="lazy">
-        <figcaption><b>Toocki 65W Charger 2C1A US Version Black</b><span class="sku">40140004</span><span class="notes">65W · PC · black · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140005.jpg" alt="Toocki 65W Charger 2C1A US Version White" loading="lazy">
-        <figcaption><b>Toocki 65W Charger 2C1A US Version White</b><span class="sku">40140005</span><span class="notes">65W · PC · white · wall charger</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/60140003.jpg" alt="Toocki 67W Charger 1A1C+TYPE-C Retractable Cable Korean Standard Black" loading="lazy">
-        <figcaption><b>Toocki 67W Charger 1A1C+TYPE-C Retractable Cable Korean Standard Black</b><span class="sku">60140003</span><span class="notes">67W · PC · retractable · black</span><span class="g-price">Wholesale $32.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140011.jpg" alt="Toocki 67W Charger 1A1C+TYPE-C Retractable Cable US Standard Black" loading="lazy">
-        <figcaption><b>Toocki 67W Charger 1A1C+TYPE-C Retractable Cable US Standard Black</b><span class="sku">40140011</span><span class="notes">67W · PC · retractable · black</span><span class="g-price">Wholesale $32.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCT67-XRD01.jpg" alt="Toocki 67W GaN Charger 2C1A with Display Korean Version" loading="lazy">
-        <figcaption><b>Toocki 67W GaN Charger 2C1A with Display Korean Version</b><span class="sku">TCT67-XRD01</span><span class="notes">67W · PC + ABS · display · GaN</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCT67-XRA01.jpg" alt="Toocki 67W GaN Charger 2C1A with Display US Version" loading="lazy">
-        <figcaption><b>Toocki 67W GaN Charger 2C1A with Display US Version</b><span class="sku">TCT67-XRA01</span><span class="notes">67W · PC + ABS · display · GaN</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140029.jpg" alt="Toocki 75W 3C1A Black" loading="lazy">
-        <figcaption><b>Toocki 75W 3C1A Black</b><span class="sku">40140029</span><span class="notes">000W · PC · black · wall charger</span><span class="g-price">Wholesale $43.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/60140015.jpg" alt="Toocki 75W Car Charger 3-Port" loading="lazy">
-        <figcaption><b>Toocki 75W Car Charger 3-Port</b><span class="sku">60140015</span><span class="notes">0A · car · car charger · DC 12-24V</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140050.jpg" alt="Toocki 75W GaN Desktop Charger — 40140050" loading="lazy">
-        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140050</b><span class="sku">40140050</span><span class="notes">0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140047.jpg" alt="Toocki 75W GaN Desktop Charger — 40140047" loading="lazy">
-        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140047</b><span class="sku">40140047</span><span class="notes">0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140048.jpg" alt="Toocki 75W GaN Desktop Charger — 40140048" loading="lazy">
-        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140048</b><span class="sku">40140048</span><span class="notes">0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140049.jpg" alt="Toocki 75W GaN Desktop Charger — 40140049" loading="lazy">
-        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140049</b><span class="sku">40140049</span><span class="notes">0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200006.jpg" alt="Toocki 80W Retractable Cable Triple Wireless Charger + European standard" loading="lazy">
-        <figcaption><b>Toocki 80W Retractable Cable Triple Wireless Charger + European standard</b><span class="sku">40200006</span><span class="notes">80W · ABS + PC + Aluminum Alloy · retractable · wireless</span><span class="g-price">Wholesale $75.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200007.jpg" alt="Toocki 80W Retractable Cable Triple Wireless Charger + UK Plug" loading="lazy">
-        <figcaption><b>Toocki 80W Retractable Cable Triple Wireless Charger + UK Plug</b><span class="sku">40200007</span><span class="notes">80W · ABS + PC + Aluminum Alloy · retractable · wireless</span><span class="g-price">Wholesale $75.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130016.jpg" alt="Toocki 90W 3-Port Car charger" loading="lazy">
-        <figcaption><b>Toocki 90W 3-Port Car charger</b><span class="sku">40130016</span><span class="notes">90W · out 90W · in 24V</span><span class="g-price">Wholesale $16.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCCAC-LL01.jpg" alt="Toocki A+C 50W Car Charger - Black" loading="lazy">
-        <figcaption><b>Toocki A+C 50W Car Charger - Black</b><span class="sku">TCCAC-LL01</span><span class="notes">50W · ABS + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40180001.jpg" alt="Toocki BT05 Bluetooth Audio Receiver Transmitter, Black" loading="lazy">
-        <figcaption><b>Toocki BT05 Bluetooth Audio Receiver Transmitter, Black</b><span class="sku">40180001</span><span class="notes">ABS + PC Bluetooth · Bluetooth 5.4 · black</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10100285.jpg" alt="Toocki Beling 1 3 C to C+L+Apple Watch Wireless Charger Data Cable 100W 1" loading="lazy">
-        <figcaption><b>Toocki Beling 1 3 C to C+L+Apple Watch Wireless Charger Data Cable 100W 1</b><span class="sku">10100285</span><span class="notes">100W · USB-C to USB-C · TPE + Aluminum Alloy + Braided Wire · wireless</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130007.jpg" alt="Toocki C42 C+L Dual Retractable Cable Car Charger Grey" loading="lazy">
-        <figcaption><b>Toocki C42 C+L Dual Retractable Cable Car Charger Grey</b><span class="sku">40130007</span><span class="notes">Aluminum Alloy + PC · retractable · car · grey</span><span class="g-price">Wholesale $26.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130003.jpg" alt="Toocki C42 Dual C Retractable Car Charger Gray" loading="lazy">
-        <figcaption><b>Toocki C42 Dual C Retractable Car Charger Gray</b><span class="sku">40130003</span><span class="notes">Aluminum Alloy + PC Type-C1 · retractable · car · gray</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130008.jpg" alt="Toocki C46 Color Screen 105W Car Charger 1A2C Gray" loading="lazy">
-        <figcaption><b>Toocki C46 Color Screen 105W Car Charger 1A2C Gray</b><span class="sku">40130008</span><span class="notes">105W · Zinc Alloy + PC · car · car charger · gray</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130011.jpg" alt="Toocki C47 Series 1A3C Four-Port 120W Car Charger Black (English Color Box)" loading="lazy">
-        <figcaption><b>Toocki C47 Series 1A3C Four-Port 120W Car Charger Black (English Color Box)</b><span class="sku">40130011</span><span class="notes">120W · Zinc Alloy + PC · car · car charger · black</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130009.jpg" alt="Toocki C47 Series 2A2C Four-Port 90W Car Charger - Black (with English" loading="lazy">
-        <figcaption><b>Toocki C47 Series 2A2C Four-Port 90W Car Charger - Black (with English</b><span class="sku">40130009</span><span class="notes">90W · Zinc Alloy + PC · car · car charger · black</span><span class="g-price">Wholesale $16.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130001.jpg" alt="Toocki Car Charger 2C1A Black" loading="lazy">
-        <figcaption><b>Toocki Car Charger 2C1A Black</b><span class="sku">40130001</span><span class="notes">ABS + PC · car · black</span><span class="g-price">Wholesale $30.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TCCCC-LG01.jpg" alt="Toocki Car Charger Dual C 45W Black" loading="lazy">
         <figcaption><b>Toocki Car Charger Dual C 45W Black</b><span class="sku">TCCCC-LG01</span><span class="notes">45W · ABS + PC · car · black</span><span class="g-price">Wholesale $10.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200002.jpg" alt="Toocki Car Wireless Charger Stand, Silver" loading="lazy">
-        <figcaption><b>Toocki Car Wireless Charger Stand, Silver</b><span class="sku">40200002</span><span class="notes">PC · wireless · stand · car · silver</span><span class="g-price">Wholesale $31.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TPSDX-JZB02.jpg" alt="Toocki Cube 33W Power Strip 4AC+2C1A with cable, European standard," loading="lazy">
         <figcaption><b>Toocki Cube 33W Power Strip 4AC+2C1A with cable, European standard,</b><span class="sku">TPSDX-JZB02</span><span class="notes">Toocki Ultimate 30W GaN Power Strip Cube · PC Flame-Retardant Shell · - AC Outlets: 4× (250V/16A/4000W Max) - USB P</span><span class="g-price">Wholesale $35.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140010.jpg" alt="Toocki Digital Display 67W Charger 1A1C+TYPE-C Retractable Cable EUStandard" loading="lazy">
-        <figcaption><b>Toocki Digital Display 67W Charger 1A1C+TYPE-C Retractable Cable EUStandard</b><span class="sku">40140010</span><span class="notes">67W · PC · display · retractable</span><span class="g-price">Wholesale $33.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40100170.jpg" alt="Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1" loading="lazy">
-        <figcaption><b>Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1</b><span class="sku">40100170</span><span class="notes">100W · USB-C to USB-C · TPE + Aluminum Alloy + Braided Wire · 480Mbps · wireless</span><span class="g-price">Wholesale $13.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJCZ-QCCX10.jpg" alt="Toocki Magnetic Wireless Car Holder Black" loading="lazy">
-        <figcaption><b>Toocki Magnetic Wireless Car Holder Black</b><span class="sku">TZJCZ-QCCX10</span><span class="notes">Aluminum alloy + ABS + Tempered Glass · magnetic · wireless · mount · car</span><span class="g-price">Wholesale $19.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TZJCZ-TBCX10.jpg" alt="Toocki Magnetic Wireless Charger Stand (Vent), Silver" loading="lazy">
@@ -420,24 +354,148 @@
         <figcaption><b>Toocki Star Ocean 25W Single C Charger Korean Standard Black + Glaze</b><span class="sku">80140496</span><span class="notes">25W · PC · black · wall charger</span><span class="g-price">Wholesale $8.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40220007.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger American Standard" loading="lazy">
-        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger American Standard</b><span class="sku">40220007</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TCCAC-WR01-YD.jpg" alt="Toocki Weiran 33W Aluminum Alloy Transparent Car Charger A+C Black" loading="lazy">
+        <figcaption><b>Toocki Weiran 33W Aluminum Alloy Transparent Car Charger A+C Black</b><span class="sku">TCCAC-WR01-YD</span><span class="notes">33W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s4">
+  <div class="sec-head"><h2>Car chargers</h2><span class="n">18 lines</span></div>
+  <p class="sec-desc">12-24V lines for the vehicle.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCCACX-YW01.jpg" alt="Toocki 110W A+C+Type-C Spring Cable Car Charger Black" loading="lazy">
+        <figcaption><b>Toocki 110W A+C+Type-C Spring Cable Car Charger Black</b><span class="sku">TCCACX-YW01</span><span class="notes">110W · Aluminum alloy + PC · spring coil · car · black</span><span class="g-price">Wholesale $15.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40220010.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger Australian Standard" loading="lazy">
-        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger Australian Standard</b><span class="sku">40220010</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/40130015.jpg" alt="Toocki 130W 3-Port Car charger" loading="lazy">
+        <figcaption><b>Toocki 130W 3-Port Car charger</b><span class="sku">40130015</span><span class="notes">130W · car · car charger · DC 12-24V</span><span class="g-price">Wholesale $25.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40220008.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger British Standard" loading="lazy">
-        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger British Standard</b><span class="sku">40220008</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TCCACX-HR0D.jpg" alt="Toocki 60W Aluminum Car Charger with A+C+Type-C Cable - All Black" loading="lazy">
+        <figcaption><b>Toocki 60W Aluminum Car Charger with A+C+Type-C Cable - All Black</b><span class="sku">TCCACX-HR0D</span><span class="notes">30W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40220006.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger EUStandard Black" loading="lazy">
-        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger EUStandard Black</b><span class="sku">40220006</span><span class="notes">240W · PC Output · 1.5m · desktop · black</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TCCACX-HR03.jpg" alt="Toocki 60W Aluminum Transparent Car Charger with A+C+Type-C Cable - Black" loading="lazy">
+        <figcaption><b>Toocki 60W Aluminum Transparent Car Charger with A+C+Type-C Cable - Black</b><span class="sku">TCCACX-HR03</span><span class="notes">30W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40220009.jpg" alt="Toocki Starwise Series 240W 4C2A Desktop Wired Charger Korean Standard" loading="lazy">
-        <figcaption><b>Toocki Starwise Series 240W 4C2A Desktop Wired Charger Korean Standard</b><span class="sku">40220009</span><span class="notes">240W · desktop · wall charger</span><span class="g-price">Wholesale $118.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TCC60-LL01.jpg" alt="Toocki 60W Car Charger A+C Black and Brown" loading="lazy">
+        <figcaption><b>Toocki 60W Car Charger A+C Black and Brown</b><span class="sku">TCC60-LL01</span><span class="notes">60W · ABS + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/60140015.jpg" alt="Toocki 75W Car Charger 3-Port" loading="lazy">
+        <figcaption><b>Toocki 75W Car Charger 3-Port</b><span class="sku">60140015</span><span class="notes">3.0A · car · car charger · DC 12-24V</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130016.jpg" alt="Toocki 90W 3-Port Car charger" loading="lazy">
+        <figcaption><b>Toocki 90W 3-Port Car charger</b><span class="sku">40130016</span><span class="notes">90W · out 90W · in 24V</span><span class="g-price">Wholesale $16.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCCAC-LL01.jpg" alt="Toocki A+C 50W Car Charger - Black" loading="lazy">
+        <figcaption><b>Toocki A+C 50W Car Charger - Black</b><span class="sku">TCCAC-LL01</span><span class="notes">50W · ABS + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130007.jpg" alt="Toocki C42 C+L Dual Retractable Cable Car Charger Grey" loading="lazy">
+        <figcaption><b>Toocki C42 C+L Dual Retractable Cable Car Charger Grey</b><span class="sku">40130007</span><span class="notes">Aluminum Alloy + PC · retractable · car · grey</span><span class="g-price">Wholesale $26.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130003.jpg" alt="Toocki C42 Dual C Retractable Car Charger Gray" loading="lazy">
+        <figcaption><b>Toocki C42 Dual C Retractable Car Charger Gray</b><span class="sku">40130003</span><span class="notes">Aluminum Alloy + PC Type-C1 · retractable · car · gray</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130008.jpg" alt="Toocki C46 Color Screen 105W Car Charger 1A2C Gray" loading="lazy">
+        <figcaption><b>Toocki C46 Color Screen 105W Car Charger 1A2C Gray</b><span class="sku">40130008</span><span class="notes">105W · Zinc Alloy + PC · car · car charger · gray</span><span class="g-price">Wholesale $24.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130011.jpg" alt="Toocki C47 Series 1A3C Four-Port 120W Car Charger Black (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki C47 Series 1A3C Four-Port 120W Car Charger Black (English Color Box)</b><span class="sku">40130011</span><span class="notes">120W · Zinc Alloy + PC · car · car charger · black</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130009.jpg" alt="Toocki C47 Series 2A2C Four-Port 90W Car Charger - Black (with English" loading="lazy">
+        <figcaption><b>Toocki C47 Series 2A2C Four-Port 90W Car Charger - Black (with English</b><span class="sku">40130009</span><span class="notes">90W · Zinc Alloy + PC · car · car charger · black</span><span class="g-price">Wholesale $16.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130001.jpg" alt="Toocki Car Charger 2C1A Black" loading="lazy">
+        <figcaption><b>Toocki Car Charger 2C1A Black</b><span class="sku">40130001</span><span class="notes">ABS + PC · car · black</span><span class="g-price">Wholesale $30.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200002.jpg" alt="Toocki Car Wireless Charger Stand, Silver" loading="lazy">
+        <figcaption><b>Toocki Car Wireless Charger Stand, Silver</b><span class="sku">40200002</span><span class="notes">PC · wireless · stand · car · silver</span><span class="g-price">Wholesale $31.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TZJCZ-QCCX10.jpg" alt="Toocki Magnetic Wireless Car Holder Black" loading="lazy">
+        <figcaption><b>Toocki Magnetic Wireless Car Holder Black</b><span class="sku">TZJCZ-QCCX10</span><span class="notes">Aluminum alloy + ABS + Tempered Glass · magnetic · wireless · mount · car</span><span class="g-price">Wholesale $19.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130012.jpg" alt="Toocki W11 Magnetic Car Wireless Charging Stand - Black (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki W11 Magnetic Car Wireless Charging Stand - Black (English Color Box)</b><span class="sku">40130012</span><span class="notes">Zinc Alloy + ABS · magnetic · wireless · stand · car</span><span class="g-price">Wholesale $22.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TZJCZ-HYWXCPP01.jpg" alt="Toocki Wireless Charger Car Black (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki Wireless Charger Car Black (English Color Box)</b><span class="sku">TZJCZ-HYWXCPP01</span><span class="notes">PC + ABS + Tempered Glass · wireless · car · black</span><span class="g-price">Wholesale $20.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s5">
+  <div class="sec-head"><h2>Wireless charging</h2><span class="n">5 lines</span></div>
+  <p class="sec-desc">Pads, stands and magnetic mounts.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200020.jpg" alt="Toocki 3-in-1 Wireless Charging Station — GY-ZJ05" loading="lazy">
+        <figcaption><b>Toocki 3-in-1 Wireless Charging Station — GY-ZJ05</b><span class="sku">40200020</span><span class="notes">PC Input Type-C: 9V 3A 12V 3A 15V 3A · wireless · 3-in-1</span><span class="g-price">Wholesale $51.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200017.jpg" alt="Toocki 3-in-1 Wireless Charging Station — GY-W24" loading="lazy">
+        <figcaption><b>Toocki 3-in-1 Wireless Charging Station — GY-W24</b><span class="sku">40200017</span><span class="notes">wireless · 3-in-1 · wireless charging</span><span class="g-price">Wholesale $62.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200006.jpg" alt="Toocki 80W Retractable Cable Triple Wireless Charger + European standard" loading="lazy">
+        <figcaption><b>Toocki 80W Retractable Cable Triple Wireless Charger + European standard</b><span class="sku">40200006</span><span class="notes">80W · ABS + PC + Aluminum Alloy · retractable · wireless</span><span class="g-price">Wholesale $75.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200007.jpg" alt="Toocki 80W Retractable Cable Triple Wireless Charger + UK Plug" loading="lazy">
+        <figcaption><b>Toocki 80W Retractable Cable Triple Wireless Charger + UK Plug</b><span class="sku">40200007</span><span class="notes">80W · ABS + PC + Aluminum Alloy · retractable · wireless</span><span class="g-price">Wholesale $75.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200012.jpg" alt="Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)</b><span class="sku">40200012</span><span class="notes">Zinc Alloy + ABS · wireless · white</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s6">
+  <div class="sec-head"><h2>Bluetooth and audio</h2><span class="n">1 lines</span></div>
+  <p class="sec-desc">Receivers, transmitters and adapters.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40180001.jpg" alt="Toocki BT05 Bluetooth Audio Receiver Transmitter, Black" loading="lazy">
+        <figcaption><b>Toocki BT05 Bluetooth Audio Receiver Transmitter, Black</b><span class="sku">40180001</span><span class="notes">ABS + PC Bluetooth · Bluetooth 5.4 · black</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s7">
+  <div class="sec-head"><h2>Everything else</h2><span class="n">7 lines</span></div>
+  <p class="sec-desc">The rest of the power range — ask for a quote on any line.</p>
+  <div class="grid">
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140029.jpg" alt="Toocki 75W 3C1A Black" loading="lazy">
+        <figcaption><b>Toocki 75W 3C1A Black</b><span class="sku">40140029</span><span class="notes">000W · PC · black · wall charger</span><span class="g-price">Wholesale $43.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140050.jpg" alt="Toocki 75W GaN Desktop Charger — 40140050" loading="lazy">
+        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140050</b><span class="sku">40140050</span><span class="notes">3.0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140047.jpg" alt="Toocki 75W GaN Desktop Charger — 40140047" loading="lazy">
+        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140047</b><span class="sku">40140047</span><span class="notes">3.0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140048.jpg" alt="Toocki 75W GaN Desktop Charger — 40140048" loading="lazy">
+        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140048</b><span class="sku">40140048</span><span class="notes">3.0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140049.jpg" alt="Toocki 75W GaN Desktop Charger — 40140049" loading="lazy">
+        <figcaption><b>Toocki 75W GaN Desktop Charger — 40140049</b><span class="sku">40140049</span><span class="notes">3.0A · GaN · desktop</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/40200013.jpg" alt="Toocki TW13 2" loading="lazy">
@@ -447,31 +505,12 @@
         <img src="mikoshi-img/toocki/40200014.jpg" alt="Toocki TW13A 2" loading="lazy">
         <figcaption><b>Toocki TW13A 2</b><span class="sku">40200014</span><span class="notes">ABS Watch · out 5W · in 5V</span><span class="g-price">Wholesale $8.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40200012.jpg" alt="Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)" loading="lazy">
-        <figcaption><b>Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)</b><span class="sku">40200012</span><span class="notes">Zinc Alloy + ABS · wireless · white</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130012.jpg" alt="Toocki W11 Magnetic Car Wireless Charging Stand - Black (English Color Box)" loading="lazy">
-        <figcaption><b>Toocki W11 Magnetic Car Wireless Charging Stand - Black (English Color Box)</b><span class="sku">40130012</span><span class="notes">Zinc Alloy + ABS · magnetic · wireless · stand · car</span><span class="g-price">Wholesale $22.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TCCAC-WR01-YD.jpg" alt="Toocki Weiran 33W Aluminum Alloy Transparent Car Charger A+C Black" loading="lazy">
-        <figcaption><b>Toocki Weiran 33W Aluminum Alloy Transparent Car Charger A+C Black</b><span class="sku">TCCAC-WR01-YD</span><span class="notes">33W · Aluminum alloy + PC · car · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJCZ-HYWXCPP01.jpg" alt="Toocki Wireless Charger Car Black (English Color Box)" loading="lazy">
-        <figcaption><b>Toocki Wireless Charger Car Black (English Color Box)</b><span class="sku">TZJCZ-HYWXCPP01</span><span class="notes">PC + ABS + Tempered Glass · wireless · car · black</span><span class="g-price">Wholesale $20.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-    </div>
-    <p class="count-note">95 lines in this category · 95 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p>
   </div>
 </section>
-<footer>
-  <div class="wrap footer-grid">
-    <div><p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p></div>
-    <div class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</div>
-  </div>
-</footer>
+<div class="wrap"><p class="count-note">95 lines on this page · 95 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p></div>
+<footer><div class="wrap fg">
+  <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
+  <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>
+</div></footer>
 </body>
 </html>
