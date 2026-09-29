@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Gear — Chargers — Toronto</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--accent2:#ff3d81;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent);color:#0b0d10;}
+  a{color:inherit;}
+  .mono{font-family:var(--mono);}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  .overline{font-family:var(--mono);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .wordmark{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:0.08em;text-decoration:none;}
+  .wordmark b{color:var(--accent);font-weight:500;}
+  .nav-links{display:flex;gap:26px;align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active{color:var(--accent);}
+  .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .15s;}
+  .nav-cta:hover{background:var(--accent);color:#0b0d10;}
+  @media(max-width:820px){.nav-links a{display:none;}}
+  .section{padding:64px 0 90px;border-top:1px solid var(--line);}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:20px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.01em;}
+  .section-head .note{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .lede{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:36px;}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+  .filters button{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:4px;padding:8px 14px;cursor:pointer;transition:all .15s;}
+  .filters button:hover{color:var(--ink);border-color:var(--ink);}
+  .filters button.on{background:var(--accent);color:#0b0d10;border-color:var(--accent);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+  .g-item{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;}
+  .g-item img{width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:#fff;transition:transform .2s;}
+  .g-item:hover img{transform:scale(1.03);}
+  .g-item .ph{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--surface2);border-bottom:1px solid var(--line);}
+  .g-item .ph b{font-family:var(--mono);font-size:13px;letter-spacing:0.18em;color:var(--accent);}
+  .g-item .ph span{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .g-item figcaption{padding:12px 14px 14px;border-top:1px solid var(--line);flex:1;display:flex;flex-direction:column;}
+  .g-item figcaption b{display:block;font-size:14px;font-weight:500;margin-bottom:4px;line-height:1.35;}
+  .g-item figcaption .sku{display:block;font-family:var(--mono);font-size:10px;color:#5a6270;letter-spacing:0.06em;margin-bottom:6px;}
+  .g-item figcaption span.notes{display:block;font-size:12px;color:var(--muted);line-height:1.45;}
+  .g-item figcaption .g-price{display:block;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;color:var(--accent);}
+  .badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;}
+  .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
+  .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
+  .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  footer{border-top:1px solid var(--line);padding:40px 0 56px;}
+  .footer-grid .mono{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
+  .footer-grid .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
+  .footer-grid b{color:var(--accent);font-weight:500;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" style="vertical-align:-6px;margin-right:8px"><path d="M4 8 L40 22 L4 36 Z" fill="none" stroke="#35e0ff" stroke-width="2.5"/><path d="M12 15 L28 22 L12 29 Z" fill="#35e0ff"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
+    <nav class="nav-links">
+      <a class="" href="cables.html">Cables</a><a class="active" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="" href="adapters.html">Adapters</a>
+      <a class="nav-cta" href="index.html#wholesale">Contact</a>
+    </nav>
+  </div>
+</header>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Chargers</h2>
+      <p class="note">wall, GaN, wireless, car</p>
+    </div>
+    <p class="lede">The power shelf. GaN wall chargers from 20W to 140W, plus wireless and car charging.</p>
+    <div class="gallery-grid">
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><span class="badge desc">spec-listed</span><b>100W GaN Charger</b><span class="sku">TCT100-XRB01</span><span class="notes">GaN III + PC Fireproof Shell · Size: - US: 68×66×32mm | EU/KR: 70×68×32mm | UK: 72×70×35mm · Output</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCTZM-XRA01.jpg" alt="140W Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>140W Charger</b><span class="sku">TCTZM-XRA01</span><span class="notes">140W Table Charger · Port</span><span class="g-price">Wholesale $8.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/80140502.jpg" alt="18W A+C Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>18W A+C Charger</b><span class="sku">80140502</span><span class="notes">5A (18W Max.) USB-C+USB-A Output</span><span class="g-price">Wholesale $62.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130011.jpg" alt="30W A+C Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>30W A+C Charger</b><span class="sku">40130011</span><span class="notes">5A(30W Max.) USB-C+USB-A Output: 5V</span><span class="g-price">Wholesale $20.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140031.jpg" alt="30W Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>30W Charger</b><span class="sku">40140031</span><span class="notes">5A(30W Max.) PPS · 3-11V</span><span class="g-price">Wholesale $23.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220007.jpg" alt="33W Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>33W Charger</b><span class="sku">40220007</span><span class="notes">Toocki Xingrui 33W Digital Display Charger · PC+ABS · Output:33W</span><span class="g-price">Wholesale $111.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/10130001.jpg" alt="65W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>65W GaN Charger</b><span class="sku">10130001</span><span class="notes">Three-Port GaN 65W Chager Model No.: TCT65-22KR PC Input: AC100-240V~50/60Hz · 8A Max. USB-C1/C2 Output: 5V</span><span class="g-price">Wholesale $11.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140012.jpg" alt="Toocki 15W with cable GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 15W with cable GaN Charger</b><span class="sku">40140012</span><span class="notes">5A, 7.5W (15W Max.)    Total Output: 30W Max.  USB-C Cable Length: ≈ · 1.5A, 7.5W+5.0V · Material: PC  Input: 100-240V~50/60Hz, 0.85A  USB</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140040.jpg" alt="Toocki 20W A-port GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 20W A-port GaN Charger</b><span class="sku">40140040</span><span class="notes">0A, 9.0V · 1.67A (20W Max.)  USB-A Output: 5.0V · 2.0A, 12.0V</span><span class="g-price">Wholesale $13.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140039.jpg" alt="Toocki 18W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 18W A+C GaN Charger</b><span class="sku">40140039</span><span class="notes">0A, 9.0V · 2.0A, 12.0V · 1.5A (18W Max.)  USB-C+USB-A Output: 5.0V</span><span class="g-price">Wholesale $13.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/80140497.jpg" alt="Toocki 18W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 18W A+C GaN Charger</b><span class="sku">80140497</span><span class="notes">0A, 12.0V · 1.5A (18W Max.)  USB-C+USB-A Output: 5.0V · 3.0A (15W Max.)  Total Output: 20W Max.</span><span class="g-price">Wholesale $62.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140009.jpg" alt="Toocki 30W PPS GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W PPS GaN Charger</b><span class="sku">40140009</span><span class="notes">0A, 12.0V · 3.0A, 9.0V · 2.5A (30W Max.)  PPS: 3.3-11.0V</span><span class="g-price">Wholesale $17.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140011.jpg" alt="Toocki 30W PPS A-port GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W PPS A-port GaN Charger</b><span class="sku">40140011</span><span class="notes">5A (30W Max.)  PPS: 3.3-11.0V · 3.0A, 12.0V · 3.0A, 33W Max.  USB-A Output: 5.0V</span><span class="g-price">Wholesale $32.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140010.jpg" alt="Toocki 30W PPS A-port GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W PPS A-port GaN Charger</b><span class="sku">40140010</span><span class="notes">5A (30W Max.)  PPS: 3.3-11.0V · 3.0A, 33W Max.  USB-A Output: 5.0V · 3.0A, 9.0V</span><span class="g-price">Wholesale $34.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140049.jpg" alt="Toocki 30W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W A+C GaN Charger</b><span class="sku">40140049</span><span class="notes">0A, 12.0V · 3.0A, 9.0V · 2.5A (30W Max.)  USB-C+USB-A Output: 5.0V</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140047.jpg" alt="Toocki 30W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W A+C GaN Charger</b><span class="sku">40140047</span><span class="notes">0A, 12.0V · 2.5A (30W Max.)  USB-C+USB-A Output: 5.0V</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140048.jpg" alt="Toocki 30W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W A+C GaN Charger</b><span class="sku">40140048</span><span class="notes">5A (30W Max.)  USB-C+USB-A Output: 5.0V · 3.4A (17W Max.)  Total Output: 33W Max.</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220008.jpg" alt="Toocki 33W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 33W GaN Charger</b><span class="sku">40220008</span><span class="notes">TCT33A-XRA01 · 1. Name: Toocki Xingrui 33W Digital Display Charger  2. Material: PC+A</span><span class="g-price">Wholesale $110.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT33A-XRA01.jpg" alt="Toocki 33W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 33W GaN Charger</b><span class="sku">TCT33A-XRA01</span><span class="notes">TCT33A-XRA01 · 1. Name: Toocki Xingrui 33W Digital Display Charger  2. Material: PC+A</span><span class="g-price">Wholesale $110.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220009.jpg" alt="Toocki GaN Charger — model 40220009" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40220009</b><span class="sku">40220009</span><span class="notes">Product Name</span><span class="g-price">Wholesale $110.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40220010.jpg" alt="Toocki 33W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 33W GaN Charger</b><span class="sku">40220010</span><span class="notes">3A,9V · 33W GaN Digital Charger  Material: PC  Model No.: TCT33-22AUS-2  Input · 3A,12V</span><span class="g-price">Wholesale $110.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140030.jpg" alt="Toocki 30W PPS GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W PPS GaN Charger</b><span class="sku">40140030</span><span class="notes">2A,20V · 2.5A,15V · 1.5A(30W Max.) PPS: 3.3-11V</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140032.jpg" alt="Toocki 30W PPS A-port GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W PPS A-port GaN Charger</b><span class="sku">40140032</span><span class="notes">5A(30W Max.) PPS: 3.3-11V · 3A  USB-A Output: 5V</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140033.jpg" alt="Toocki A-port GaN Charger — model 40140033" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki A-port GaN Charger — model 40140033</b><span class="sku">40140033</span><span class="notes">3A  USB-A Output: 5V · 3A,9V</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140034.jpg" alt="Toocki A-port GaN Charger — model 40140034" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki A-port GaN Charger — model 40140034</b><span class="sku">40140034</span><span class="notes">3A  USB-A Output: 5V · 3A,9V · 3A,12V</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140035.jpg" alt="Toocki GaN Charger — model 40140035" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40140035</b><span class="sku">40140035</span><span class="notes">3A,9V · 3A,12V · 2.5A,15V</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT33A-XRD01.jpg" alt="Toocki GaN Charger — model TCT33A-XRD01" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model TCT33A-XRD01</b><span class="sku">TCT33A-XRD01</span><span class="notes">TCT33A-XRD01</span><span class="g-price">Wholesale $52.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/80130085.jpg" alt="Toocki GaN Charger — model 80130085" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 80130085</b><span class="sku">80130085</span><span class="notes">3A,9V · 3A,12V · 2.5A,15V</span><span class="g-price">Wholesale $49.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130012.jpg" alt="Toocki GaN Charger — model 40130012" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40130012</b><span class="sku">40130012</span><span class="notes">3A,12V · 3A,9V · 2.5A,15V</span><span class="g-price">Wholesale $22.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130013.jpg" alt="Toocki GaN Charger — model 40130013" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40130013</b><span class="sku">40130013</span><span class="notes">5A,15V · 3A,12V · 2A,20V</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130014.jpg" alt="Toocki GaN Charger — model 40130014" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40130014</b><span class="sku">40130014</span><span class="notes">3A,12V · 3A,9V · 2.5A,15V</span><span class="g-price">Wholesale $23.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130015.jpg" alt="Toocki GaN Charger — model 40130015" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40130015</b><span class="sku">40130015</span><span class="notes">3A,12V · 2.5A,15V · 2A,20V</span><span class="g-price">Wholesale $22.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130016.jpg" alt="Toocki 30W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W A+C GaN Charger</b><span class="sku">40130016</span><span class="notes">5A,15V · 2A,20V · 1.5A(30W Max.)   USB-C+USB-A Output: 5V</span><span class="g-price">Wholesale $15.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40130009.jpg" alt="Toocki 30W A+C GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W A+C GaN Charger</b><span class="sku">40130009</span><span class="notes">2A,20V · 2.5A,15V · 1.5A(30W Max.)   USB-C+USB-A Output: 5V</span><span class="g-price">Wholesale $13.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/20130002.jpg" alt="Toocki 65W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 65W GaN Charger</b><span class="sku">20130002</span><span class="notes">0A,9V · Name: Three-Port GaN 65W Chager  Model No.: TCT65-22KR  Material: PC   · 3.0A,15V</span><span class="g-price">Wholesale $16.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40190003.jpg" alt="Toocki GaN Charger — model 40190003" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40190003</b><span class="sku">40190003</span><span class="notes">0A,15V · 3.0A,12V · 3.0A,9V</span><span class="g-price">Wholesale $12.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki with cable GaN Charger</b><span class="sku">40180017</span><span class="notes">0A, 20.0V · 3.0A, 15.0V · 4.5A  USB-C Cable Output: 5.0V</span><span class="g-price">Wholesale $34.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCTZM-XRC01.jpg" alt="Toocki 140W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 140W GaN Charger</b><span class="sku">TCTZM-XRC01</span><span class="notes">Input: 100-240V~ 50/60Hz 1.5A  Output Power: 75.0W Max  Outpu:   USB-C · 1.Name: 140W Table Charger  2.Port：3C2A  3.Output:140W</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/10130003.jpg" alt="Toocki 25W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 25W GaN Charger</b><span class="sku">10130003</span><span class="notes">3A 9V · Name: 25W Wireless Charging Car Holder  Model: MX-CD08Max  Material: P · 3A 15V</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/20130006.jpg" alt="Toocki 10W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 10W GaN Charger</b><span class="sku">20130006</span><span class="notes">3A     Output: 5W/7.5W/10W/15W/25W (Max)  Power Interface: USB-C · 3A 15V · 3A 12V</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140016.jpg" alt="Toocki 150W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 150W GaN Charger</b><span class="sku">40140016</span><span class="notes">Name: 150W 3-Port Car charger  Model: TQ-CC49  Input: DC 12-24V   Tota · 3A 9V</span><span class="g-price">Wholesale $14.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40150015.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40150015</span><span class="notes">3A 12V · 2.5A (30W Max)  USB-C1 Output: 5V · 3A 9V</span><span class="g-price">Wholesale $23.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40150016.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40150016</span><span class="notes">5A (30W Max)  USB-C1 Output: 5V · 3A 12V · 3A 9V</span><span class="g-price">Wholesale $29.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40150017.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40150017</span><span class="notes">3A 9V · 2.5A (30W Max)  USB-C1 Output: 5V · 3A 12V</span><span class="g-price">Wholesale $29.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40150019.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40150019</span><span class="notes">3A 12V · 3A 9V · 2.5A (30W Max)  USB-C2 Output: 5V-20V 2A-6A or PD: 5V</span><span class="g-price">Wholesale $67.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40180006.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40180006</span><span class="notes">5A (30W Max)  USB-C2 Output: 5V-20V 2A-6A or PD: 5V · 3A 12V · 3A 9V</span><span class="g-price">Wholesale $8.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40180007.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40180007</span><span class="notes">5A (30W Max)  USB-C2 Output: 5V-20V 2A-6A or PD: 5V · 3A 9V · 3A 12V</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40180002.jpg" alt="Toocki 30W GaN Charger" loading="lazy">
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki 30W GaN Charger</b><span class="sku">40180002</span><span class="notes">3A 12V · 2.5A (30W Max)  USB-C2 Output: 5V-20V 2A-6A or PD: 5V · 3A 9V</span><span class="g-price">Wholesale $10.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><span class="badge desc">spec-listed</span><b>Toocki GaN Charger — model 40180003</b><span class="sku">40180003</span><span class="notes">3A 12V</span><span class="g-price">Wholesale $11.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki 100W Charger 2C1A UK Plug White</b><span class="sku">TCT100-XRC02</span><span class="notes">100W · UK plug</span><span class="g-price">Wholesale $9.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki 140W GaN Travel Charger 3C2A Desktop Type EU Specification Black</b><span class="sku">TCTZM-XRB01</span><span class="notes">140W · GaN</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki 140W GaN Travel Charger 3C2A Desktop Type EU Specification White</b><span class="sku">TCTZM-XRB02</span><span class="notes">140W · GaN</span><span class="g-price">Wholesale $10.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki 140W GaN Travel Charger 3C2A Desktop Type UK Specification White</b><span class="sku">TCTZM-XRC02</span><span class="notes">140W · GaN · UK plug</span><span class="g-price">Wholesale $9.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki 140W GaN Travel Charger 3C2A Desktop Type US Specification White</b><span class="sku">TCTZM-XRA02</span><span class="notes">140W · GaN</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140025.jpg" alt="Toocki 20W 2C1A Black" loading="lazy">
+        <figcaption><b>Toocki 20W 2C1A Black</b><span class="sku">40140025</span><span class="notes">Model: TC57201 PC Input: 100-240V~, 50/60Hz · 5A Max. Rated Power: 1000W at 100V~ · 2500W at 250V~ Fuse Rating: 10A Max. USB-C1/C2 Output</span><span class="g-price">Wholesale $16.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40240004.jpg" alt="Toocki 20W 2C1A Converter Plug British to American White" loading="lazy">
+        <figcaption><b>Toocki 20W 2C1A Converter Plug British to American White</b><span class="sku">40240004</span><span class="notes">[Material Type] · Output: ▶ USB-C1/C2: 20W PD Each ▶ USB-A: 18W QC ▶ Triple-Port: 15W Shared</span><span class="g-price">Wholesale $11.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40240003.jpg" alt="Toocki 20W 2C1A Converter Plug German to American Grounding" loading="lazy">
+        <figcaption><b>Toocki 20W 2C1A Converter Plug German to American Grounding</b><span class="sku">40240003</span><span class="notes">[Material Type] · Output: ▶ USB-C1/C2: 20W PD Each ▶ USB-A: 18W QC ▶ Triple-Port: 15W Shared</span><span class="g-price">Wholesale $11.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140026.jpg" alt="Toocki 30W 2C1A Black" loading="lazy">
+        <figcaption><b>Toocki 30W 2C1A Black</b><span class="sku">40140026</span><span class="notes">Model: TC57301 PC Input: 100-240V~, 50/60Hz · 8A Max. Rated Power: 1000W at 100V~ · 2500W at 250V~ Fuse Rating: 10A Max. USB-C1/C2 Output</span><span class="g-price">Wholesale $18.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40140027.jpg" alt="Toocki 45W 3C1A Black" loading="lazy">
+        <figcaption><b>Toocki 45W 3C1A Black</b><span class="sku">40140027</span><span class="notes">Model: TC57451 PC Input: 100-240V~, 50/60Hz · 3A Max. Rated Power: 1000W at 100V~ · 2500W at 250V~ Fuse Rating: 10A Max. USB-C1 Output</span><span class="g-price">Wholesale $23.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TXCTT1-BB0Y.jpg" alt="Toocki 540° Rotating Seven-pin Magnetic Adhesive Line 1m Type C Black" loading="lazy">
+        <figcaption><b>Toocki 540° Rotating Seven-pin Magnetic Adhesive Line 1m Type C Black</b><span class="sku">TXCTT1-BB0Y</span><span class="notes">PC+ABS (Fireproof) · Length: 1m (Adjustable) · Output: Type-C to Type-C, 100W PD</span><span class="g-price">Wholesale $7.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT67-XRA01.jpg" alt="Toocki 65W Charger 2C1A US Version White" loading="lazy">
+        <figcaption><b>Toocki 65W Charger 2C1A US Version White</b><span class="sku">TCT67-XRA01</span><span class="notes">Three Port GaN 67W Chager Model No</span><span class="g-price">Wholesale $19.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/20300001.jpg" alt="Toocki 67W Charger with Display 2C1A Korean Version Black" loading="lazy">
+        <figcaption><b>Toocki 67W Charger with Display 2C1A Korean Version Black</b><span class="sku">20300001</span><span class="notes">Total Output · 0W Max · Input: 110-240V~50/60Hz</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40300006.jpg" alt="Toocki 67W Charger with Display 2C1A US Version Black" loading="lazy">
+        <figcaption><b>Toocki 67W Charger with Display 2C1A US Version Black</b><span class="sku">40300006</span><span class="notes">digital display</span><span class="g-price">Wholesale $10.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TCT67-XRD01.jpg" alt="Toocki 67W Charger with Display 2C1A US Version Black" loading="lazy">
+        <figcaption><b>Toocki 67W Charger with Display 2C1A US Version Black</b><span class="sku">TCT67-XRD01</span><span class="notes">digital display</span><span class="g-price">Wholesale $10.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200013.jpg" alt="Case" loading="lazy">
+        <figcaption><b>Case</b><span class="sku">40200013</span><span class="notes">2-in-1 Data Cable Model: TX128C2 TPE+Aluminum Alloy+Braided Wire Transmission Rate: 480Mbps USB-C Output: 100W Max. Watch Wireless Charging · 5W Max. </span><span class="g-price">Wholesale $13.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100033.jpg" alt="Toocki C-C 100W Retractable Cable" loading="lazy">
+        <figcaption><b>Toocki C-C 100W Retractable Cable</b><span class="sku">40100033</span><span class="notes">PC+ABS Input: USB-C Output: USB-L Output Power:27 Max. Transmission rate: 480Mbps Length of Retractable Cable: ≈1M Grey/Off-white</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/20100031.jpg" alt="Toocki C-C 100W Retractable Cable 95CM White" loading="lazy">
+        <figcaption><b>Toocki C-C 100W Retractable Cable 95CM White</b><span class="sku">20100031</span><span class="notes">C–C · 100W · retractable</span><span class="g-price">Wholesale $8.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki C-C 100W Retractable Cable 95CM Yellow</b><span class="sku">10100261</span><span class="notes">C–C · 100W · retractable</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
+        <figcaption><b>Toocki C-C 100W Retractable Cable 95CM Yellow</b><span class="sku">TXCTT1-BB02</span><span class="notes">C–C · 100W · retractable</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200014.jpg" alt="Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1.2m Black (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki Hybrid Dial C-C 100W Wireless Charger Data Cable 1.2m Black (English Color Box)</b><span class="sku">40200014</span><span class="notes">2-in-1 Wireless Watch Charger Model No: TW15 Zinc Alloy+ABS Input: 5V⎓ · 5A~3A(Max) Watch Output · 5w(Max） Power Interface: Type-C/iP</span><span class="g-price">Wholesale $12.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40200012.jpg" alt="Case" loading="lazy">
+        <figcaption><b>Case</b><span class="sku">40200012</span><span class="notes">3-in-1 Data Cable Model: TQ-X69C2 TPE+Aluminum Alloy+Braided Wire Input Interface: USB-C Output Interface: USB-C / iP / Wireless Watch Charger</span><span class="g-price">Wholesale $12.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100020.jpg" alt="Toocki Retractable Cable C-L 27W 1m Gray" loading="lazy">
+        <figcaption><b>Toocki Retractable Cable C-L 27W 1m Gray</b><span class="sku">40100020</span><span class="notes">Aluminum Alloy + Braided Wire Transmission Rate: 480Mbps Power: 240W Max. Input Interface: USB-C Output Interface: USB-C Color</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100026.jpg" alt="Toocki TW13A 2.5W Plastic Alloy Wireless Charger Female Port Gun Black (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki TW13A 2.5W Plastic Alloy Wireless Charger Female Port Gun Black (English Color Box)</b><span class="sku">40100026</span><span class="notes">Wireless Type-C Watch Charger Model No: TW13 ABS Watch Output · 5W(Max） Type-C Input: 5V⎓ · 5A-3A(Max) Power Interface: Type-C(FeMale)</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100008.jpg" alt="Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)</b><span class="sku">40100008</span><span class="notes">Wireless Type-C Watch Charger Model No: TW13 ABS Watch Output · 5W(Max） Type-C Input: 5V⎓ · 5A-3A(Max) Power Interface: Type-C(Male)</span><span class="g-price">Wholesale $11.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100016.jpg" alt="Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)" loading="lazy">
+        <figcaption><b>Toocki TW15 2.5W Zinc Alloy Wireless Charger White (English Color Box)</b><span class="sku">40100016</span><span class="notes">zinc alloy</span><span class="g-price">Wholesale $13.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/40100032.jpg" alt="Toocki VR Link data cable A+C to C 5 meters" loading="lazy">
+        <figcaption><b>Toocki VR Link data cable A+C to C 5 meters</b><span class="sku">40100032</span><span class="notes">Model: TX105 PC+ABS Input: USB-C Output: USB-C Output Power: 100W Max. Transmission rate: 480Mbps Length of Retractable Cable: ≈1M Grey/Off-white</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+    </div>
+    <p class="count-note">76 lines in this category · 66 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap footer-grid">
+    <div><p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p></div>
+    <div class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</div>
+  </div>
+</footer>
+</body>
+</html>
