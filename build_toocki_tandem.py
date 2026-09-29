@@ -259,10 +259,13 @@ def card_family(key, v):
         pr = "Ask for a quote"
     media = (f'<img src="{IMG}{esc(rep["img"])}" alt="{name}" loading="lazy">' if rep.get("img")
              else "<div class='ph'><b>ARRIVING</b><span>photo pending</span></div>")
+    def _price(p):
+        mm = re.search(r"\$[\d.]+", p["price_line"])
+        return mm.group(0) if mm else "\u2014"
     rows = "".join(
-        f'<li><span class="v-n">{esc(re.sub(r"^Toocki\\s+","",p["name"]))[:50]}</span>'
+        f'<li><span class="v-n">{esc(re.sub(r"^Toocki\s+","",p["name"]))[:50]}</span>'
         f'<span class="v-s">{esc(p["sku"])}</span>'
-        f'<span class="v-p">{esc(m.group(0) if (m := re.search(r"\\$[\\d.]+", p["price_line"])) else "\u2014")}</span></li>'
+        f'<span class="v-p">{esc(_price(p))}</span></li>'
         for p in sorted(skus, key=lambda x: x["name"]))
     return (f'      <figure class="g-item fam">\n        {media}\n'
         f'        <figcaption><span class="badge fam">{len(skus)} variants</span><b>{name}</b>'
