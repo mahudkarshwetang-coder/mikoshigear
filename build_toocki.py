@@ -110,6 +110,19 @@ CURATED_IMG = {
  "3in1":"mikoshi-img/detail/3in1/img-01.jpg","a2c-braided":"mikoshi-img/detail/a2c-braided/img-01.jpg",
  "otg-adapter":"mikoshi-img/detail/otg-adapter/img-01.jpg","arc-lighter":"mikoshi-img/detail/arc-lighter/img-01.jpg",
 }
+def trim_note(s, limit=132):
+    """Cut at a clause/word boundary -- never mid-word."""
+    s = re.sub(r"\s+", " ", str(s or "")).strip(" \u00b7,;:")
+    if len(s) <= limit: return s
+    parts = [p.strip() for p in s.split("\u00b7")]
+    acc = ""
+    for p in parts:
+        cand = (acc + " \u00b7 " + p).strip(" \u00b7") if acc else p
+        if len(cand) > limit: break
+        acc = cand
+    if len(acc) >= 30: return acc
+    return s[:limit].rsplit(" ", 1)[0].rstrip(" \u00b7,;:")
+
 def curated_card(p):
     img = CURATED_IMG.get(p["slug"])
     inner = (f'<img src="{img}" alt="{esc(p["name"])}" loading="lazy">' if img
@@ -119,14 +132,14 @@ def curated_card(p):
     return (f'      <figure class="g-item cur" data-product="{p["slug"]}">\n        {media}\n'
             f'        <figcaption>{badge}<b>{esc(p["name"])}</b>'
             f'<span class="sku">view details \u2192</span>'
-            f'<span class="notes">{esc(p["notes"])[:130]}</span>'
+            f'<span class="notes">{esc(trim_note(p["notes"]))}</span>'
             f'<span class="g-price">{esc(p["price"])}</span></figcaption>\n      </figure>')
 
 def card(p):
     name = esc(p["name"])
     sku = esc(p["sku"])
     notes = esc(p.get("feat_clean") or p.get("feat") or "")
-    notes = re.sub(r"^\d+\.\s*", "", notes)[:150]
+    notes = trim_note(re.sub(r"^\d+\.\s*", "", notes))
     price = esc(p["price_line"])
     if p.get("img"):
         media = f'<img src="{IMG}{esc(p["img"])}" alt="{name}" loading="lazy">'
