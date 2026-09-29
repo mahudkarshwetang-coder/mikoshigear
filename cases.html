@@ -58,7 +58,21 @@
   .badge.cur{background:#0e2a33;color:var(--accent);border:1px solid #1d4d5c;}
   .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
   .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .badge.fam{background:#2b1a33;color:#d78bff;border:1px solid #4d2b5c;}
   .g-item.cur{border-color:#1d4d5c;}
+  .g-item.fam{border-color:#3a2a45;}
+  .vline{display:block;font-family:var(--mono);font-size:10.5px;color:#b48ad0;margin-top:6px;letter-spacing:.02em;}
+  details{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;}
+  summary{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"+ ";color:var(--accent);}
+  details[open] summary:before{content:"− ";}
+  .vlist{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+  .vlist li{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .v-n{flex:1 1 auto;}
+  .v-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;}
+  .v-p{color:var(--accent);flex:0 0 auto;}
+  .v-s{font-family:var(--mono);font-size:9px;color:#5a6270;flex:0 0 auto;}
   .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
   .fg{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
@@ -77,7 +91,7 @@
 <div class="jump"><div class="wrap jump-in"><a href="#s-cur">In stock<b>9</b></a><a href="#s0">iPhone cases<b>15</b></a><a href="#s1">Samsung cases<b>18</b></a></div></div>
 <div class="wrap hero">
   <h1>Cases</h1>
-  <p>iPhone and Samsung cases, including the fully unbranded line — no logo anywhere on the product or the packaging. 42 lines across 3 families.</p>
+  <p>iPhone and Samsung cases, including the fully unbranded line — no logo anywhere on the product or the packaging. 42 lines across 3 families, shown as 39 cards.</p>
 </div>
 <section class="sec" id="s-cur" style="border-top:0">
   <div class="sec-head"><h2>In stock in Toronto</h2><span class="n">9 lines</span></div>
@@ -122,36 +136,24 @@
   </div>
 </section>
 <section class="sec" id="s0">
-  <div class="sec-head"><h2>iPhone cases</h2><span class="n">15 lines</span></div>
+  <div class="sec-head"><h2>iPhone cases</h2><span class="n">15 lines · 12 cards</span></div>
   <p class="sec-desc">Fitted and checked before they go on the sheet.</p>
   <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK15P-QS15.jpg" alt="Toocki iPhone 15 Pro Clear Case — TK15P-QS15" loading="lazy">
-        <figcaption><b>Toocki iPhone 15 Pro Clear Case — TK15P-QS15</b><span class="sku">TK15P-QS15</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $2.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK15P-QS02.jpg" alt="Toocki iPhone 15 Pro Clear Case — TK15P-QS02" loading="lazy">
-        <figcaption><b>Toocki iPhone 15 Pro Clear Case — TK15P-QS02</b><span class="sku">TK15P-QS02</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $2.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK15P-QB01.jpg" alt="Toocki iPhone 15 Pro Clear Case — TK15P-QB01" loading="lazy">
-        <figcaption><b>Toocki iPhone 15 Pro Clear Case — TK15P-QB01</b><span class="sku">TK15P-QB01</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $2.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK15P-QS0G.jpg" alt="Toocki iPhone 15 Pro Clear Case — TK15P-QS0G" loading="lazy">
-        <figcaption><b>Toocki iPhone 15 Pro Clear Case — TK15P-QS0G</b><span class="sku">TK15P-QS0G</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $2.00 · MOQ 20 — samples available</span></figcaption>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TK15P-QS15.jpg" alt="Toocki iPhone 15 Pro Case" loading="lazy">
+        <figcaption><span class="badge fam">4 variants</span><b>Toocki iPhone 15 Pro Case</b><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $2.00 · MOQ 20 — samples available</span><details><summary>See all 4 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki iPhone 15 Pro Clear Case — TK15P-QB01</span><span class="v-s">TK15P-QB01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki iPhone 15 Pro Clear Case — TK15P-QS02</span><span class="v-s">TK15P-QS02</span><span class="v-p">—</span></li><li><span class="v-n">Toocki iPhone 15 Pro Clear Case — TK15P-QS0G</span><span class="v-s">TK15P-QS0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki iPhone 15 Pro Clear Case — TK15P-QS15</span><span class="v-s">TK15P-QS15</span><span class="v-p">—</span></li></ul></details></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TK13-KB20.jpg" alt="Toocki iPhone 13 Airbag Case" loading="lazy">
         <figcaption><b>Toocki iPhone 13 Airbag Case</b><span class="sku">TK13-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK13M-KB20.jpg" alt="Toocki iPhone 13 Pro Max Airbag Case" loading="lazy">
-        <figcaption><b>Toocki iPhone 13 Pro Max Airbag Case</b><span class="sku">TK13M-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TK13P-KB20.jpg" alt="Toocki iPhone 13 Pro Airbag Case" loading="lazy">
         <figcaption><b>Toocki iPhone 13 Pro Airbag Case</b><span class="sku">TK13P-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TK13M-KB20.jpg" alt="Toocki iPhone 13 Pro Max Airbag Case" loading="lazy">
+        <figcaption><b>Toocki iPhone 13 Pro Max Airbag Case</b><span class="sku">TK13M-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TK14-KB20.jpg" alt="Toocki iPhone 14 Airbag Case" loading="lazy">
@@ -162,12 +164,12 @@
         <figcaption><b>Toocki iPhone 14 Plus Airbag Case</b><span class="sku">TK14S-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK14PM-KB20.jpg" alt="Toocki iPhone 14 Pro Max Airbag Case" loading="lazy">
-        <figcaption><b>Toocki iPhone 14 Pro Max Airbag Case</b><span class="sku">TK14PM-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TK14P-KB20.jpg" alt="Toocki iPhone 14 Pro Airbag Case" loading="lazy">
         <figcaption><b>Toocki iPhone 14 Pro Airbag Case</b><span class="sku">TK14P-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TK14PM-KB20.jpg" alt="Toocki iPhone 14 Pro Max Airbag Case" loading="lazy">
+        <figcaption><b>Toocki iPhone 14 Pro Max Airbag Case</b><span class="sku">TK14PM-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TK15-KB20.jpg" alt="Toocki iPhone 15 Airbag Case" loading="lazy">
@@ -178,12 +180,12 @@
         <figcaption><b>Toocki iPhone 15 Plus Airbag Case</b><span class="sku">TK15S-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TK15PM-KB20.jpg" alt="Toocki iPhone 15 Pro Max Airbag Case" loading="lazy">
-        <figcaption><b>Toocki iPhone 15 Pro Max Airbag Case</b><span class="sku">TK15PM-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TK15P-KB20.jpg" alt="Toocki iPhone 15 Pro Airbag Case" loading="lazy">
         <figcaption><b>Toocki iPhone 15 Pro Airbag Case</b><span class="sku">TK15P-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TK15PM-KB20.jpg" alt="Toocki iPhone 15 Pro Max Airbag Case" loading="lazy">
+        <figcaption><b>Toocki iPhone 15 Pro Max Airbag Case</b><span class="sku">TK15PM-KB20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
   </div>
 </section>
@@ -191,18 +193,6 @@
   <div class="sec-head"><h2>Samsung cases</h2><span class="n">18 lines</span></div>
   <p class="sec-desc">A-series, S-series and Z Flip.</p>
   <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSFP3-ZY20TQ.jpg" alt="Toocki Samsung Z Flip3 Foldable Case" loading="lazy">
-        <figcaption><b>Toocki Samsung Z Flip3 Foldable Case</b><span class="sku">TKSMSFP3-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSFP4-ZY20TQ.jpg" alt="Toocki Samsung Z Flip4 Foldable Case" loading="lazy">
-        <figcaption><b>Toocki Samsung Z Flip4 Foldable Case</b><span class="sku">TKSMSFP4-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSFP5-ZY20TQ.jpg" alt="Toocki Samsung Z Flip5 Foldable Case" loading="lazy">
-        <figcaption><b>Toocki Samsung Z Flip5 Foldable Case</b><span class="sku">TKSMSFP5-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSA34-JT20.jpg" alt="Toocki Samsung A34 Case" loading="lazy">
         <figcaption><b>Toocki Samsung A34 Case</b><span class="sku">TKSMSA34-JT20</span><span class="notes">A-series case TPU · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
@@ -214,6 +204,10 @@
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS21U-JT20.jpg" alt="Toocki Samsung S21 Ultra Case" loading="lazy">
         <figcaption><b>Toocki Samsung S21 Ultra Case</b><span class="sku">TKSMSS21U-JT20</span><span class="notes">A-series case TPU · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSS22U-QN20.jpg" alt="Toocki Samsung S22 Ultra Airbag Case" loading="lazy">
+        <figcaption><b>Toocki Samsung S22 Ultra Airbag Case</b><span class="sku">TKSMSS22U-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS23-JT20.jpg" alt="Toocki Samsung S23 Case" loading="lazy">
@@ -228,44 +222,52 @@
         <figcaption><b>Toocki Samsung S23 Plus Case</b><span class="sku">TKSMSS23P-JT20</span><span class="notes">A-series case TPU · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSS23U-JT20.jpg" alt="Toocki Samsung S23 Ultra Case" loading="lazy">
-        <figcaption><b>Toocki Samsung S23 Ultra Case</b><span class="sku">TKSMSS23U-JT20</span><span class="notes">A-series case TPU · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSS24-JT20.jpg" alt="Toocki Samsung S24 Case" loading="lazy">
-        <figcaption><b>Toocki Samsung S24 Case</b><span class="sku">TKSMSS24-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSS24P-JT20.jpg" alt="Toocki Samsung S24 Plus Case" loading="lazy">
-        <figcaption><b>Toocki Samsung S24 Plus Case</b><span class="sku">TKSMSS24P-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSS24U-JT20.jpg" alt="Toocki Samsung S24 Ultra Case" loading="lazy">
-        <figcaption><b>Toocki Samsung S24 Ultra Case</b><span class="sku">TKSMSS24U-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TKSMSS22U-QN20.jpg" alt="Toocki Samsung S22 Ultra Airbag Case" loading="lazy">
-        <figcaption><b>Toocki Samsung S22 Ultra Airbag Case</b><span class="sku">TKSMSS22U-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS23U-QN20.jpg" alt="Toocki Samsung S23 Ultra Airbag Case" loading="lazy">
         <figcaption><b>Toocki Samsung S23 Ultra Airbag Case</b><span class="sku">TKSMSS23U-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSS23U-JT20.jpg" alt="Toocki Samsung S23 Ultra Case" loading="lazy">
+        <figcaption><b>Toocki Samsung S23 Ultra Case</b><span class="sku">TKSMSS23U-JT20</span><span class="notes">A-series case TPU · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS24-QN20.jpg" alt="Toocki Samsung S24 Airbag Case" loading="lazy">
         <figcaption><b>Toocki Samsung S24 Airbag Case</b><span class="sku">TKSMSS24-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSS24-JT20.jpg" alt="Toocki Samsung S24 Case" loading="lazy">
+        <figcaption><b>Toocki Samsung S24 Case</b><span class="sku">TKSMSS24-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS24P-QN20.jpg" alt="Toocki Samsung S24 Plus Airbag Case" loading="lazy">
         <figcaption><b>Toocki Samsung S24 Plus Airbag Case</b><span class="sku">TKSMSS24P-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSS24P-JT20.jpg" alt="Toocki Samsung S24 Plus Case" loading="lazy">
+        <figcaption><b>Toocki Samsung S24 Plus Case</b><span class="sku">TKSMSS24P-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TKSMSS24U-QN20.jpg" alt="Toocki Samsung S24 Ultra Airbag Case" loading="lazy">
         <figcaption><b>Toocki Samsung S24 Ultra Airbag Case</b><span class="sku">TKSMSS24U-QN20</span><span class="notes">airbag corners · TPU · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSS24U-JT20.jpg" alt="Toocki Samsung S24 Ultra Case" loading="lazy">
+        <figcaption><b>Toocki Samsung S24 Ultra Case</b><span class="sku">TKSMSS24U-JT20</span><span class="notes">TPU · transparent · flexible</span><span class="g-price">Wholesale $1.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSFP3-ZY20TQ.jpg" alt="Toocki Samsung Z Flip3 Foldable Case" loading="lazy">
+        <figcaption><b>Toocki Samsung Z Flip3 Foldable Case</b><span class="sku">TKSMSFP3-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSFP4-ZY20TQ.jpg" alt="Toocki Samsung Z Flip4 Foldable Case" loading="lazy">
+        <figcaption><b>Toocki Samsung Z Flip4 Foldable Case</b><span class="sku">TKSMSFP4-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TKSMSFP5-ZY20TQ.jpg" alt="Toocki Samsung Z Flip5 Foldable Case" loading="lazy">
+        <figcaption><b>Toocki Samsung Z Flip5 Foldable Case</b><span class="sku">TKSMSFP5-ZY20TQ</span><span class="notes">TPU · foldable · flexible</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
   </div>
 </section>
-<div class="wrap"><p class="count-note">42 lines on this page · 42 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p></div>
+<div class="wrap"><p class="count-note">42 lines on this page · 42 shown with photography · fold any multi-SKU card to see every variant and price · ask for a quote on any line.</p></div>
 <footer><div class="wrap fg">
   <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
   <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>

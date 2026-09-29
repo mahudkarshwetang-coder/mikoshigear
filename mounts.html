@@ -58,7 +58,21 @@
   .badge.cur{background:#0e2a33;color:var(--accent);border:1px solid #1d4d5c;}
   .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
   .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .badge.fam{background:#2b1a33;color:#d78bff;border:1px solid #4d2b5c;}
   .g-item.cur{border-color:#1d4d5c;}
+  .g-item.fam{border-color:#3a2a45;}
+  .vline{display:block;font-family:var(--mono);font-size:10.5px;color:#b48ad0;margin-top:6px;letter-spacing:.02em;}
+  details{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;}
+  summary{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"+ ";color:var(--accent);}
+  details[open] summary:before{content:"− ";}
+  .vlist{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+  .vlist li{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .v-n{flex:1 1 auto;}
+  .v-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;}
+  .v-p{color:var(--accent);flex:0 0 auto;}
+  .v-s{font-family:var(--mono);font-size:9px;color:#5a6270;flex:0 0 auto;}
   .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
   .fg{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
@@ -77,15 +91,15 @@
 <div class="jump"><div class="wrap jump-in"><a href="#s0">Desk and tablet stands<b>5</b></a><a href="#s1">Car mounts and holders<b>5</b></a></div></div>
 <div class="wrap hero">
   <h1>Mounts & Stands</h1>
-  <p>Stands, holders and car mounts — the small-ticket add-ons that sell with every phone. 10 lines across 2 families.</p>
+  <p>Stands, holders and car mounts — the small-ticket add-ons that sell with every phone. 10 lines across 2 families, shown as 10 cards.</p>
 </div>
 <section class="sec" id="s0" style="border-top:0">
   <div class="sec-head"><h2>Desk and tablet stands</h2><span class="n">5 lines</span></div>
   <p class="sec-desc">Counter and desk display.</p>
   <div class="grid">
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/80140502.jpg" alt="Toocki 140W Flash Charge Adapter 3C1A EUStandard Black + Candy Core" loading="lazy">
-        <figcaption><b>Toocki 140W Flash Charge Adapter 3C1A EUStandard Black + Candy Core</b><span class="sku">80140502</span><span class="notes">140W · PC Total · black</span><span class="g-price">Wholesale $65.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/80140502.jpg" alt="Toocki 140W Flash Charge Adapter 3C1A EU Standard Black + Candy Core" loading="lazy">
+        <figcaption><b>Toocki 140W Flash Charge Adapter 3C1A EU Standard Black + Candy Core</b><span class="sku">80140502</span><span class="notes">140W · PC Total · black</span><span class="g-price">Wholesale $65.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/80140497.jpg" alt="Toocki 140W Flash Charge Adapter 3C1A Korean Standard with Ground Black +" loading="lazy">
@@ -131,7 +145,7 @@
       </figure>
   </div>
 </section>
-<div class="wrap"><p class="count-note">10 lines on this page · 10 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p></div>
+<div class="wrap"><p class="count-note">10 lines on this page · 10 shown with photography · fold any multi-SKU card to see every variant and price · ask for a quote on any line.</p></div>
 <footer><div class="wrap fg">
   <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
   <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>

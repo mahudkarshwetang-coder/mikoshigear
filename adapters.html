@@ -58,7 +58,21 @@
   .badge.cur{background:#0e2a33;color:var(--accent);border:1px solid #1d4d5c;}
   .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
   .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .badge.fam{background:#2b1a33;color:#d78bff;border:1px solid #4d2b5c;}
   .g-item.cur{border-color:#1d4d5c;}
+  .g-item.fam{border-color:#3a2a45;}
+  .vline{display:block;font-family:var(--mono);font-size:10.5px;color:#b48ad0;margin-top:6px;letter-spacing:.02em;}
+  details{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;}
+  summary{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"+ ";color:var(--accent);}
+  details[open] summary:before{content:"− ";}
+  .vlist{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+  .vlist li{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .v-n{flex:1 1 auto;}
+  .v-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;}
+  .v-p{color:var(--accent);flex:0 0 auto;}
+  .v-s{font-family:var(--mono);font-size:9px;color:#5a6270;flex:0 0 auto;}
   .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
   .fg{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
@@ -74,10 +88,10 @@
     <nav class="nav-links"><a class="" href="cables.html">Cables</a><a class="" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="on" href="adapters.html">Adapters</a><a class="nav-cta" href="index.html#wholesale">Contact</a></nav>
   </div>
 </header>
-<div class="jump"><div class="wrap jump-in"><a href="#s-cur">In stock<b>2</b></a><a href="#s0">Travel and socket adapters<b>16</b></a><a href="#s1">AV, RCA and audio adapters<b>56</b></a><a href="#s2">HDMI<b>4</b></a><a href="#s3">OTG and converters<b>6</b></a><a href="#s4">Network cards<b>10</b></a><a href="#s5">Everything else<b>6</b></a></div></div>
+<div class="jump"><div class="wrap jump-in"><a href="#s-cur">In stock<b>2</b></a><a href="#s0">Travel and socket adapters<b>6</b></a><a href="#s1">AV, RCA and audio adapters<b>56</b></a><a href="#s2">HDMI<b>4</b></a><a href="#s3">OTG and converters<b>16</b></a><a href="#s4">Network cards<b>10</b></a><a href="#s5">Everything else<b>6</b></a></div></div>
 <div class="wrap hero">
   <h1>Adapters</h1>
-  <p>Travel adapters, AV and audio adapters, HDMI, OTG converters and network cards. 100 lines across 7 families.</p>
+  <p>Travel adapters, AV and audio adapters, HDMI, OTG converters and network cards. 100 lines across 7 families, shown as 42 cards.</p>
 </div>
 <section class="sec" id="s-cur" style="border-top:0">
   <div class="sec-head"><h2>In stock in Toronto</h2><span class="n">2 lines</span></div>
@@ -94,32 +108,114 @@
   </div>
 </section>
 <section class="sec" id="s0">
-  <div class="sec-head"><h2>Travel and socket adapters</h2><span class="n">16 lines</span></div>
+  <div class="sec-head"><h2>Travel and socket adapters</h2><span class="n">6 lines · 2 cards</span></div>
   <p class="sec-desc">Universal sockets, plug conversion.</p>
   <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140031.jpg" alt="Toocki 20W Universal Adapter EU to Universal Black" loading="lazy">
-        <figcaption><b>Toocki 20W Universal Adapter EU to Universal Black</b><span class="sku">40140031</span><span class="notes">20W · universal travel adapter · USB-C + USB-A · EU to universal</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/40140031.jpg" alt="Toocki 20W Universal Adapter" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki 20W Universal Adapter</b><span class="notes">20W · universal travel adapter · USB-C + USB-A · EU to universal</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 20W Universal Adapter EU to Universal Black</span><span class="v-s">40140031</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 20W Universal Adapter US to Universal Black</span><span class="v-s">40140030</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 20W Universal Adapter US to Universal Black</span><span class="v-s">40140032</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/40140034.jpg" alt="Toocki 32W Universal Adapter" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki 32W Universal Adapter</b><span class="notes">32W · black · adapter</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 32W Universal Adapter EU to Universal Black</span><span class="v-s">40140034</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 32W Universal Adapter UK to Universal Black</span><span class="v-s">40140035</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 32W Universal Adapter US to Universal Black</span><span class="v-s">40140033</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s1">
+  <div class="sec-head"><h2>AV, RCA and audio adapters</h2><span class="n">56 lines · 14 cards</span></div>
+  <p class="sec-desc">3.5mm, RCA, AUX lines.</p>
+  <div class="grid">
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX3-MD0G.jpg" alt="Toocki 3.5mm Male To Female 4-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">11 variants</span><b>Toocki 3.5mm Male To Female 4-section AUX Audio Cable</b><span class="notes">3.5mm · 1m · AUX audio</span><span class="vline">1m · 2m · 3m · 5m  |  Black, Grey</span><span class="g-price">Wholesale $4.50–6.50 · MOQ 20 — samples available</span><details><summary>See all 11 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MD0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MY03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MDA0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MYA01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MYA03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MDC0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MYC01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MYC03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MDD0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Female 4-Section AUX Audio Ca</span><span class="v-s">TYPX3-MYD01</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX4-MDB0G.jpg" alt="Toocki 3.5mm Male To Dual RCA 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki 3.5mm Male To Dual RCA 3-section AUX Audio Cable</b><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="vline">1m · 2m</span><span class="g-price">Wholesale $4.50–6.50 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MYA01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MD0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MDA0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MDB0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MDC0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio </span><span class="v-s">TYPX4-MDD0G</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX1-MDB0G.jpg" alt="Toocki 3.5mm Male To Male 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki 3.5mm Male To Male 3-segment AUX Audio Cable</b><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="vline">0.5m · 1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–33.50 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MDB0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MD03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MD0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MDA0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">40180017</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MDC0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm male to male 3-segment AUX audio cabl</span><span class="v-s">TYPX1-MDD0G</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX2-MY01.jpg" alt="Toocki Sound 3.5mm Male To Female 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki Sound 3.5mm Male To Female 3-section AUX Audio Cable</b><span class="notes">3.5mm · 1m · AUX audio</span><span class="vline">1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–6.00 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MY03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MYA01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MYA03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MYC01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MYC03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Sound 3.5mm Male to Female 3-Section AUX Au</span><span class="v-s">TYPX2-MYD01</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX2-MD03.jpg" alt="Toocki Male To Female 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki Male To Female 3-segment AUX Audio Cable</b><span class="notes">1m · AUX audio · AV cable · 1m</span><span class="vline">1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–6.00 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 1</span><span class="v-s">TYPX2-MD03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 1</span><span class="v-s">TYPX2-MD0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 2</span><span class="v-s">TYPX2-MDA03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 2</span><span class="v-s">TYPX2-MDA0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 3</span><span class="v-s">TYPX2-MDC03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 3</span><span class="v-s">TYPX2-MDC0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to female 3-segment AUX audio cable, 5</span><span class="v-s">TYPX2-MDD0G</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX1-MYB01.jpg" alt="Toocki Male To Male 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">5 variants</span><b>Toocki Male To Male 3-section AUX Audio Cable</b><span class="notes">0.5m · AUX audio · AV cable · 0.5m</span><span class="vline">0.5m · 1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–6.00 · MOQ 20 — samples available</span><details><summary>See all 5 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki male to male 3-section AUX audio cable 0.5 </span><span class="v-s">TYPX1-MYB01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to male 3-section AUX audio cable 1 me</span><span class="v-s">TYPX1-MY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to male 3-section AUX audio cable 2 me</span><span class="v-s">TYPX1-MYA01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to male 3-section AUX audio cable 3 me</span><span class="v-s">TYPX1-MYC01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to male 3-section AUX audio cable 5 me</span><span class="v-s">TYPX1-MYD01</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX4-MD03.jpg" alt="Toocki Male To Dual RCA 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki Male To Dual RCA 3-section AUX Audio Cable</b><span class="notes">RCA · 1m · AUX audio</span><span class="vline">1m · 2m · 3m</span><span class="g-price">Wholesale $5.00–6.00 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki male to dual RCA 3-section AUX audio cable </span><span class="v-s">TYPX4-MD03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to dual RCA 3-section AUX audio cable </span><span class="v-s">TYPX4-MDA03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to dual RCA 3-section AUX audio cable </span><span class="v-s">TYPX4-MDC03</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX4-MYC01.jpg" alt="Toocki 3.5mm Male To Dual Female 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki 3.5mm Male To Dual Female 3-section AUX Audio Cable</b><span class="notes">3.5mm · 3m · AUX audio</span><span class="vline">3m · 5m</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki 3.5mm Male to Dual Female 3-Section AUX Aud</span><span class="v-s">TYPX4-MYC01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki 3.5mm Male to Dual Female 3-Section AUX Aud</span><span class="v-s">TYPX4-MYD01</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TYPX1-MDA03.jpg" alt="Toocki Male To Male 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki Male To Male 3-segment AUX Audio Cable</b><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="vline">2m · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki male to male 3-segment AUX audio cable, 2 m</span><span class="v-s">TYPX1-MDA03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki male to male 3-segment AUX audio cable, 3 m</span><span class="v-s">TYPX1-MDC03</span><span class="v-p">—</span></li></ul></details></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140032.jpg" alt="Toocki 20W Universal Adapter US to Universal Black — 40140032" loading="lazy">
-        <figcaption><b>Toocki 20W Universal Adapter US to Universal Black — 40140032</b><span class="sku">40140032</span><span class="notes">20W · universal travel adapter · USB-C + USB-A · US to universal</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TBT01-YX0G.jpg" alt="Toocki AUX Car Bluetooth Audio Adapter Gun Gray" loading="lazy">
+        <figcaption><b>Toocki AUX Car Bluetooth Audio Adapter Gun Gray</b><span class="sku">TBT01-YX0G</span><span class="notes">Aluminum alloy + TPU Cable · car · AUX audio · gray</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140030.jpg" alt="Toocki 20W Universal Adapter US to Universal Black — 40140030" loading="lazy">
-        <figcaption><b>Toocki 20W Universal Adapter US to Universal Black — 40140030</b><span class="sku">40140030</span><span class="notes">20W · PC Rating: 10A Max., 250V~, 2500W Max. USB · black</span><span class="g-price">Wholesale $22.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/40130019.jpg" alt="Toocki Car Bluetooth AUX Adapter" loading="lazy">
+        <figcaption><b>Toocki Car Bluetooth AUX Adapter</b><span class="sku">40130019</span><span class="notes">Bluetooth 6.0 · car · AUX audio</span><span class="g-price">Wholesale $10.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140034.jpg" alt="Toocki 32W Universal Adapter EU to Universal Black" loading="lazy">
-        <figcaption><b>Toocki 32W Universal Adapter EU to Universal Black</b><span class="sku">40140034</span><span class="notes">32W · black · adapter</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/10180003.jpg" alt="Toocki Lightning to 3.5mm female audio adapter cable 1 meter black" loading="lazy">
+        <figcaption><b>Toocki Lightning to 3.5mm female audio adapter cable 1 meter black</b><span class="sku">10180003</span><span class="notes">3.5mm · Alluminum Alloy · 1m</span><span class="g-price">Wholesale $3.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140035.jpg" alt="Toocki 32W Universal Adapter UK to Universal Black" loading="lazy">
-        <figcaption><b>Toocki 32W Universal Adapter UK to Universal Black</b><span class="sku">40140035</span><span class="notes">32W · black · adapter</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/10180001.jpg" alt="Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black" loading="lazy">
+        <figcaption><b>Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black</b><span class="sku">10180001</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m · black</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40140033.jpg" alt="Toocki 32W Universal Adapter US to Universal Black" loading="lazy">
-        <figcaption><b>Toocki 32W Universal Adapter US to Universal Black</b><span class="sku">40140033</span><span class="notes">32W · PC Rating: 10A Max., 250V~, 2500W Max. USB · black</span><span class="g-price">Wholesale $25.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/10180002.jpg" alt="Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black" loading="lazy">
+        <figcaption><b>Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black</b><span class="sku">10180002</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s2">
+  <div class="sec-head"><h2>HDMI</h2><span class="n">4 lines · 1 cards</span></div>
+  <p class="sec-desc">8K and 4K video lines.</p>
+  <div class="grid">
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TXCHH4-TBB0G.jpg" alt="Toocki HDMI To HDMI 8k High Definition Cable" loading="lazy">
+        <figcaption><span class="badge fam">4 variants</span><b>Toocki HDMI To HDMI 8k High Definition Cable</b><span class="notes">HDMI · 0.5m · 8K · grey</span><span class="vline">0.5m · 1m · 2m · 3m</span><span class="g-price">Wholesale $6.00–11.00 · MOQ 20 — samples available</span><details><summary>See all 4 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki HDMI to HDMI 8K High Definition Cable 0.5m </span><span class="v-s">TXCHH4-TBB0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki HDMI to HDMI 8K High Definition Cable 1m Gr</span><span class="v-s">TXCHH4-TB0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki HDMI to HDMI 8K High Definition Cable 2m Gr</span><span class="v-s">TXCHH4-TBA0G</span><span class="v-p">—</span></li><li><span class="v-n">Toocki HDMI to HDMI 8K High Definition Cable 3m Gr</span><span class="v-s">TXCHH4-TBC0G</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+  </div>
+</section>
+<section class="sec" id="s3">
+  <div class="sec-head"><h2>OTG and converters</h2><span class="n">16 lines · 11 cards</span></div>
+  <p class="sec-desc">Type-C and Lightning converters.</p>
+  <div class="grid">
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TZJTAC-XY01.jpg" alt="Toocki Type-C Male To Usb3.0 Female Adapter" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki Type-C Male To Usb3.0 Female Adapter</b><span class="notes">USB-C to USB 0 adapter · data + charge</span><span class="vline">Black, Blue, Purple</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki Type-C Male to USB3.0 Female Adapter, Black</span><span class="v-s">TZJTAC-XY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Type-C Male to USB3.0 Female Adapter, Blue</span><span class="v-s">TZJTAC-XY03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Type-C Male to USB3.0 Female Adapter, Purpl</span><span class="v-s">TZJTAC-XY05</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TZJTCA-XY01.jpg" alt="Toocki Usb2.0 Male To Type-C Female Adapter" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki Usb2.0 Male To Type-C Female Adapter</b><span class="notes">USB 2.0 · Aluminum alloy · black</span><span class="vline">Black, Blue, Purple</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki USB2.0 Male to Type-C Female Adapter, Black</span><span class="v-s">TZJTCA-XY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki USB2.0 Male to Type-C Female Adapter, Blue</span><span class="v-s">TZJTCA-XY03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki USB2.0 Male to Type-C Female Adapter, Purpl</span><span class="v-s">TZJTCA-XY05</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TZJTMC-XY01.jpg" alt="Toocki Type-C Male To Micro Female Adapter" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki Type-C Male To Micro Female Adapter</b><span class="notes">Micro-USB · black · adapter</span><span class="vline">Black, Blue</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki Type-C Male to Micro Female Adapter, Black</span><span class="v-s">TZJTMC-XY01</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Type-C Male to Micro Female Adapter, Blue</span><span class="v-s">TZJTMC-XY03</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/10090013.jpg" alt="Neutral Xiao Bei Lightning Male to Type-C Female 20W Display Adapter Grey" loading="lazy">
+        <figcaption><b>Neutral Xiao Bei Lightning Male to Type-C Female 20W Display Adapter Grey</b><span class="sku">10090013</span><span class="notes">20W · Aluminum alloy · 480Mbps · display · grey</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item">
+        <img src="mikoshi-img/toocki/TZJTLC-XB010.jpg" alt="Toocki Lightning Type-C 20WDigital Display Adapter" loading="lazy">
+        <figcaption><b>Toocki Lightning Type-C 20WDigital Display Adapter</b><span class="sku">TZJTLC-XB010</span><span class="notes">Aluminum alloy · 480Mbps · display</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TZJTCXW-SJ03.jpg" alt="Toocki Magnetic Adapter Type-C 100W, Bend, Blue" loading="lazy">
@@ -130,32 +226,16 @@
         <figcaption><b>Toocki Magnetic Adapter Type-C 100W, Straight, Blue</b><span class="sku">TZJTCXZ-SJ03</span><span class="notes">100W · Aluminum Alloy (Elbow Design) · magnetic · blue</span><span class="g-price">Wholesale $10.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTMC-XY01.jpg" alt="Toocki Type-C Male to Micro Female Adapter, Black" loading="lazy">
-        <figcaption><b>Toocki Type-C Male to Micro Female Adapter, Black</b><span class="sku">TZJTMC-XY01</span><span class="notes">Micro-USB · black · adapter</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/20300002.jpg" alt="Toocki RJ45 100Mbps Network Card Type-C Black" loading="lazy">
+        <figcaption><b>Toocki RJ45 100Mbps Network Card Type-C Black</b><span class="sku">20300002</span><span class="notes">RJ45 · ABS · Ethernet · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTMC-XY03.jpg" alt="Toocki Type-C Male to Micro Female Adapter, Blue" loading="lazy">
-        <figcaption><b>Toocki Type-C Male to Micro Female Adapter, Blue</b><span class="sku">TZJTMC-XY03</span><span class="notes">Micro-USB · blue · adapter</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TZJTCC-XB010.jpg" alt="Toocki Type-C Type-C 100WDigital Display Adapter" loading="lazy">
+        <figcaption><b>Toocki Type-C Type-C 100WDigital Display Adapter</b><span class="sku">TZJTCC-XB010</span><span class="notes">Aluminum alloy · 480Mbps · display</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTAC-XY01.jpg" alt="Toocki Type-C Male to USB3.0 Female Adapter, Black" loading="lazy">
-        <figcaption><b>Toocki Type-C Male to USB3.0 Female Adapter, Black</b><span class="sku">TZJTAC-XY01</span><span class="notes">USB-C to USB 0 adapter · data + charge</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTAC-XY03.jpg" alt="Toocki Type-C Male to USB3.0 Female Adapter, Blue" loading="lazy">
-        <figcaption><b>Toocki Type-C Male to USB3.0 Female Adapter, Blue</b><span class="sku">TZJTAC-XY03</span><span class="notes">USB-C to USB 0 adapter · data + charge</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTCA-XY01.jpg" alt="Toocki USB2.0 Male to Type-C Female Adapter, Black" loading="lazy">
-        <figcaption><b>Toocki USB2.0 Male to Type-C Female Adapter, Black</b><span class="sku">TZJTCA-XY01</span><span class="notes">USB 2.0 · Aluminum alloy · black</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTCA-XY03.jpg" alt="Toocki USB2.0 Male to Type-C Female Adapter, Blue" loading="lazy">
-        <figcaption><b>Toocki USB2.0 Male to Type-C Female Adapter, Blue</b><span class="sku">TZJTCA-XY03</span><span class="notes">USB 2.0 · Aluminum alloy · blue</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTCA-XY05.jpg" alt="Toocki USB2.0 Male to Type-C Female Adapter, Purple" loading="lazy">
-        <figcaption><b>Toocki USB2.0 Male to Type-C Female Adapter, Purple</b><span class="sku">TZJTCA-XY05</span><span class="notes">USB 2.0 · Aluminum alloy · purple</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
+        <img src="mikoshi-img/toocki/TZJTAC-SW05.jpg" alt="Toocki Type-C USB3.0Adapter Purple" loading="lazy">
+        <figcaption><b>Toocki Type-C USB3.0Adapter Purple</b><span class="sku">TZJTAC-SW05</span><span class="notes">Aluminum alloy · 5Gbps · 3A · purple</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/TZJTMC-XY05.jpg" alt="Toocki Xiao Yi Type-C Male to Micro Female Adapter, Purple" loading="lazy">
@@ -163,303 +243,13 @@
       </figure>
   </div>
 </section>
-<section class="sec" id="s1">
-  <div class="sec-head"><h2>AV, RCA and audio adapters</h2><span class="n">56 lines</span></div>
-  <p class="sec-desc">3.5mm, RCA, AUX lines.</p>
-  <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130019.jpg" alt="Toocki Car Bluetooth AUX Adapter" loading="lazy">
-        <figcaption><b>Toocki Car Bluetooth AUX Adapter</b><span class="sku">40130019</span><span class="notes">Bluetooth 6.0 · car · AUX audio</span><span class="g-price">Wholesale $10.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDB0G.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDB0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDB0G</b><span class="sku">TYPX4-MDB0G</span><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDA0G.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDA0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDA0G</b><span class="sku">TYPX4-MDA0G</span><span class="notes">3.5mm · AUX audio · AV cable</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDC0G.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDC0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDC0G</b><span class="sku">TYPX4-MDC0G</span><span class="notes">3.5mm · AUX audio · AV cable</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MD0G.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MD0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MD0G</b><span class="sku">TYPX4-MD0G</span><span class="notes">3.5mm · AUX audio · AV cable</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDD0G.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDD0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable — TYPX4-MDD0G</b><span class="sku">TYPX4-MDD0G</span><span class="notes">3.5mm · AUX audio · AV cable</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MY01.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable 1m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable 1m</b><span class="sku">TYPX4-MY01</span><span class="notes">3.5mm · CNC Aluminum Alloy + Military Braid · 1m · AUX audio</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MYA01.jpg" alt="Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable 2m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual RCA 3-Section AUX Audio Cable 2m</b><span class="sku">TYPX4-MYA01</span><span class="notes">3.5mm · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MYC01.jpg" alt="Toocki 3.5mm Male to Dual Female 3-Section AUX Audio Cable, 3m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual Female 3-Section AUX Audio Cable, 3m</b><span class="sku">TYPX4-MYC01</span><span class="notes">3.5mm · 3m · AUX audio</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MYD01.jpg" alt="Toocki 3.5mm Male to Dual Female 3-Section AUX Audio Cable, 5m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Dual Female 3-Section AUX Audio Cable, 5m</b><span class="sku">TYPX4-MYD01</span><span class="notes">3.5mm · 5m · AUX audio</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MD0G.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m</b><span class="sku">TYPX3-MD0G</span><span class="notes">3.5mm · 1m · AUX audio</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MY01.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m Black" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m Black</b><span class="sku">TYPX3-MY01</span><span class="notes">3.5mm · 1m · AUX audio · black</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MY03.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m Grey" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 1m Grey</b><span class="sku">TYPX3-MY03</span><span class="notes">3.5mm · 1m · AUX audio · grey</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 2m</b><span class="sku">TYPX3-MDA0G</span><span class="notes">3.5mm · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MYA01.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 2m Black" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 2m Black</b><span class="sku">TYPX3-MYA01</span><span class="notes">3.5mm · 2m · AUX audio · black</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MYA03.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 2m Grey" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 2m Grey</b><span class="sku">TYPX3-MYA03</span><span class="notes">3.5mm · 2m · AUX audio · grey</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MDC0G.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m</b><span class="sku">TYPX3-MDC0G</span><span class="notes">3.5mm · 3m · AUX audio</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MYC01.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m Black" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m Black</b><span class="sku">TYPX3-MYC01</span><span class="notes">3.5mm · 3m · AUX audio · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MYC03.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m Grey" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 3m Grey</b><span class="sku">TYPX3-MYC03</span><span class="notes">3.5mm · 3m · AUX audio · grey</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MDD0G.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 5m" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 5m</b><span class="sku">TYPX3-MDD0G</span><span class="notes">3.5mm · 5m · AUX audio</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX3-MYD01.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 5m Black" loading="lazy">
-        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 5m Black</b><span class="sku">TYPX3-MYD01</span><span class="notes">3.5mm · 5m · AUX audio · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDB0G.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 0.5 meters" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 0.5 meters</b><span class="sku">TYPX1-MDB0G</span><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MD03.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 1 meter — TYPX1-MD03" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 1 meter — TYPX1-MD03</b><span class="sku">TYPX1-MD03</span><span class="notes">3.5mm · Aluminum alloy + Braided wire · 1m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MD0G.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 1 meter — TYPX1-MD0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 1 meter — TYPX1-MD0G</b><span class="sku">TYPX1-MD0G</span><span class="notes">3.5mm · 1m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDA0G.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 2 meters" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 2 meters</b><span class="sku">TYPX1-MDA0G</span><span class="notes">3.5mm · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/40180017.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 3 meters — 40180017" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 3 meters — 40180017</b><span class="sku">40180017</span><span class="notes">3.5mm · ABS + PC Bluetooth · 3m · Bluetooth 5.2 · AUX audio</span><span class="g-price">Wholesale $33.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDC0G.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 3 meters — TYPX1-MDC0G" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 3 meters — TYPX1-MDC0G</b><span class="sku">TYPX1-MDC0G</span><span class="notes">3.5mm · 3m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDD0G.jpg" alt="Toocki 3.5mm male to male 3-segment AUX audio cable 5 meters" loading="lazy">
-        <figcaption><b>Toocki 3.5mm male to male 3-segment AUX audio cable 5 meters</b><span class="sku">TYPX1-MDD0G</span><span class="notes">3.5mm · 5m · AUX audio</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TBT01-YX0G.jpg" alt="Toocki AUX Car Bluetooth Audio Adapter Gun Gray" loading="lazy">
-        <figcaption><b>Toocki AUX Car Bluetooth Audio Adapter Gun Gray</b><span class="sku">TBT01-YX0G</span><span class="notes">Aluminum alloy + TPU Cable · car · AUX audio · gray</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10180003.jpg" alt="Toocki Lightning to 3.5mm female audio adapter cable 1 meter black" loading="lazy">
-        <figcaption><b>Toocki Lightning to 3.5mm female audio adapter cable 1 meter black</b><span class="sku">10180003</span><span class="notes">3.5mm · Alluminum Alloy · 1m</span><span class="g-price">Wholesale $3.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MY01.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 1m, — TYPX2-MY01" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 1m, — TYPX2-MY01</b><span class="sku">TYPX2-MY01</span><span class="notes">3.5mm · 1m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MY03.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 1m, — TYPX2-MY03" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 1m, — TYPX2-MY03</b><span class="sku">TYPX2-MY03</span><span class="notes">3.5mm · 1m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MYA01.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 2m, — TYPX2-MYA01" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 2m, — TYPX2-MYA01</b><span class="sku">TYPX2-MYA01</span><span class="notes">3.5mm · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MYA03.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 2m, — TYPX2-MYA03" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 2m, — TYPX2-MYA03</b><span class="sku">TYPX2-MYA03</span><span class="notes">3.5mm · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MYC03.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 3m, — TYPX2-MYC03" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 3m, — TYPX2-MYC03</b><span class="sku">TYPX2-MYC03</span><span class="notes">3.5mm · 3m · AUX audio</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MYC01.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 3m, — TYPX2-MYC01" loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 3m, — TYPX2-MYC01</b><span class="sku">TYPX2-MYC01</span><span class="notes">3.5mm · 3m · AUX audio</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MYD01.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 5m," loading="lazy">
-        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 5m,</b><span class="sku">TYPX2-MYD01</span><span class="notes">3.5mm · 5m · AUX audio</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10180001.jpg" alt="Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black" loading="lazy">
-        <figcaption><b>Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black</b><span class="sku">10180001</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m · black</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10180002.jpg" alt="Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black" loading="lazy">
-        <figcaption><b>Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black</b><span class="sku">10180002</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MD03.jpg" alt="Toocki male to dual RCA 3-section AUX audio cable 1 meter blue" loading="lazy">
-        <figcaption><b>Toocki male to dual RCA 3-section AUX audio cable 1 meter blue</b><span class="sku">TYPX4-MD03</span><span class="notes">RCA · 1m · AUX audio</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDA03.jpg" alt="Toocki male to dual RCA 3-section AUX audio cable 2 meters blue" loading="lazy">
-        <figcaption><b>Toocki male to dual RCA 3-section AUX audio cable 2 meters blue</b><span class="sku">TYPX4-MDA03</span><span class="notes">RCA · 2m · AUX audio</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX4-MDC03.jpg" alt="Toocki male to dual RCA 3-section AUX audio cable 3 meters blue" loading="lazy">
-        <figcaption><b>Toocki male to dual RCA 3-section AUX audio cable 3 meters blue</b><span class="sku">TYPX4-MDC03</span><span class="notes">RCA · 3m · AUX audio</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MD03.jpg" alt="Toocki male to female 3-segment AUX audio cable, 1 meter, blue" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 1 meter, blue</b><span class="sku">TYPX2-MD03</span><span class="notes">1m · AUX audio · AV cable · 1m</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MD0G.jpg" alt="Toocki male to female 3-segment AUX audio cable, 1 meter, grey" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 1 meter, grey</b><span class="sku">TYPX2-MD0G</span><span class="notes">1m · AUX audio · AV cable · 1m</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MDA03.jpg" alt="Toocki male to female 3-segment AUX audio cable, 2 meters, blue" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 2 meters, blue</b><span class="sku">TYPX2-MDA03</span><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MDA0G.jpg" alt="Toocki male to female 3-segment AUX audio cable, 2 meters, grey" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 2 meters, grey</b><span class="sku">TYPX2-MDA0G</span><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MDC03.jpg" alt="Toocki male to female 3-segment AUX audio cable, 3 meters, blue" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 3 meters, blue</b><span class="sku">TYPX2-MDC03</span><span class="notes">3m · AUX audio · AV cable · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MDC0G.jpg" alt="Toocki male to female 3-segment AUX audio cable, 3 meters, grey" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 3 meters, grey</b><span class="sku">TYPX2-MDC0G</span><span class="notes">3m · AUX audio · AV cable · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX2-MDD0G.jpg" alt="Toocki male to female 3-segment AUX audio cable, 5 meters, grey" loading="lazy">
-        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 5 meters, grey</b><span class="sku">TYPX2-MDD0G</span><span class="notes">5m · AUX audio · AV cable · 5m</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MYB01.jpg" alt="Toocki male to male 3-section AUX audio cable 0.5 meters black" loading="lazy">
-        <figcaption><b>Toocki male to male 3-section AUX audio cable 0.5 meters black</b><span class="sku">TYPX1-MYB01</span><span class="notes">0.5m · AUX audio · AV cable · 0.5m</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MY01.jpg" alt="Toocki male to male 3-section AUX audio cable 1 meter black" loading="lazy">
-        <figcaption><b>Toocki male to male 3-section AUX audio cable 1 meter black</b><span class="sku">TYPX1-MY01</span><span class="notes">1m · AUX audio · AV cable · 1m</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <div class='ph'><b>ARRIVING</b><span>photo pending</span></div>
-        <figcaption><b>Toocki male to male 3-section AUX audio cable 2 meters black</b><span class="sku">TYPX1-MYA01</span><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MYC01.jpg" alt="Toocki male to male 3-section AUX audio cable 3 meters black" loading="lazy">
-        <figcaption><b>Toocki male to male 3-section AUX audio cable 3 meters black</b><span class="sku">TYPX1-MYC01</span><span class="notes">3m · AUX audio · AV cable · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MYD01.jpg" alt="Toocki male to male 3-section AUX audio cable 5 meters black" loading="lazy">
-        <figcaption><b>Toocki male to male 3-section AUX audio cable 5 meters black</b><span class="sku">TYPX1-MYD01</span><span class="notes">5m · AUX audio · AV cable · 5m</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDA03.jpg" alt="Toocki male to male 3-segment AUX audio cable, 2 meters, blue" loading="lazy">
-        <figcaption><b>Toocki male to male 3-segment AUX audio cable, 2 meters, blue</b><span class="sku">TYPX1-MDA03</span><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TYPX1-MDC03.jpg" alt="Toocki male to male 3-segment AUX audio cable, 3 meters, blue" loading="lazy">
-        <figcaption><b>Toocki male to male 3-segment AUX audio cable, 3 meters, blue</b><span class="sku">TYPX1-MDC03</span><span class="notes">3m · AUX audio · AV cable · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-  </div>
-</section>
-<section class="sec" id="s2">
-  <div class="sec-head"><h2>HDMI</h2><span class="n">4 lines</span></div>
-  <p class="sec-desc">8K and 4K video lines.</p>
-  <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TXCHH4-TBB0G.jpg" alt="Toocki HDMI to HDMI 8K High Definition Cable 0.5m Grey" loading="lazy">
-        <figcaption><b>Toocki HDMI to HDMI 8K High Definition Cable 0.5m Grey</b><span class="sku">TXCHH4-TBB0G</span><span class="notes">HDMI · 0.5m · 8K · grey</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TXCHH4-TB0G.jpg" alt="Toocki HDMI to HDMI 8K High Definition Cable 1m Grey" loading="lazy">
-        <figcaption><b>Toocki HDMI to HDMI 8K High Definition Cable 1m Grey</b><span class="sku">TXCHH4-TB0G</span><span class="notes">HDMI · 1m · 8K · grey</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TXCHH4-TBA0G.jpg" alt="Toocki HDMI to HDMI 8K High Definition Cable 2m Grey" loading="lazy">
-        <figcaption><b>Toocki HDMI to HDMI 8K High Definition Cable 2m Grey</b><span class="sku">TXCHH4-TBA0G</span><span class="notes">HDMI · 2m · 8K · grey</span><span class="g-price">Wholesale $8.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TXCHH4-TBC0G.jpg" alt="Toocki HDMI to HDMI 8K High Definition Cable 3m Grey" loading="lazy">
-        <figcaption><b>Toocki HDMI to HDMI 8K High Definition Cable 3m Grey</b><span class="sku">TXCHH4-TBC0G</span><span class="notes">HDMI · 3m · 8K · grey</span><span class="g-price">Wholesale $11.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-  </div>
-</section>
-<section class="sec" id="s3">
-  <div class="sec-head"><h2>OTG and converters</h2><span class="n">6 lines</span></div>
-  <p class="sec-desc">Type-C and Lightning converters.</p>
-  <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10090013.jpg" alt="Neutral Xiao Bei Lightning Male to Type-C Female 20W Display Adapter Grey" loading="lazy">
-        <figcaption><b>Neutral Xiao Bei Lightning Male to Type-C Female 20W Display Adapter Grey</b><span class="sku">10090013</span><span class="notes">20W · Aluminum alloy · 480Mbps · display · grey</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/20300002.jpg" alt="Toocki RJ45 100Mbps Network Card Type-C Black" loading="lazy">
-        <figcaption><b>Toocki RJ45 100Mbps Network Card Type-C Black</b><span class="sku">20300002</span><span class="notes">RJ45 · ABS · Ethernet · black</span><span class="g-price">Wholesale $6.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTAC-XY05.jpg" alt="Toocki Type-C Male to USB3.0 Female Adapter, Purple" loading="lazy">
-        <figcaption><b>Toocki Type-C Male to USB3.0 Female Adapter, Purple</b><span class="sku">TZJTAC-XY05</span><span class="notes">Aluminum alloy · purple</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTCC-XB010.jpg" alt="Toocki Type-C Type-C 100WDigital Display Adapter" loading="lazy">
-        <figcaption><b>Toocki Type-C Type-C 100WDigital Display Adapter</b><span class="sku">TZJTCC-XB010</span><span class="notes">Aluminum alloy · 480Mbps · display</span><span class="g-price">Wholesale $3.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTLC-XB010.jpg" alt="Toocki Lightning Type-C 20WDigital Display Adapter" loading="lazy">
-        <figcaption><b>Toocki Lightning Type-C 20WDigital Display Adapter</b><span class="sku">TZJTLC-XB010</span><span class="notes">Aluminum alloy · 480Mbps · display</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTAC-SW05.jpg" alt="Toocki Type-C USB3.0Adapter Purple" loading="lazy">
-        <figcaption><b>Toocki Type-C USB3.0Adapter Purple</b><span class="sku">TZJTAC-SW05</span><span class="notes">Aluminum alloy · 5Gbps · 3A · purple</span><span class="g-price">Wholesale $2.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-  </div>
-</section>
 <section class="sec" id="s4">
-  <div class="sec-head"><h2>Network cards</h2><span class="n">10 lines</span></div>
+  <div class="sec-head"><h2>Network cards</h2><span class="n">10 lines · 8 cards</span></div>
   <p class="sec-desc">Wi-Fi and Ethernet adapters.</p>
   <div class="grid">
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/20300001.jpg" alt="Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 20300001" loading="lazy">
-        <figcaption><b>Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 20300001</b><span class="sku">20300001</span><span class="notes">ABS · wireless · driverless · black</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10110002.jpg" alt="Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 10110002" loading="lazy">
-        <figcaption><b>Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 10110002</b><span class="sku">10110002</span><span class="notes">240W · Zinc Alloy · wireless · driverless · black</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/10110003.jpg" alt="Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 10110003" loading="lazy">
-        <figcaption><b>Toocki Dual Band Bluetooth Driverless Wireless Network Card Black — 10110003</b><span class="sku">10110003</span><span class="notes">30W · Zinc Alloy · wireless · driverless · black</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/20300001.jpg" alt="Toocki Dual Band Bluetooth Driverless Wireless Network Card" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki Dual Band Bluetooth Driverless Wireless Network Card</b><span class="notes">ABS · wireless · driverless · black</span><span class="g-price">Wholesale $4.50–9.50 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki Dual Band Bluetooth Driverless Wireless Net</span><span class="v-s">10110002</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Dual Band Bluetooth Driverless Wireless Net</span><span class="v-s">10110003</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Dual Band Bluetooth Driverless Wireless Net</span><span class="v-s">20300001</span><span class="v-p">—</span></li></ul></details></figcaption>
       </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/40300004.jpg" alt="Toocki Dual Driverless Wireless Network Card Wi Fi6 1300Mbps" loading="lazy">
@@ -492,36 +282,28 @@
   </div>
 </section>
 <section class="sec" id="s5">
-  <div class="sec-head"><h2>Everything else</h2><span class="n">6 lines</span></div>
+  <div class="sec-head"><h2>Everything else</h2><span class="n">6 lines · 4 cards</span></div>
   <p class="sec-desc">The rest of the range — ask for a quote on any line.</p>
   <div class="grid">
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/40130017.jpg" alt="Toocki Usb Bluetooth 5.3 Adapter" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki Usb Bluetooth 5.3 Adapter</b><span class="notes">Aluminum Alloy · black</span><span class="g-price">Wholesale $9.00–30.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki USB Bluetooth 5.3 Adapter, Black — 40130017</span><span class="v-s">40130017</span><span class="v-p">—</span></li><li><span class="v-n">Toocki USB Bluetooth 5.3 Adapter, Black — TBT03-YD</span><span class="v-s">TBT03-YDA01</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam">
+        <img src="mikoshi-img/toocki/TZJTTL-XB0G.jpg" alt="Toocki Digital Display Adapter C L 60W" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki Digital Display Adapter C L 60W</b><span class="notes">60W · Aluminum alloy · 480Mbps · display · grey</span><span class="vline">Grey, Blue</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">Toocki Digital Display Adapter C L 60W Blue</span><span class="v-s">TZJTTL-XB03</span><span class="v-p">—</span></li><li><span class="v-n">Toocki Digital Display Adapter C L 60W Grey</span><span class="v-s">TZJTTL-XB0G</span><span class="v-p">—</span></li></ul></details></figcaption>
+      </figure>
       <figure class="g-item">
         <img src="mikoshi-img/toocki/10180004.jpg" alt="Toocki BT06 Bluetooth Audio Transmitter Receiver" loading="lazy">
         <figcaption><b>Toocki BT06 Bluetooth Audio Transmitter Receiver</b><span class="sku">10180004</span><span class="notes">Alluminum Alloy · adapter</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
       <figure class="g-item">
-        <img src="mikoshi-img/toocki/40130017.jpg" alt="Toocki USB Bluetooth 5.3 Adapter, Black — 40130017" loading="lazy">
-        <figcaption><b>Toocki USB Bluetooth 5.3 Adapter, Black — 40130017</b><span class="sku">40130017</span><span class="notes">Aluminum Alloy · black</span><span class="g-price">Wholesale $30.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TBT03-YDA01.jpg" alt="Toocki USB Bluetooth 5.3 Adapter, Black — TBT03-YDA01" loading="lazy">
-        <figcaption><b>Toocki USB Bluetooth 5.3 Adapter, Black — TBT03-YDA01</b><span class="sku">TBT03-YDA01</span><span class="notes">Bluetooth · black · adapter</span><span class="g-price">Wholesale $9.00 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
         <img src="mikoshi-img/toocki/80100003.jpg" alt="Toocki Xin Ling C-C 60W Spring Data Line 1.5m Grey 2 Pack" loading="lazy">
         <figcaption><b>Toocki Xin Ling C-C 60W Spring Data Line 1.5m Grey 2 Pack</b><span class="sku">80100003</span><span class="notes">60W · USB-C to USB-C · 1.5m · spring coil · grey</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
       </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTTL-XB0G.jpg" alt="Toocki Digital Display Adapter C L 60W Grey" loading="lazy">
-        <figcaption><b>Toocki Digital Display Adapter C L 60W Grey</b><span class="sku">TZJTTL-XB0G</span><span class="notes">60W · Aluminum alloy · 480Mbps · display · grey</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
-      <figure class="g-item">
-        <img src="mikoshi-img/toocki/TZJTTL-XB03.jpg" alt="Toocki Digital Display Adapter C L 60W Blue" loading="lazy">
-        <figcaption><b>Toocki Digital Display Adapter C L 60W Blue</b><span class="sku">TZJTTL-XB03</span><span class="notes">60W · Aluminum alloy · 480Mbps · display · blue</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
-      </figure>
   </div>
 </section>
-<div class="wrap"><p class="count-note">100 lines on this page · 98 shown with photography · USD pricing converted at delivery; landed cost varies with freight — ask for a quote on any line.</p></div>
+<div class="wrap"><p class="count-note">100 lines on this page · 98 shown with photography · fold any multi-SKU card to see every variant and price · ask for a quote on any line.</p></div>
 <footer><div class="wrap fg">
   <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
   <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>
