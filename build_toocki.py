@@ -61,6 +61,8 @@ CSS = """<style>
   .badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;}
   .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
   .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .badge.cur{background:#0e2a33;color:#35e0ff;border:1px solid #1d4d5c;}
+  .g-item.cur{border-color:#1d4d5c;}
   .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
   .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   footer{border-top:1px solid var(--line);padding:40px 0 56px;}
@@ -93,10 +95,36 @@ FOOT = """<footer>
   </div>
 </footer>"""
 
+
+# ---------- curated (hand-built) products: appear first, link to their detail pages ----------
+CURATED = json.load(open(HERE / "curated_products.json", encoding="utf-8"))
+CURATED_IMG = {
+ "ins-style":"mikoshi-img/detail/ins-style/img-01.jpg","candy-double-mag":"mikoshi-img/detail/candy-double-mag/img-06.jpg",
+ "ultra-thin-contrast":"mikoshi-img/detail/ultra-thin-contrast/img-02.jpg","slim-heat":"mikoshi-img/detail/slim-heat/img-02.jpg",
+ "charming-eye":"mikoshi-img/detail/charming-eye/img-06.jpg","shockproof-matte-luxury":"mikoshi-img/detail/shockproof-matte-luxury/img-01.jpg",
+ "xframe-aluminum":"mikoshi-img/detail/xframe-aluminum/img-01.jpg","ringstand-magnetic":"mikoshi-img/detail/ringstand-magnetic/img-01.jpg",
+ "alloy-bumper-luxe":"mikoshi-img/detail/alloy-bumper-luxe/img-01.jpg",
+ "2in1-wireless":"mikoshi-img/detail/2in1-wireless/img-01.jpg","240w-display":"mikoshi-img/detail/240w-display/img-01.jpg",
+ "240w-elbow":"mikoshi-img/detail/240w-elbow/img-01.jpg","240w-straight":"mikoshi-img/detail/240w-straight/img-01.jpg",
+ "100w-realcore":"mikoshi-img/detail/100w-realcore/img-01.jpg","spring-cable":"mikoshi-img/detail/spring-cable/img-01.jpg",
+ "3in1":"mikoshi-img/detail/3in1/img-01.jpg","a2c-braided":"mikoshi-img/detail/a2c-braided/img-01.jpg",
+ "otg-adapter":"mikoshi-img/detail/otg-adapter/img-01.jpg","arc-lighter":"mikoshi-img/detail/arc-lighter/img-01.jpg",
+}
+def curated_card(p):
+    img = CURATED_IMG.get(p["slug"])
+    inner = (f'<img src="{img}" alt="{esc(p["name"])}" loading="lazy">' if img
+             else "<div class='ph'><b>ARRIVING</b><span>with shipment</span></div>")
+    media = f'<a href="product.html?id={p["slug"]}">{inner}</a>'
+    return (f'      <figure class="g-item cur" data-product="{p["slug"]}">\n        {media}\n'
+            f'        <figcaption><span class="badge cur">in stock</span><b>{esc(p["name"])}</b>'
+            f'<span class="sku">view details \u2192</span>'
+            f'<span class="notes">{esc(p["notes"])[:130]}</span>'
+            f'<span class="g-price">{esc(p["price"])}</span></figcaption>\n      </figure>')
+
 def card(p):
     name = esc(p["name"])
     sku = esc(p["sku"])
-    notes = esc(p.get("feat") or "")
+    notes = esc(p.get("feat_clean") or p.get("feat") or "")
     notes = re.sub(r"^\d+\.\s*", "", notes)[:150]
     price = esc(p["price_line"])
     if p.get("img"):
@@ -112,7 +140,8 @@ def card(p):
 
 def page(key, title, hero_note, lede):
     items = GROUPS.get(key, [])
-    figures = "\n".join(card(p) for p in items)
+    cur = [p for p in CURATED.values() if p.get("page") == key]
+    figures = "\n".join([curated_card(p) for p in cur] + [card(p) for p in items])
     withimg = sum(1 for p in items if p.get("img"))
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -138,7 +167,7 @@ def page(key, title, hero_note, lede):
     <div class="gallery-grid">
 {figures}
     </div>
-    <p class="count-note">{len(items)} lines in this category \u00b7 {withimg} shown with photography \u00b7 USD pricing converted at delivery; landed cost varies with freight \u2014 ask for a quote on any line.</p>
+    <p class="count-note">{len(items) + len(cur)} lines in this category \u00b7 {withimg + len(cur)} shown with photography \u00b7 USD pricing converted at delivery; landed cost varies with freight \u2014 ask for a quote on any line.</p>
   </div>
 </section>
 {FOOT}
