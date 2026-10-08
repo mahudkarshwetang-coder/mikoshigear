@@ -3,7 +3,7 @@
 Generates all 6 category pages from SITE_GROUPS2.json + curated_products.json.
 Run from repo root: python3 build_toocki_tandem.py
 """
-import json, re, html
+import json, re, html, os
 from pathlib import Path
 from collections import defaultdict
 
@@ -11,6 +11,42 @@ HERE = Path(__file__).parent
 IMG = "mikoshi-img/toocki/"
 GROUPS = json.load(open(HERE / "SITE_GROUPS2.json", encoding="utf-8"))
 CURATED = json.load(open(HERE / "curated_products.json", encoding="utf-8"))
+
+# ── Catalog Studio admin data (optional; absent/empty = pure legacy behaviour) ──
+# catalog_admin.json lives in the repo root and is applied AT RUNTIME on the
+# live site by catalog-admin.js (no rebuild needed for order/cover/gallery edits):
+#   {
+#     "v": <epoch ms>,
+#     "order":  { "<page>": { "<sectionId>": ["<cid>", ...] } },  # card order per page+section
+#     "covers": { "<cid>": "<img path or http url>" },            # card cover override
+#     "images": { "<pid>": ["<url>", ...] },                      # detail gallery override
+#   }
+# cid (figure data-cid) = curated slug | single SKU | "fam:<family_key>".
+# The builder only guarantees the hooks (data-cid attrs + script tags + catalog.js);
+# the local Catalog Studio (studio/) writes the JSON and publishes it.
+def _load_admin():
+    p = HERE / "catalog_admin.json"
+    if not p.exists():
+        return {}
+    try:
+        d = json.loads(p.read_text(encoding="utf-8"))
+        return d if isinstance(d, dict) else {}
+    except Exception as e:
+        print("catalog_admin.json unreadable, ignoring:", e)
+        return {}
+
+ADMIN = _load_admin()
+
+def _order_cards(cards, keylist):
+    """Reorder card dicts per keylist; unlisted cards keep relative order after listed ones."""
+    if not keylist:
+        return cards
+    idx = {k: i for i, k in enumerate(keylist)}
+    listed = [c for c in cards if c["_key"] in idx]
+    rest = [c for c in cards if c["_key"] not in idx]
+    listed.sort(key=lambda c: idx[c["_key"]])
+    return listed + rest
+
 CURATED_IMG = {
  "2in1-wireless":"mikoshi-img/detail/2in1-wireless/img-01.jpg","240w-display":"mikoshi-img/detail/240w-display/img-01.jpg",
  "240w-elbow":"mikoshi-img/detail/240w-elbow/img-01.jpg","240w-straight":"mikoshi-img/detail/240w-straight/img-01.jpg",
@@ -231,13 +267,20 @@ def fold(items):
     return singles, folds
 
 # ───────── markup ─────────
+def _cover(cid, default):
+    """Admin cover override (catalog_admin.json covers) or the default media src."""
+    c = (ADMIN.get("covers") or {}).get(cid)
+    return c or default
+
 def card_single(p):
     name, sku = esc(p["name"]), esc(p["sku"])
     notes = esc(trim_note(p.get("feat_clean") or p.get("feat") or ""))
-    media = (f'<img src="{IMG}{esc(p["img"])}" alt="{name}" loading="lazy">' if p.get("img")
+    img = _cover(sku, (IMG + esc(p["img"])) if p.get("img") else None)
+    inner = (f'<img src="{img}" alt="{name}" loading="lazy">' if img
              else "<div class='ph'><b>ARRIVING</b><span>photo pending</span></div>")
+    media = f'<a href="product.html?id={esc(sku)}">{inner}</a>'
     badges = '<span class="badge neutral">unbranded</span>' if p.get("neutral") else ""
-    return (f'      <figure class="g-item">\n        {media}\n        <figcaption>{badges}<b>{name}</b>'
+    return (f'      <figure class="g-item" data-cid="{esc(sku)}">\n        {media}\n        <figcaption>{badges}<b>{name}</b>'
             f'<span class="sku">{sku}</span><span class="notes">{notes}</span>'
             f'<span class="g-price">{esc(p["price_line"])}</span></figcaption>\n      </figure>')
 
@@ -257,17 +300,18 @@ def card_family(key, v):
               else f"Wholesale ${lo:.2f}\u2013{hi:.2f} \u00b7 MOQ 20 \u2014 samples available")
     else:
         pr = "Ask for a quote"
-    media = (f'<img src="{IMG}{esc(rep["img"])}" alt="{name}" loading="lazy">' if rep.get("img")
+    img = _cover("fam:" + str(key), (IMG + esc(rep["img"])) if rep.get("img") else None)
+    media = (f'<img src="{img}" alt="{name}" loading="lazy">' if img
              else "<div class='ph'><b>ARRIVING</b><span>photo pending</span></div>")
     def _price(p):
         mm = re.search(r"\$[\d.]+", p["price_line"])
         return mm.group(0) if mm else "\u2014"
     rows = "".join(
-        f'<li><span class="v-n">{esc(re.sub(r"^Toocki\s+","",p["name"]))[:50]}</span>'
+        f'<li><a class="v-n" href="product.html?id={esc(p["sku"])}">{esc(re.sub(r"^Toocki\s+","",p["name"]))[:50]}</a>'
         f'<span class="v-s">{esc(p["sku"])}</span>'
         f'<span class="v-p">{esc(_price(p))}</span></li>'
         for p in sorted(skus, key=lambda x: x["name"]))
-    return (f'      <figure class="g-item fam">\n        {media}\n'
+    return (f'      <figure class="g-item fam" data-cid="fam:{esc(key)}">\n        {media}\n'
         f'        <figcaption><span class="badge fam">{len(skus)} variants</span><b>{name}</b>'
         f'<span class="notes">{notes}</span>'
         + (f'<span class="vline">{esc(vline)}</span>' if vline else "")
@@ -276,12 +320,12 @@ def card_family(key, v):
         f'</figcaption>\n      </figure>')
 
 def curated_card(p):
-    img = CURATED_IMG.get(p["slug"])
+    img = _cover(p["slug"], CURATED_IMG.get(p["slug"]))
     inner = (f'<img src="{img}" alt="{esc(p["name"])}" loading="lazy">' if img
              else "<div class='ph'><b>ARRIVING</b><span>with shipment</span></div>")
     media = f'<a href="product.html?id={p["slug"]}">{inner}</a>'
     badge = ('<span class="badge cur">in stock</span>' if img else '<span class="badge desc">arriving</span>')
-    return (f'      <figure class="g-item cur" data-product="{p["slug"]}">\n        {media}\n'
+    return (f'      <figure class="g-item cur" data-product="{p["slug"]}" data-cid="{p["slug"]}">\n        {media}\n'
         f'        <figcaption>{badge}<b>{esc(p["name"])}</b>'
         f'<span class="sku">view details \u2192</span>'
         f'<span class="notes">{esc(trim_note(p["notes"]))}</span>'
@@ -410,7 +454,7 @@ for key, (title, lede) in PAGES.items():
                  else f'{len(s["i"])} lines \u00b7 {ncards} cards')
         jump += f'<a href="#s{i}">{esc(s["t"])}<b>{len(s["i"])}</b></a>'
         cards = [card_family(k, v) for k, v in folds] + [card_single(p) for p in singles]
-        body.append(f'<section class="sec" id="s{i}"{" style=\"border-top:0\"" if not cur and i==0 else ""}>\n'
+        body.append(f'<section class="sec" id="s{i}" data-page="{key}"{" style=\"border-top:0\"" if not cur and i==0 else ""}>\n'
             f'  <div class="sec-head"><h2>{esc(s["t"])}</h2><span class="n">{count}</span></div>\n'
             f'  <p class="sec-desc">{esc(s["d"])}</p>\n'
             '  <div class="grid">\n' + "\n".join(cards) + '\n  </div>\n</section>')
@@ -437,10 +481,53 @@ for key, (title, lede) in PAGES.items():
 {chr(10).join(body)}
 <div class="wrap"><p class="count-note">{tot_lines + len(cur)} lines on this page \u00b7 {withimg} shown with photography \u00b7 fold any multi-SKU card to see every variant and price \u00b7 ask for a quote on any line.</p></div>
 {FOOT}
+<script src="catalog-admin.js"></script>
 </body>
 </html>"""
     (HERE / f"{key}.html").write_text(doc, encoding="utf-8")
     SUMMARY.append((key, tot_lines + len(cur), tot_cards + len(cur), len(secs) + (1 if cur else 0)))
+
+# ── catalog.js — the full line registry that powers detail pages + the Studio ──
+# One object per marketable line: curated slugs, single-SKU cards, and every
+# variant inside a folded family card. Keyed by pid (slug or SKU).
+def _catalog_js():
+    cat = {}
+    for p in CURATED.values():
+        slug = p["slug"]
+        img = CURATED_IMG.get(slug)
+        imgs = [img] if img else []
+        cat[slug] = {"pid": slug, "name": p["name"], "notes": trim_note(p.get("notes") or ""),
+                     "price": p["price"], "page": p.get("page") or "cases", "kind": "cur",
+                     "sku": slug, "imgs": imgs}
+    for key, items in GROUPS.items():
+        for p in items:
+            imgs = [(IMG + p["img"])] if p.get("img") else []
+            cat[p["sku"]] = {"pid": p["sku"], "name": p["name"],
+                             "notes": trim_note(p.get("feat_clean") or p.get("feat") or ""),
+                             "price": p["price_line"], "page": key, "kind": "single",
+                             "sku": p["sku"], "imgs": imgs}
+    # folded-family membership: every variant pid -> family key (for detail pages)
+    fams = {}
+    for key, items in GROUPS.items():
+        fams.setdefault(str(key), {})
+        by_fam = defaultdict(list)
+        for p in items:
+            by_fam[family_key(p["name"])].append(p)
+        for fk, v in by_fam.items():
+            if len(v) > 1:
+                rep = next((q for q in v if q.get("img")), v[0])
+                for q in v:
+                    if q["sku"] in cat:
+                        cat[q["sku"]]["fam"] = fk
+                        cat[q["sku"]]["fam_name"] = pretty(fk)
+                        cat[q["sku"]]["fam_rep"] = rep["sku"]
+    out = "/* generated by build_toocki_tandem.py — full catalog registry */\n"
+    out += "window.MIKOSHI_CATALOG = " + json.dumps(cat, ensure_ascii=False, separators=(",", ":"), sort_keys=True) + ";\n"
+    (HERE / "catalog.js").write_text(out, encoding="utf-8")
+    return len(cat)
+
+N_CAT = _catalog_js()
+print("catalog.js lines:", N_CAT)
 
 print(f"{'page':10s} {'lines':>6s} {'cards':>6s} {'cut':>6s} {'sections':>9s}")
 print("-" * 46)

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi — Catalog Studio</title>
+<style>
+  :root{
+    --bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;
+    --line:#232830;--accent:#35e0ff;--amber:#d9b45a;--green:#5ddc9a;--red:#ff6b6b;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --sans:"Space Grotesk",-apple-system,"Segoe UI",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .bar{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;height:56px;}
+  .brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;}
+  .brand b{color:var(--accent);font-weight:500;}
+  .tabs{display:flex;gap:6px;margin-left:12px;}
+  .tab{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid transparent;border-radius:4px;padding:7px 14px;cursor:pointer;}
+  .tab:hover{color:var(--ink);}
+  .tab.on{color:var(--accent);border-color:#1d4d5c;background:#0e2a33;}
+  .spacer{flex:1;}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border-radius:4px;padding:8px 14px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);}
+  .btn:hover{border-color:var(--muted);}
+  .btn.primary{background:#0e2a33;border-color:#1d4d5c;color:var(--accent);}
+  .btn.primary:hover{background:#123743;}
+  .btn.warn{border-color:#5c2b2b;color:var(--red);}
+  .btn:disabled{opacity:.45;cursor:default;}
+  main{max-width:1280px;margin:0 auto;padding:22px 24px 120px;}
+  .hint{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:16px;}
+  .grid-pages{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .pgbtn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:none;cursor:pointer;}
+  .pgbtn.on{color:var(--accent);border-color:#1d4d5c;background:#0e2a33;}
+  .sec{margin:26px 0 10px;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;}
+  .sec-head h2{font-size:19px;font-weight:600;}
+  .sec-head .n{font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;}
+  .card{border:1px solid var(--line);border-radius:5px;background:var(--surface);overflow:hidden;cursor:grab;position:relative;}
+  .card.drag{opacity:.35;}
+  .card.over{border-color:var(--accent);}
+  .card .thumb{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block;}
+  .card .ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:var(--surface2);color:var(--muted);font-family:var(--mono);font-size:11px;}
+  .card .meta{padding:8px 10px 10px;border-top:1px solid var(--line);}
+  .card .meta b{display:block;font-size:12px;font-weight:500;line-height:1.3;margin-bottom:3px;min-height:31px;}
+  .card .meta span{font-family:var(--mono);font-size:10px;color:#5a6270;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .card .kind{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:3px;}
+  .kind.cur{background:#0e2a33;color:var(--accent);}
+  .kind.fam{background:#2b1a33;color:#d78bff;}
+  .kind.single{background:#1a2f24;color:var(--green);}
+  .linebar{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
+  input[type=search],select{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:4px;padding:9px 12px;font-family:var(--mono);font-size:12px;}
+  input[type=search]{width:340px;}
+  .strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0;}
+  .slot{border:1px solid var(--line);border-radius:5px;background:var(--surface);overflow:hidden;cursor:grab;position:relative;}
+  .slot.drag{opacity:.35;}
+  .slot.over{border-color:var(--accent);}
+  .slot img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block;}
+  .slot .idx{position:absolute;top:6px;left:6px;font-family:var(--mono);font-size:10px;background:rgba(11,13,16,.85);border:1px solid var(--line);border-radius:3px;padding:2px 6px;color:var(--muted);}
+  .slot .idx.is-thumb{color:var(--accent);border-color:#1d4d5c;}
+  .slot .ops{display:flex;border-top:1px solid var(--line);}
+  .slot .ops button{flex:1;background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:10px;padding:7px 4px;cursor:pointer;}
+  .slot .ops button:hover{color:var(--ink);background:var(--surface2);}
+  .slot .ops button.del:hover{color:var(--red);}
+  .slot .nm{font-family:var(--mono);font-size:9.5px;color:#5a6270;padding:5px 7px;border-top:1px solid var(--line);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .panel{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:18px;margin-top:16px;}
+  .panel h3{font-size:15px;margin-bottom:10px;}
+  .status{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .status.ok{color:var(--green);}
+  .status.err{color:var(--red);}
+  pre.log{font-family:var(--mono);font-size:11px;color:var(--muted);background:#0d0f13;border:1px solid var(--line);border-radius:5px;padding:14px;white-space:pre-wrap;max-height:340px;overflow:auto;margin-top:12px;}
+  .pill{font-family:var(--mono);font-size:10px;color:var(--amber);border:1px solid #4d4127;border-radius:999px;padding:3px 9px;}
+  .empty{color:var(--muted);font-family:var(--mono);font-size:12px;padding:30px 0;}
+  .drop{border:1px dashed var(--muted);border-radius:6px;padding:18px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:11px;margin-top:12px;}
+  .drop.hot{border-color:var(--accent);color:var(--accent);}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:#0e2a33;border:1px solid #1d4d5c;color:var(--accent);font-family:var(--mono);font-size:12px;padding:11px 18px;border-radius:5px;transition:.25s;z-index:99;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  .rowinfo{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin:6px 0 4px;}
+  .rowinfo .t{font-size:17px;font-weight:600;}
+  .rowinfo .s{font-family:var(--mono);font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <span class="brand">MIKOSHI<b>▸</b>GEAR — Catalog Studio</span>
+    <div class="tabs">
+      <button class="tab on" data-tab="cards">Cards</button>
+      <button class="tab" data-tab="photos">Photos</button>
+      <button class="tab" data-tab="publish">Publish</button>
+    </div>
+    <div class="spacer"></div>
+    <span class="status" id="top-status"></span>
+  </div>
+</header>
+<main>
+  <!-- CARDS -->
+  <section id="view-cards">
+    <p class="hint">Drag any card to reorder it on its category page. Changes are staged locally — press Publish to go live.</p>
+    <div class="grid-pages" id="page-picker"></div>
+    <div id="cards-body"></div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section id="view-photos" style="display:none">
+    <p class="hint">Pick any of the 573 catalog lines. Drag photos to reorder, ★ sets the card & hero image, add new photos, delete uploads.</p>
+    <div class="linebar">
+      <input type="search" id="line-search" placeholder="Search name or SKU… (e.g. 240W, TK15, power bank)">
+      <select id="line-page">
+        <option value="">All pages</option>
+        <option>cables</option><option>chargers</option><option>cases</option>
+        <option>mounts</option><option>power</option><option>adapters</option>
+      </select>
+      <span class="status" id="line-count"></span>
+    </div>
+    <div class="strip" id="line-grid"></div>
+    <div id="photo-editor" style="display:none">
+      <div class="rowinfo"><span class="t" id="pe-name"></span><span class="s" id="pe-sub"></span></div>
+      <div class="strip" id="pe-strip"></div>
+      <div class="drop" id="pe-drop">Drop photos here (or click to choose) — JPEG/PNG/WebP, added to this line and published with the site.</div>
+      <input type="file" id="pe-file" accept="image/*" multiple style="display:none">
+      <div style="display:flex;gap:10px;margin-top:12px;">
+        <button class="btn primary" id="pe-save">Save this line's photos</button>
+        <button class="btn" id="pe-revert">Revert (reload saved)</button>
+        <span class="status" id="pe-status"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLISH -->
+  <section id="view-publish" style="display:none">
+    <div class="panel">
+      <h3>Publish</h3>
+      <p class="hint" style="margin-bottom:12px">Edits go live as a small data commit — the site applies them at load. Use “Rebuild + publish” whenever product data (SITE_GROUPS) or the builder changed.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn primary" id="pb-fast">Publish edits (fast)</button>
+        <button class="btn" id="pb-full">Rebuild + publish</button>
+        <button class="btn" id="pb-build">Preview build only</button>
+      </div>
+      <div style="margin-top:14px" class="status" id="pb-status"></div>
+      <pre class="log" id="pb-log">—</pre>
+    </div>
+    <div class="panel">
+      <h3>How this works</h3>
+      <p class="hint">The live site reads <b>catalog_admin.json</b> at page load and applies card order, covers and galleries. Publishing uploads that file plus any new photos — a ~10&nbsp;KB commit, live in about a minute, no page rebuild. Product renames/prices still live in <b>SITE_GROUPS.json</b> (the builder), which is what “Rebuild + publish” regenerates.</p>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2200); }
+function esc(s){ return String(s??"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c])); }
+async function api(path, opts){ const r = await fetch(path, opts); if(!r.ok) throw new Error(path+" → "+r.status); return r.json(); }
+
+let STATE = null;      // catalog
+let ADMIN = null;      // catalog_admin.json
+let curPage = "cables";
+let dragCtx = null;
+
+async function boot(){
+  STATE = await api("/api/catalog");
+  ADMIN = await api("/api/state");
+  $("top-status").textContent = Object.keys(STATE.lines||{}).length + " lines · " + Object.keys(STATE.pages||{}).length + " pages";
+  buildPagePicker();
+  renderCards();
+  renderLineGrid();
+}
+boot().catch(e => { $("top-status").textContent = "load failed: "+e.message; });
+
+/* ---------- tabs ---------- */
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on")); t.classList.add("on");
+  for(const v of ["cards","photos","publish"]) $("view-"+v).style.display = (v===t.dataset.tab)?"":"none";
+});
+
+/* ---------- CARDS ---------- */
+function buildPagePicker(){
+  const el = $("page-picker"); el.innerHTML="";
+  Object.keys(STATE.pages).forEach(p => {
+    const b=document.createElement("button"); b.className="pgbtn"+(p===curPage?" on":""); b.textContent=p;
+    b.onclick=()=>{ curPage=p; buildPagePicker(); renderCards(); };
+    el.appendChild(b);
+  });
+}
+function adminOrderFor(page, secId){
+  const o = (ADMIN.order||{})[page]||{}; return o[secId]||[];
+}
+function reorderCards(page, secId, orderedCids){
+  ADMIN.order = ADMIN.order||{}; ADMIN.order[page]=ADMIN.order[page]||{};
+  ADMIN.order[page][secId]=orderedCids;
+  $("top-status").textContent="staged — publish to go live";
+}
+function famRepFor(cid){
+  // cid is "fam:<key>"; catalog entries carry fam: "fam:<key>" too
+  const vals=Object.values(STATE.lines||{});
+  const rep=vals.find(l=>l.fam===cid&&l.pid===l.fam_rep) || vals.find(l=>l.fam===cid);
+  return rep||null;
+}
+function cardLine(c){  // resolve the line a card represents (for name/photo preview)
+  if(c.cid.startsWith("fam:")){
+    const rep=famRepFor(c.cid);
+    return rep? {name: rep.fam_name||rep.name, imgs: currentImages(rep.pid), pid: rep.pid} : null;
+  }
+  return STATE.lines[c.cid] || null;
+}
+function renderCards(){
+  const pg = STATE.pages[curPage]; const el=$("cards-body");
+  if(!pg){ el.innerHTML='<div class="empty">No built page for '+esc(curPage)+' yet.</div>'; return; }
+  el.innerHTML="";
+  pg.sections.forEach(sec => {
+    const order = adminOrderFor(curPage, sec.id);
+    let cards = sec.cards.slice();
+    if(order.length){
+      const idx={}; order.forEach((c,i)=>idx[c]=i);
+      cards.sort((a,b)=>{
+        const ia=(a.cid in idx)?idx[a.cid]:1e9, ib=(b.cid in idx)?idx[b.cid]:1e9;
+        return ia-ib;
+      });
+    }
+    const secEl=document.createElement("div"); secEl.className="sec";
+    secEl.innerHTML='<div class="sec-head"><h2>'+esc(sec.title)+'</h2><span class="n">'+cards.length+' cards</span></div>';
+    const grid=document.createElement("div"); grid.className="cards";
+    cards.forEach(c => {
+      const line = cardLine(c);
+      const img = (ADMIN.covers||{})[c.cid] ||
+                  (line && line.imgs && line.imgs[0]) || null;
+      const card=document.createElement("div"); card.className="card"; card.draggable=true; card.dataset.cid=c.cid;
+      card.innerHTML =
+        '<span class="kind '+c.kind+'">'+(c.kind==="cur"?"in stock":c.kind==="fam"?"family":"line")+'</span>'+
+        (img? '<img class="thumb" src="/site/'+esc(img)+'" loading="lazy">'
+            : '<div class="ph">no photo</div>')+
+        '<div class="meta"><b>'+esc((line&&line.name)||c.cid)+'</b><span>'+esc(c.cid)+'</span></div>';
+      card.addEventListener("dragstart",e=>{ dragCtx={type:"card",cid:c.cid}; card.classList.add("drag"); e.dataTransfer.effectAllowed="move"; });
+      card.addEventListener("dragend",()=>{ card.classList.remove("drag"); document.querySelectorAll(".card.over").forEach(x=>x.classList.remove("over")); });
+      card.addEventListener("dragover",e=>{ if(dragCtx&&dragCtx.type==="card"){ e.preventDefault(); card.classList.add("over"); }});
+      card.addEventListener("dragleave",()=>card.classList.remove("over"));
+      card.addEventListener("drop",e=>{
+        e.preventDefault(); card.classList.remove("over");
+        if(!dragCtx||dragCtx.type!=="card"||dragCtx.cid===c.cid) return;
+        const ids=cards.map(x=>x.cid);
+        const from=ids.indexOf(dragCtx.cid), to=ids.indexOf(c.cid);
+        ids.splice(to,0,ids.splice(from,1)[0]);
+        reorderCards(curPage, sec.id, ids);
+        dragCtx=null; renderCards();
+      });
+      grid.appendChild(card);
+    });
+    secEl.appendChild(grid); el.appendChild(secEl);
+  });
+}
+
+/* ---------- PHOTOS ---------- */
+function lineEntries(){
+  const q=$("line-search").value.trim().toLowerCase(), pg=$("line-page").value;
+  return Object.values(STATE.lines||{}).filter(l => {
+    if(pg && l.page!==pg) return false;
+    if(!q) return true;
+    return (l.name||"").toLowerCase().includes(q) || (l.pid||"").toLowerCase().includes(q);
+  }).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+}
+function currentImages(pid){
+  const ov=(ADMIN.images||{})[pid]; if(ov&&ov.length) return ov.slice();
+  const st=(STATE.images||{})[pid]; if(st&&st.length) return st.slice();
+  const l=(STATE.lines||{})[pid]; if(l&&l.imgs&&l.imgs.length) return l.imgs.slice();
+  return [];
+}
+function renderLineGrid(){
+  const el=$("line-grid"); const rows=lineEntries();
+  $("line-count").textContent=rows.length+" lines";
+  el.innerHTML="";
+  rows.slice(0,120).forEach(l=>{
+    const imgs=currentImages(l.pid);
+    const d=document.createElement("div"); d.className="slot"; d.style.cursor="pointer";
+    d.innerHTML=(imgs.length?'<img src="/site/'+esc(imgs[0])+'" loading="lazy">':'<div class="ph" style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--muted);background:var(--surface2);font-family:var(--mono);font-size:11px">no photo</div>')+
+      '<div class="nm">'+esc(l.name)+'</div>';
+    d.onclick=()=>openEditor(l.pid);
+    el.appendChild(d);
+  });
+  if(rows.length>120){
+    const m=document.createElement("div"); m.className="hint"; m.style.gridColumn="1/-1";
+    m.textContent="… "+(rows.length-120)+" more — narrow the search to see them.";
+    el.appendChild(m);
+  }
+}
+$("line-search").oninput=renderLineGrid;
+$("line-page").onchange=renderLineGrid;
+
+let pePid=null, peDraft=[];
+function openEditor(pid){
+  pePid=pid; peDraft=currentImages(pid);
+  const l=STATE.lines[pid]||{};
+  $("pe-name").textContent=l.name||pid;
+  $("pe-sub").textContent=pid+" · "+l.page+" · "+(l.price||"");
+  paintPe();
+  $("photo-editor").style.display="block";
+  $("photo-editor").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function paintPe(){
+  const el=$("pe-strip"); el.innerHTML="";
+  if(!peDraft.length){
+    el.innerHTML='<div class="empty">No photos yet — add some below.</div>';
+  }
+  peDraft.forEach((url,i)=>{
+    const s=document.createElement("div"); s.className="slot"; s.draggable=true; s.dataset.i=i;
+    const isT = i===0;
+    s.innerHTML='<span class="idx'+(isT?" is-thumb":"")+'">'+(isT?"★":"#"+(i+1))+'</span>'+
+      '<img src="/site/'+esc(url)+'" loading="lazy">'+
+      '<div class="nm">'+esc(url.split("/").pop())+'</div>'+
+      '<div class="ops"><button class="mk">'+(isT?"cover":"set cover")+'</button><button class="del">delete</button></div>';
+    s.querySelector(".mk").onclick=()=>{ const [m]=peDraft.splice(i,1); peDraft.unshift(m); paintPe(); };
+    s.querySelector(".del").onclick=async ()=>{
+      if(!confirm("Remove this photo from "+pePid+"?\n"+url)) return;
+      peDraft.splice(i,1); paintPe();
+      if(url.startsWith("mikoshi-img/admin/")){
+        try{ await api("/api/delete-file",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({url})}); }
+        catch(e){ console.warn(e); }
+      }
+    };
+    s.addEventListener("dragstart",e=>{ dragCtx={type:"photo",i}; s.classList.add("drag"); e.dataTransfer.effectAllowed="move"; });
+    s.addEventListener("dragend",()=>s.classList.remove("drag"));
+    s.addEventListener("dragover",e=>{ if(dragCtx&&dragCtx.type==="photo") e.preventDefault(); });
+    s.addEventListener("drop",e=>{
+      e.preventDefault(); if(!dragCtx||dragCtx.type!=="photo") return;
+      const [m]=peDraft.splice(dragCtx.i,1); peDraft.splice(i,0,m);
+      dragCtx=null; paintPe();
+    });
+    el.appendChild(s);
+  });
+}
+$("pe-save").onclick=async ()=>{
+  ADMIN.images=ADMIN.images||{}; ADMIN.images[pePid]=peDraft.slice();
+  // the first photo is this line's card + hero image; for a folded family
+  // variant it also becomes the family card's face, so "pick any variant's
+  // photo" works without a separate control.
+  ADMIN.covers=ADMIN.covers||{};
+  if(peDraft.length){
+    ADMIN.covers=ADMIN.covers||{};
+    ADMIN.covers[pePid]=peDraft[0];
+    const l=STATE.lines[pePid];
+    if(l&&l.fam) ADMIN.covers[l.fam]=peDraft[0];   // l.fam already carries the "fam:" prefix
+  } else {
+    delete ADMIN.covers[pePid];
+  }
+  try{
+    await api("/api/state",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(ADMIN)});
+    $("pe-status").textContent="saved — publish to go live"; $("pe-status").className="status ok";
+    renderCards(); renderLineGrid();
+    toast("saved "+pePid);
+  }catch(e){ $("pe-status").textContent="save failed: "+e.message; $("pe-status").className="status err"; }
+};
+$("pe-revert").onclick=()=>{ peDraft=currentImages(pePid); paintPe(); $("pe-status").textContent="reloaded"; };
+$("pe-drop").onclick=()=>$("pe-file").click();
+$("pe-drop").addEventListener("dragover",e=>{ e.preventDefault(); $("pe-drop").classList.add("hot"); });
+$("pe-drop").addEventListener("dragleave",()=>$("pe-drop").classList.remove("hot"));
+$("pe-drop").addEventListener("drop",async e=>{
+  e.preventDefault(); $("pe-drop").classList.remove("hot");
+  uploadFiles([...(e.dataTransfer.files||[])]);
+});
+$("pe-file").onchange=e=>{ uploadFiles([...e.target.files]); e.target.value=""; };
+async function uploadFiles(files){
+  if(!files.length||!pePid) return;
+  $("pe-status").textContent="uploading "+files.length+"…"; $("pe-status").className="status";
+  for(const f of files){
+    try{
+      const blob=await downscale(f);
+      const r=await fetch("/api/upload?pid="+encodeURIComponent(pePid)+"&name="+encodeURIComponent(f.name),
+                           {method:"POST",body:blob});
+      const j=await r.json();
+      if(!j.ok) throw new Error(j.error||"upload failed");
+      peDraft.push(j.url);
+    }catch(err){ $("pe-status").textContent="upload failed: "+err.message; $("pe-status").className="status err"; return; }
+  }
+  paintPe();
+  $("pe-status").textContent=files.length+" added — remember to Save"; $("pe-status").className="status ok";
+}
+function downscale(file,max=900){
+  return new Promise((res,rej)=>{
+    const img=new Image(); const url=URL.createObjectURL(file);
+    img.onload=()=>{ const s=Math.min(1,max/Math.max(img.width,img.height));
+      const cv=document.createElement("canvas");
+      cv.width=Math.max(1,Math.round(img.width*s)); cv.height=Math.max(1,Math.round(img.height*s));
+      cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height); URL.revokeObjectURL(url);
+      cv.toBlob(b=>b?res(b):rej(new Error("encode failed")),"image/jpeg",0.85); };
+    img.onerror=()=>{ URL.revokeObjectURL(url); rej(new Error("unreadable image")); };
+    img.src=url;
+  });
+}
+
+/* ---------- PUBLISH ---------- */
+$("pb-fast").onclick=()=>publish(false);
+$("pb-full").onclick=()=>publish(true);
+$("pb-build").onclick=async ()=>{
+  $("pb-status").textContent="building…"; $("pb-status").className="status";
+  const r=await api("/api/build",{method:"POST"});
+  $("pb-log").textContent=r.log; $("pb-status").textContent="build finished"; $("pb-status").className="status ok";
+};
+async function publish(rebuild){
+  $("pb-status").textContent=rebuild?"rebuilding + publishing…":"publishing…"; $("pb-status").className="status";
+  try{
+    const r=await api("/api/publish",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({rebuild})});
+    $("pb-log").textContent=r.log;
+    const ok=/pushed|Nothing to publish/.test(r.log);
+    $("pb-status").textContent=ok?"done — live in ~60 s":"finished with warnings — read the log";
+    $("pb-status").className="status "+(ok?"ok":"err");
+  }catch(e){ $("pb-status").textContent="publish failed: "+e.message; $("pb-status").className="status err"; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+.studio-backups/
+__pycache__/
+.DS_Store
+SITE_GROUPS2.json
+gcm-diagnose.log
