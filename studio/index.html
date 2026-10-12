@@ -158,6 +158,13 @@
 const $ = id => document.getElementById(id);
 function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2200); }
 function esc(s){ return String(s??"").replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c])); }
+function siteSrc(u){
+  // stored image URLs may be repo-relative ("mikoshi-img/…") or absolute
+  // ("https://mikoshigear.ca/mikoshi-img/…") — normalize both for /site/
+  u = String(u??"");
+  try{ if(/^https?:\/\//i.test(u)) u = new URL(u).pathname; }catch(e){}
+  return "/site/" + u.replace(/^\/+/, "");
+}
 async function api(path, opts){ const r = await fetch(path, opts); if(!r.ok) throw new Error(path+" → "+r.status); return r.json(); }
 
 let STATE = null;      // catalog
@@ -238,7 +245,7 @@ function renderCards(){
       const card=document.createElement("div"); card.className="card"; card.draggable=true; card.dataset.cid=c.cid;
       card.innerHTML =
         '<span class="kind '+c.kind+'">'+(c.kind==="cur"?"in stock":c.kind==="fam"?"family":"line")+'</span>'+
-        (img? '<img class="thumb" src="/site/'+esc(img)+'" loading="lazy">'
+        (img? '<img class="thumb" src="'+esc(siteSrc(img))+'" loading="lazy">'
             : '<div class="ph">no photo</div>')+
         '<div class="meta"><b>'+esc((line&&line.name)||c.cid)+'</b><span>'+esc(c.cid)+'</span></div>';
       card.addEventListener("dragstart",e=>{ dragCtx={type:"card",cid:c.cid}; card.classList.add("drag"); e.dataTransfer.effectAllowed="move"; });
@@ -287,7 +294,7 @@ function renderLineGrid(){
   rows.slice(0,120).forEach(l=>{
     const imgs=currentImages(l.pid);
     const d=document.createElement("div"); d.className="slot"; d.style.cursor="pointer";
-    d.innerHTML=(imgs.length?'<img src="/site/'+esc(imgs[0])+'" loading="lazy">':'<div class="ph" style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--muted);background:var(--surface2);font-family:var(--mono);font-size:11px">no photo</div>')+
+    d.innerHTML=(imgs.length?'<img src="'+esc(siteSrc(imgs[0]))+'" loading="lazy">':'<div class="ph" style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--muted);background:var(--surface2);font-family:var(--mono);font-size:11px">no photo</div>')+
       '<div class="nm">'+esc(l.name)+'</div>';
     d.onclick=()=>openEditor(l.pid);
     el.appendChild(d);
@@ -338,7 +345,7 @@ function paintPe(){
     const s=document.createElement("div"); s.className="slot"; s.draggable=true; s.dataset.i=i;
     const isT = i===0;
     s.innerHTML='<span class="idx'+(isT?" is-thumb":"")+'">'+(isT?"★":"#"+(i+1))+'</span>'+
-      '<img src="/site/'+esc(url)+'" loading="lazy">'+
+      '<img src="'+esc(siteSrc(url))+'" loading="lazy">'+
       '<div class="nm">'+esc(url.split("/").pop())+'</div>'+
       '<div class="ops"><button class="mv" data-d="-1" title="Move left"'+(i===0?" disabled":"")+'>‹</button><button class="mv" data-d="1" title="Move right"'+(i===peDraft.length-1?" disabled":"")+'>›</button><button class="mk">'+(isT?"cover":"set cover")+'</button><button class="del">delete</button></div>';
     s.querySelector(".mk").onclick=()=>{ const [m]=peDraft.splice(i,1); peDraft.unshift(m); paintPe(); toast("★ cover set — remember to Save"); };
