@@ -82,6 +82,7 @@
   .rowinfo{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin:6px 0 4px;}
   .rowinfo .t{font-size:17px;font-weight:600;}
   .rowinfo .s{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .pe-bar{display:flex;align-items:center;gap:12px;margin:8px 0 12px;}
 </style>
 </head>
 <body>
@@ -119,6 +120,7 @@
     </div>
     <div class="strip" id="line-grid"></div>
     <div id="photo-editor" style="display:none">
+      <div class="pe-bar"><button class="btn" id="pe-back">← All products</button><span class="hint" style="margin:0">photo page — the first photo is the card & hero image</span></div>
       <div class="rowinfo"><span class="t" id="pe-name"></span><span class="s" id="pe-sub"></span></div>
       <div class="strip" id="pe-strip"></div>
       <div class="drop" id="pe-drop">Drop photos here (or click to choose) — JPEG/PNG/WebP, added to this line and published with the site.</div>
@@ -170,6 +172,8 @@ async function boot(){
   buildPagePicker();
   renderCards();
   renderLineGrid();
+  const m=location.hash.match(/^#\/p\/(.+)$/);
+  if(m){ showTab("photos"); openEditor(decodeURIComponent(m[1]), true); }
 }
 boot().catch(e => { $("top-status").textContent = "load failed: "+e.message; });
 
@@ -298,15 +302,33 @@ $("line-search").oninput=renderLineGrid;
 $("line-page").onchange=renderLineGrid;
 
 let pePid=null, peDraft=[];
-function openEditor(pid){
+function showBrowse(){
+  pePid=null;
+  $("photo-editor").style.display="none";
+  document.querySelector("#view-photos > .hint").style.display="";
+  document.querySelector("#view-photos .linebar").style.display="";
+  $("line-grid").style.display="";
+}
+function openEditor(pid, fromHash){
+  if(!STATE.lines[pid]){ return showBrowse(); }
   pePid=pid; peDraft=currentImages(pid);
   const l=STATE.lines[pid]||{};
   $("pe-name").textContent=l.name||pid;
   $("pe-sub").textContent=pid+" · "+l.page+" · "+(l.price||"");
   paintPe();
   $("photo-editor").style.display="block";
-  $("photo-editor").scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelector("#view-photos > .hint").style.display="none";
+  document.querySelector("#view-photos .linebar").style.display="none";
+  $("line-grid").style.display="none";
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(!fromHash && location.hash!=="#/p/"+encodeURIComponent(pid)) location.hash="#/p/"+encodeURIComponent(pid);
 }
+$("pe-back").onclick=()=>{ showBrowse(); if(location.hash) location.hash=""; };
+window.addEventListener("hashchange",()=>{
+  const m=location.hash.match(/^#\/p\/(.+)$/);
+  if(m){ showTab("photos"); const pid=decodeURIComponent(m[1]); if(pid!==pePid) openEditor(pid,true); }
+  else if(pePid) showBrowse();
+});
 function paintPe(){
   const el=$("pe-strip"); el.innerHTML="";
   if(!peDraft.length){
