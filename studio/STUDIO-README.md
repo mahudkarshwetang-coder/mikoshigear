@@ -27,8 +27,8 @@ and publish. It runs on your machine; nothing extra to pay for, no external serv
 
 | Tab | What you do |
 |---|---|
-| **Cards** | Pick a category page → drag any card to move it. The order is saved and applied on the live site at load. |
-| **Photos** | Search any of the 573 lines by name or SKU → open it → drag photos to reorder, **★ set cover** (card + hero image), **add** new photos (drop or click), **delete** uploads. |
+| **Cards** | Pick a category page → drag any card to move it (click a card to jump to its photos). The order is saved and applied on the live site at load. |
+| **Photos** | Search any of the 573 lines by name or SKU → open it → reorder photos (drag, or use the **‹ ›** buttons), **★ set cover** (card + hero image), **add** new photos (drop or click), **delete** uploads. |
 | **Publish** | **Publish edits (fast)** — stages ordering/cover/photo changes and pushes a small data commit. **Rebuild + publish** — also regenerates the pages from the product data (use only when product names/prices change in `SITE_GROUPS2.json`, and prefer running it on the Mac — the full source lives there). |
 
 **Go live happens on Publish** — about a minute after the push, the changes appear on

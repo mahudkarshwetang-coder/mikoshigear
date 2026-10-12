@@ -64,6 +64,8 @@
   .slot .ops button{flex:1;background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:10px;padding:7px 4px;cursor:pointer;}
   .slot .ops button:hover{color:var(--ink);background:var(--surface2);}
   .slot .ops button.del:hover{color:var(--red);}
+  .slot .ops button.mv{flex:0 0 30px;}
+  .slot .ops button:disabled{opacity:.3;cursor:default;}
   .slot .nm{font-family:var(--mono);font-size:9.5px;color:#5a6270;padding:5px 7px;border-top:1px solid var(--line);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .panel{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:18px;margin-top:16px;}
   .panel h3{font-size:15px;margin-bottom:10px;}
@@ -105,7 +107,7 @@
 
   <!-- PHOTOS -->
   <section id="view-photos" style="display:none">
-    <p class="hint">Pick any of the 573 catalog lines. Drag photos to reorder, ★ sets the card & hero image, add new photos, delete uploads.</p>
+    <p class="hint">Click any line to open its photos. Reorder with the ‹ › buttons (or drag), “set cover” makes it the card & hero image. Add new photos, delete uploads, then Save.</p>
     <div class="linebar">
       <input type="search" id="line-search" placeholder="Search name or SKU… (e.g. 240W, TK15, power bank)">
       <select id="line-page">
@@ -172,10 +174,11 @@ async function boot(){
 boot().catch(e => { $("top-status").textContent = "load failed: "+e.message; });
 
 /* ---------- tabs ---------- */
-document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on")); t.classList.add("on");
-  for(const v of ["cards","photos","publish"]) $("view-"+v).style.display = (v===t.dataset.tab)?"":"none";
-});
+function showTab(name){
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on", x.dataset.tab===name));
+  for(const v of ["cards","photos","publish"]) $("view-"+v).style.display = (v===name)?"":"none";
+}
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => showTab(t.dataset.tab));
 
 /* ---------- CARDS ---------- */
 function buildPagePicker(){
@@ -247,6 +250,11 @@ function renderCards(){
         reorderCards(curPage, sec.id, ids);
         dragCtx=null; renderCards();
       });
+      card.title="Click to edit this product's photos · drag to reorder";
+      card.addEventListener("click",()=>{
+        const l2=cardLine(c); if(!l2||!l2.pid) return;
+        showTab("photos"); openEditor(l2.pid);
+      });
       grid.appendChild(card);
     });
     secEl.appendChild(grid); el.appendChild(secEl);
@@ -310,8 +318,12 @@ function paintPe(){
     s.innerHTML='<span class="idx'+(isT?" is-thumb":"")+'">'+(isT?"★":"#"+(i+1))+'</span>'+
       '<img src="/site/'+esc(url)+'" loading="lazy">'+
       '<div class="nm">'+esc(url.split("/").pop())+'</div>'+
-      '<div class="ops"><button class="mk">'+(isT?"cover":"set cover")+'</button><button class="del">delete</button></div>';
-    s.querySelector(".mk").onclick=()=>{ const [m]=peDraft.splice(i,1); peDraft.unshift(m); paintPe(); };
+      '<div class="ops"><button class="mv" data-d="-1" title="Move left"'+(i===0?" disabled":"")+'>‹</button><button class="mv" data-d="1" title="Move right"'+(i===peDraft.length-1?" disabled":"")+'>›</button><button class="mk">'+(isT?"cover":"set cover")+'</button><button class="del">delete</button></div>';
+    s.querySelector(".mk").onclick=()=>{ const [m]=peDraft.splice(i,1); peDraft.unshift(m); paintPe(); toast("★ cover set — remember to Save"); };
+    s.querySelectorAll(".mv").forEach(b=>b.onclick=()=>{
+      const j=i+parseInt(b.dataset.d,10); if(j<0||j>=peDraft.length) return;
+      const t=peDraft[i]; peDraft[i]=peDraft[j]; peDraft[j]=t; paintPe();
+    });
     s.querySelector(".del").onclick=async ()=>{
       if(!confirm("Remove this photo from "+pePid+"?\n"+url)) return;
       peDraft.splice(i,1); paintPe();
