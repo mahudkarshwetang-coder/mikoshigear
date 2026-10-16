@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikoshi Gear — Audio — Toronto</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0b0d10;--surface:#12151a;--surface2:#171b21;--ink:#e9e7e2;--muted:#8b9099;--line:#232830;--accent:#35e0ff;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"Space Grotesk",-apple-system,"Segoe UI",sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;}
+  ::selection{background:var(--accent);color:#0b0d10;}
+  a{color:inherit;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+  header{position:sticky;top:0;z-index:50;background:rgba(11,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .wordmark{font-family:var(--mono);font-size:15px;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
+  .wordmark b{color:var(--accent);font-weight:500;}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.on{color:var(--accent);}
+  .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
+  .nav-cta:hover{background:var(--accent);color:#0b0d10;}
+  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none;}}
+  .jump{position:sticky;top:64px;z-index:40;background:rgba(11,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .jump-in{display:flex;gap:8px;overflow-x:auto;padding:11px 0;scrollbar-width:none;}
+  .jump-in::-webkit-scrollbar{display:none;}
+  .jump a{flex:0 0 auto;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 13px;text-decoration:none;white-space:nowrap;transition:.15s;}
+  .jump a:hover{color:var(--ink);border-color:var(--ink);}
+  .jump a b{color:var(--accent);font-weight:500;margin-left:6px;}
+  .hero{padding:50px 0 24px;}
+  .hero h1{font-size:clamp(30px,4.4vw,48px);font-weight:700;letter-spacing:-.01em;margin-bottom:14px;}
+  .hero p{color:var(--muted);max-width:680px;font-size:16px;}
+  .sec{padding:34px 0 40px;border-top:1px solid var(--line);scroll-margin-top:130px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px;}
+  .sec-head h2{font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-.01em;}
+  .sec-head .n{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:4px 11px;}
+  .sec-desc{color:var(--muted);font-size:14px;margin-bottom:24px;max-width:620px;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr;}}
+  .g-item{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;}
+  .g-item img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block;transition:transform .2s;}
+  .g-item:hover img{transform:scale(1.03);}
+  .g-item .ph{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--surface2);border-bottom:1px solid var(--line);}
+  .g-item .ph b{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:var(--accent);}
+  .g-item .ph span{font-family:var(--mono);font-size:11px;color:var(--muted);}
+  .g-item figcaption{padding:12px 14px 14px;border-top:1px solid var(--line);flex:1;display:flex;flex-direction:column;}
+  .g-item figcaption b{display:block;font-size:13.5px;font-weight:500;line-height:1.35;margin-bottom:4px;}
+  .g-item figcaption .sku{display:block;font-family:var(--mono);font-size:10px;color:#5a6270;letter-spacing:.06em;margin-bottom:6px;}
+  .g-item figcaption .notes{display:block;font-size:12px;color:var(--muted);line-height:1.45;}
+  .g-item figcaption .g-price{display:block;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;color:var(--accent);}
+  .badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:6px;}
+  .badge.cur{background:#0e2a33;color:var(--accent);border:1px solid #1d4d5c;}
+  .badge.neutral{background:#1a2f24;color:#5ddc9a;border:1px solid #2b5c44;}
+  .badge.desc{background:#2a2419;color:#d9b45a;border:1px solid #4d4127;}
+  .badge.fam{background:#2b1a33;color:#d78bff;border:1px solid #4d2b5c;}
+  .g-item.cur{border-color:#1d4d5c;}
+  .g-item.fam{border-color:#3a2a45;}
+  .vline{display:block;font-family:var(--mono);font-size:10.5px;color:#b48ad0;margin-top:6px;letter-spacing:.02em;}
+  details{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;}
+  summary{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"+ ";color:var(--accent);}
+  details[open] summary:before{content:"− ";}
+  .vlist{list-style:none;margin-top:7px;display:flex;flex-direction:column;gap:3px;}
+  .vlist li{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;color:var(--muted);}
+  .v-n{flex:1 1 auto;}
+  .v-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1 1 auto;}
+  .v-p{color:var(--accent);flex:0 0 auto;}
+  .v-s{font-family:var(--mono);font-size:9px;color:#5a6270;flex:0 0 auto;}
+  .count-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
+  footer{border-top:1px solid var(--line);padding:40px 0 56px;}
+  .fg{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .mono{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;}
+  footer .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
+  footer b{color:var(--accent);font-weight:500;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html">MIKOSHI<b>▸</b>GEAR</a>
+    <nav class="nav-links"><a class="" href="cables.html">Cables</a><a class="" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="" href="adapters.html">Adapters</a><a class="on" href="audio.html">Audio</a><a class="nav-cta" href="index.html#wholesale">Contact</a></nav>
+  </div>
+</header>
+<div class="jump"><div class="wrap jump-in"><a href="#s-cur">In stock<b>2</b></a><a href="#s0">Travel and socket adapters<b>6</b></a><a href="#s1">AV, RCA and audio adapters<b>56</b></a><a href="#s2">HDMI<b>4</b></a><a href="#s3">OTG and converters<b>16</b></a><a href="#s4">Network cards<b>10</b></a><a href="#s5">Everything else<b>6</b></a></div></div>
+<div class="wrap hero">
+  <h1>Audio</h1>
+  <p>Earphones, headsets, AUX and Bluetooth receivers. 68 lines, shown as 26 cards.</p>
+</div>
+<section class="sec" id="s-cur" style="border-top:0">
+  <div class="sec-head"><h2>Audio — earphones, AUX and Bluetooth</h2><span class="n">68 lines · 26 cards</span></div>
+  <p class="sec-desc">Earphones, headsets, AUX and Bluetooth receivers.</p>
+  <div class="grid">
+      <figure class="g-item" data-cid="TBT01-YS01">
+        <img src="mikoshi-img/toocki/TBT01-YS01.jpg" alt="Toocki Car AUX Bluetooth Receiver Black" loading="lazy">
+        <figcaption><b>Toocki Car AUX Bluetooth Receiver Black</b><span class="sku">TBT01-YS01</span><span class="notes">Aluminum alloy + TPU Cable · car · AUX audio · black</span><span class="g-price">Wholesale $6.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40180001">
+        <img src="mikoshi-img/toocki/40180001.jpg" alt="Toocki BT05 Bluetooth Audio Receiver Transmitter, Black" loading="lazy">
+        <figcaption><b>Toocki BT05 Bluetooth Audio Receiver Transmitter, Black</b><span class="sku">40180001</span><span class="notes">ABS + PC Bluetooth · Bluetooth 5.4 · black</span><span class="g-price">Wholesale $15.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TYPX3-MDB0G">
+        <img src="mikoshi-img/toocki/TYPX3-MDB0G.jpg" alt="Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 0.5m" loading="lazy">
+        <figcaption><b>Toocki 3.5mm Male to Female 4-Section AUX Audio Cable 0.5m</b><span class="sku">TYPX3-MDB0G</span><span class="notes">3.5mm · 0.5m · AUX audio</span><span class="g-price">Wholesale $5.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40180002">
+        <img src="mikoshi-img/toocki/40180002.jpg" alt="Toocki HIFI Wired Detachable Earphones - TE26 Black 3.5mm" loading="lazy">
+        <figcaption><b>Toocki HIFI Wired Detachable Earphones - TE26 Black 3.5mm</b><span class="sku">40180002</span><span class="notes">3.5mm · wired · detachable · black</span><span class="g-price">Wholesale $7.50 (reg $10.00) · MOQ 20 — samples available <i class="pf" style="font-style:normal;font-size:9px;letter-spacing:.06em;background:#FBEF00;color:#141005;border-radius:3px;padding:1px 5px;">ON PROMO</i></span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40180003">
+        <img src="mikoshi-img/toocki/40180003.jpg" alt="Toocki HIFI Wired Detachable Earphones - TE26 Black Type-C" loading="lazy">
+        <figcaption><b>Toocki HIFI Wired Detachable Earphones - TE26 Black Type-C</b><span class="sku">40180003</span><span class="notes">wired · detachable · black</span><span class="g-price">Wholesale $8.00 (reg $10.50) · MOQ 20 — samples available <i class="pf" style="font-style:normal;font-size:9px;letter-spacing:.06em;background:#FBEF00;color:#141005;border-radius:3px;padding:1px 5px;">ON PROMO</i></span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TYPX2-MYB01">
+        <img src="mikoshi-img/toocki/TYPX2-MYB01.jpg" alt="Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 0.5m," loading="lazy">
+        <figcaption><b>Toocki Sound 3.5mm Male to Female 3-Section AUX Audio Cable, 0.5m,</b><span class="sku">TYPX2-MYB01</span><span class="notes">3.5mm · 0.5m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TYPX3-MYB01">
+        <img src="mikoshi-img/toocki/TYPX3-MYB01.jpg" alt="Toocki Sound 3.5mm Male to Female 4-Section AUX Audio Cable, 0.5m," loading="lazy">
+        <figcaption><b>Toocki Sound 3.5mm Male to Female 4-Section AUX Audio Cable, 0.5m,</b><span class="sku">TYPX3-MYB01</span><span class="notes">3.5mm · 0.5m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TYPX2-MDB0G">
+        <img src="mikoshi-img/toocki/TYPX2-MDB0G.jpg" alt="Toocki male to female 3-segment AUX audio cable, 0.5 meters, grey" loading="lazy">
+        <figcaption><b>Toocki male to female 3-segment AUX audio cable, 0.5 meters, grey</b><span class="sku">TYPX2-MDB0G</span><span class="notes">Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="g-price">Wholesale $4.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40180006">
+        <img src="mikoshi-img/toocki/40180006.jpg" alt="Toocki Wired Gaming Headset with Mic - TE27 Black 3.5mm" loading="lazy">
+        <figcaption><b>Toocki Wired Gaming Headset with Mic - TE27 Black 3.5mm</b><span class="sku">40180006</span><span class="notes">3.5mm · ABS Driver Diameter: 10mm Product · black</span><span class="g-price">Wholesale $8.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40180007">
+        <img src="mikoshi-img/toocki/40180007.jpg" alt="Toocki Wired Gaming Headset with Mic - TE27 Black Type-C" loading="lazy">
+        <figcaption><b>Toocki Wired Gaming Headset with Mic - TE27 Black Type-C</b><span class="sku">40180007</span><span class="notes">ABS Driver Diameter: 10mm Product · black</span><span class="g-price">Wholesale $6.50 (reg $9.00) · MOQ 20 — samples available <i class="pf" style="font-style:normal;font-size:9px;letter-spacing:.06em;background:#FBEF00;color:#141005;border-radius:3px;padding:1px 5px;">ON PROMO</i></span></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki 3.5mm male to female 4-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX3-MD0G.jpg" alt="Toocki 3.5mm Male To Female 4-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">11 variants</span><b>Toocki 3.5mm Male To Female 4-section AUX Audio Cable</b><span class="notes">3.5mm · 1m · AUX audio</span><span class="vline">1m · 2m · 3m · 5m  |  Black, Grey</span><span class="g-price">Wholesale $5.00–$6.50 · MOQ 20 — samples available</span><details><summary>See all 11 SKUs</summary><ul class="vlist"><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 1m</span><span class="v-s">TYPX3-MD0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 1m </span><span class="v-s">TYPX3-MY01</span><span class="v-p">$5.00</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 1m </span><span class="v-s">TYPX3-MY03</span><span class="v-p">$5.00</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 2m</span><span class="v-s">TYPX3-MDA0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 2m </span><span class="v-s">TYPX3-MYA01</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 2m </span><span class="v-s">TYPX3-MYA03</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 3m</span><span class="v-s">TYPX3-MDC0G</span><span class="v-p">$6.00</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 3m </span><span class="v-s">TYPX3-MYC01</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 3m </span><span class="v-s">TYPX3-MYC03</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 5m</span><span class="v-s">TYPX3-MDD0G</span><span class="v-p">$6.50</span></li><li><span class="v-n">3.5mm Male to Female 4-Section AUX Audio Cable 5m </span><span class="v-s">TYPX3-MYD01</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki 3.5mm male to dual rca 3-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX4-MDB0G.jpg" alt="Toocki 3.5mm Male To Dual RCA 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki 3.5mm Male To Dual RCA 3-section AUX Audio Cable</b><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="vline">1m · 2m</span><span class="g-price">Wholesale $5.00–$6.50 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable 1</span><span class="v-s">TYPX4-MY01</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable 2</span><span class="v-s">TYPX4-MYA01</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable —</span><span class="v-s">TYPX4-MD0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable —</span><span class="v-s">TYPX4-MDA0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable —</span><span class="v-s">TYPX4-MDB0G</span><span class="v-p">$5.00</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable —</span><span class="v-s">TYPX4-MDC0G</span><span class="v-p">$6.00</span></li><li><span class="v-n">3.5mm Male to Dual RCA 3-Section AUX Audio Cable —</span><span class="v-s">TYPX4-MDD0G</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki 3.5mm male to male 3-segment aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX1-MDB0G.jpg" alt="Toocki 3.5mm Male To Male 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki 3.5mm Male To Male 3-segment AUX Audio Cable</b><span class="notes">3.5mm · Aluminum alloy + Braided wire · 0.5m · AUX audio</span><span class="vline">0.5m · 1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–$22.00 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 0.5 m</span><span class="v-s">TYPX1-MDB0G</span><span class="v-p">$4.50</span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 1 met</span><span class="v-s">TYPX1-MD03</span><span class="v-p">$5.00</span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 1 met</span><span class="v-s">TYPX1-MD0G</span><span class="v-p">$5.00</span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 2 met</span><span class="v-s">TYPX1-MDA0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 3 met</span><span class="v-s">40180017</span><span class="v-p">$22.00<i class="pf" style="font-style:normal;font-size:9px;letter-spacing:.06em;background:#FBEF00;color:#141005;border-radius:3px;padding:1px 5px;margin-left:5px;">PROMO</i></span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 3 met</span><span class="v-s">TYPX1-MDC0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">3.5mm male to male 3-segment AUX audio cable 5 met</span><span class="v-s">TYPX1-MDD0G</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki sound 3.5mm male to female 3-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX2-MY01.jpg" alt="Toocki Sound 3.5mm Male To Female 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki Sound 3.5mm Male To Female 3-section AUX Audio Cable</b><span class="notes">3.5mm · 1m · AUX audio</span><span class="vline">1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $5.00–$6.50 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MY01</span><span class="v-p">$5.00</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MY03</span><span class="v-p">$5.00</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MYA01</span><span class="v-p">$5.50</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MYA03</span><span class="v-p">$5.50</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MYC01</span><span class="v-p">$5.50</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MYC03</span><span class="v-p">$5.50</span></li><li><span class="v-n">Sound 3.5mm Male to Female 3-Section AUX Audio Cab</span><span class="v-s">TYPX2-MYD01</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki male to female 3-segment aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX2-MD03.jpg" alt="Toocki Male To Female 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">7 variants</span><b>Toocki Male To Female 3-segment AUX Audio Cable</b><span class="notes">1m · AUX audio · AV cable · 1m</span><span class="vline">1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $5.00–$6.50 · MOQ 20 — samples available</span><details><summary>See all 7 SKUs</summary><ul class="vlist"><li><span class="v-n">male to female 3-segment AUX audio cable, 1 meter,</span><span class="v-s">TYPX2-MD03</span><span class="v-p">$5.00</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 1 meter,</span><span class="v-s">TYPX2-MD0G</span><span class="v-p">$5.00</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 2 meters</span><span class="v-s">TYPX2-MDA03</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 2 meters</span><span class="v-s">TYPX2-MDA0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 3 meters</span><span class="v-s">TYPX2-MDC03</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 3 meters</span><span class="v-s">TYPX2-MDC0G</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to female 3-segment AUX audio cable, 5 meters</span><span class="v-s">TYPX2-MDD0G</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki male to male 3-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX1-MYB01.jpg" alt="Toocki Male To Male 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">5 variants</span><b>Toocki Male To Male 3-section AUX Audio Cable</b><span class="notes">0.5m · AUX audio · AV cable · 0.5m</span><span class="vline">0.5m · 1m · 2m · 3m · 5m</span><span class="g-price">Wholesale $4.50–$6.50 · MOQ 20 — samples available</span><details><summary>See all 5 SKUs</summary><ul class="vlist"><li><span class="v-n">male to male 3-section AUX audio cable 0.5 meters </span><span class="v-s">TYPX1-MYB01</span><span class="v-p">$4.50</span></li><li><span class="v-n">male to male 3-section AUX audio cable 1 meter bla</span><span class="v-s">TYPX1-MY01</span><span class="v-p">$5.00</span></li><li><span class="v-n">male to male 3-section AUX audio cable 2 meters bl</span><span class="v-s">TYPX1-MYA01</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to male 3-section AUX audio cable 3 meters bl</span><span class="v-s">TYPX1-MYC01</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to male 3-section AUX audio cable 5 meters bl</span><span class="v-s">TYPX1-MYD01</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki male to dual rca 3-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX4-MD03.jpg" alt="Toocki Male To Dual RCA 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">3 variants</span><b>Toocki Male To Dual RCA 3-section AUX Audio Cable</b><span class="notes">RCA · 1m · AUX audio</span><span class="vline">1m · 2m · 3m</span><span class="g-price">Wholesale $5.50–$6.00 · MOQ 20 — samples available</span><details><summary>See all 3 SKUs</summary><ul class="vlist"><li><span class="v-n">male to dual RCA 3-section AUX audio cable 1 meter</span><span class="v-s">TYPX4-MD03</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to dual RCA 3-section AUX audio cable 2 meter</span><span class="v-s">TYPX4-MDA03</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to dual RCA 3-section AUX audio cable 3 meter</span><span class="v-s">TYPX4-MDC03</span><span class="v-p">$6.00</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki 3.5mm male to dual female 3-section aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX4-MYC01.jpg" alt="Toocki 3.5mm Male To Dual Female 3-section AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki 3.5mm Male To Dual Female 3-section AUX Audio Cable</b><span class="notes">3.5mm · 3m · AUX audio</span><span class="vline">3m · 5m</span><span class="g-price">Wholesale $6.00–$6.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">3.5mm Male to Dual Female 3-Section AUX Audio Cabl</span><span class="v-s">TYPX4-MYC01</span><span class="v-p">$6.00</span></li><li><span class="v-n">3.5mm Male to Dual Female 3-Section AUX Audio Cabl</span><span class="v-s">TYPX4-MYD01</span><span class="v-p">$6.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item fam" data-cid="fam:toocki male to male 3-segment aux audio cable">
+        <img src="mikoshi-img/toocki/TYPX1-MDA03.jpg" alt="Toocki Male To Male 3-segment AUX Audio Cable" loading="lazy">
+        <figcaption><span class="badge fam">2 variants</span><b>Toocki Male To Male 3-segment AUX Audio Cable</b><span class="notes">2m · AUX audio · AV cable · 2m</span><span class="vline">2m · 3m</span><span class="g-price">Wholesale $5.50 · MOQ 20 — samples available</span><details><summary>See all 2 SKUs</summary><ul class="vlist"><li><span class="v-n">male to male 3-segment AUX audio cable, 2 meters, </span><span class="v-s">TYPX1-MDA03</span><span class="v-p">$5.50</span></li><li><span class="v-n">male to male 3-segment AUX audio cable, 3 meters, </span><span class="v-s">TYPX1-MDC03</span><span class="v-p">$5.50</span></li></ul></details></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TBT01-YX0G">
+        <img src="mikoshi-img/toocki/TBT01-YX0G.jpg" alt="Toocki AUX Car Bluetooth Audio Adapter Gun Gray" loading="lazy">
+        <figcaption><b>Toocki AUX Car Bluetooth Audio Adapter Gun Gray</b><span class="sku">TBT01-YX0G</span><span class="notes">Aluminum alloy + TPU Cable · car · AUX audio · gray</span><span class="g-price">Wholesale $7.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="40130019">
+        <img src="mikoshi-img/toocki/40130019.jpg" alt="Toocki Car Bluetooth AUX Adapter" loading="lazy">
+        <figcaption><b>Toocki Car Bluetooth AUX Adapter</b><span class="sku">40130019</span><span class="notes">Bluetooth 6.0 · car · AUX audio</span><span class="g-price">Wholesale $9.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="10180003">
+        <img src="mikoshi-img/toocki/10180003.jpg" alt="Toocki Lightning to 3.5mm female audio adapter cable 1 meter black" loading="lazy">
+        <figcaption><b>Toocki Lightning to 3.5mm female audio adapter cable 1 meter black</b><span class="sku">10180003</span><span class="notes">3.5mm · Alluminum Alloy · 1m</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="10180001">
+        <img src="mikoshi-img/toocki/10180001.jpg" alt="Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black" loading="lazy">
+        <figcaption><b>Toocki USB-C to 3.5mm Female Audio Adapter Cable 0.12m Black</b><span class="sku">10180001</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m · black</span><span class="g-price">Wholesale $3.25 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="10180002">
+        <img src="mikoshi-img/toocki/10180002.jpg" alt="Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black" loading="lazy">
+        <figcaption><b>Toocki USB-C to 3.5mm Male Audio adapter cable 0.12 meter black</b><span class="sku">10180002</span><span class="notes">3.5mm · Alluminum Alloy · 0.12m</span><span class="g-price">Wholesale $4.00 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="TBT03-YDA01">
+        <img src="mikoshi-img/toocki/40130017.jpg" alt="Toocki Usb Bluetooth 5.3 Adapter" loading="lazy">
+        <figcaption><b>Toocki USB Bluetooth 5.3 Adapter, Black — TBT03-YDA01</b><span class="sku">TBT03-YDA01</span><span class="notes">Aluminum Alloy · black</span><span class="g-price">Wholesale $8.50 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+      <figure class="g-item" data-cid="10180004">
+        <img src="mikoshi-img/toocki/10180004.jpg" alt="Toocki BT06 Bluetooth Audio Transmitter Receiver" loading="lazy">
+        <figcaption><b>Toocki BT06 Bluetooth Audio Transmitter Receiver</b><span class="sku">10180004</span><span class="notes">Alluminum Alloy · adapter</span><span class="g-price">Wholesale $4.25 · MOQ 20 — samples available</span></figcaption>
+      </figure>
+  </div>
+</section><div class="wrap"><p class="count-note">68 lines on this page · 68 shown with photography · fold any multi-SKU card to see every variant and price · ask for a quote on any line.</p></div>
+<footer><div class="wrap fg">
+  <p class="mono">MIKOSHI<b>▸</b>GEAR — mikoshigear.ca</p>
+  <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>
+</div></footer>
+<script src="catalog-admin.js"></script>
+</body>
+</html>
