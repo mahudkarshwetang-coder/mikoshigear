@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tangm.swappr",
+      "sha256_cert_fingerprints": [
+        "45:21:26:CC:2A:86:42:8A:0F:5F:78:4D:6B:DE:0B:41:90:A9:F9:25:C0:18:86:8C:25:FA:FA:9E:65:05:FA:79"
+      ]
+    }
+  }
+]
