@@ -47,6 +47,17 @@
   .footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   .footer-grid .mono{font-size:12px;color:var(--muted);letter-spacing:0.06em;}
   .footer-grid .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
+  /* browse dropdowns */
+  .dd{position:relative;display:inline-block}
+  .dd-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border-radius:4px;border:1px solid var(--line,#232830);background:var(--surface2,#171b21);color:var(--ink,#e9e7e2);font-family:var(--mono,monospace);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;transition:.15s}
+  .dd-btn:hover{border-color:var(--ink,#e9e7e2)}
+  .dd-caret{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+  .dd.open .dd-caret{transform:rotate(-135deg) translate(-2px,-2px)}
+  .dd-menu{position:absolute;top:calc(100% + 14px);left:0;min-width:230px;display:none;padding:8px;z-index:70;background:var(--surface2,#171b21);border:1px solid var(--line,#232830);border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .dd.open .dd-menu{display:block}
+  .dd-menu a{display:block;padding:9px 11px;border-radius:4px;font-family:var(--mono,monospace);font-size:12.5px;color:var(--ink,#e9e7e2);text-decoration:none;text-transform:none}
+  .dd-menu a:hover{background:rgba(53,224,255,.08);color:var(--accent,#35e0ff)}
+  @media(max-width:900px){.dd-btn{font-size:10px;padding:6px 9px}}
 </style>
 </head>
 <body>
@@ -55,9 +66,25 @@
   <div class="wrap nav">
     <a class="wordmark" href="index.html"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" style="vertical-align:-6px;margin-right:8px"><path d="M4 8 L40 22 L4 36 Z" fill="none" stroke="#35e0ff" stroke-width="2.5"/><path d="M12 15 L28 22 L12 29 Z" fill="#35e0ff"/><circle cx="22" cy="22" r="3" fill="#0b0d10"/></svg>MIKOSHI<b>▸</b>GEAR</a>
     <nav class="nav-links">
-      <a href="cases.html">Cases</a>
-      <a href="cables.html">Cables</a>
-      <a href="adapters.html">Adapters</a>
+      <div class="dd">
+        <button class="dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Product Categories <span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu" role="menu">
+          <a role="menuitem" href="cables.html">Cables</a>
+          <a role="menuitem" href="chargers.html">Chargers</a>
+          <a role="menuitem" href="mounts.html">Mounts</a>
+          <a role="menuitem" href="power.html">Power</a>
+          <a role="menuitem" href="adapters.html">Adapters</a>
+          <a role="menuitem" href="audio.html">Audio</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button class="dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Shop Type <span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu" role="menu">
+          <a role="menuitem" href="mobile-shops.html">Mobile / phone shops</a>
+          <a role="menuitem" href="computer-stores.html">Computer stores</a>
+          <a role="menuitem" href="convenience-stores.html">Convenience stores</a>
+        </div>
+      </div>
       <a href="index.html#why">Why Mikoshi</a>
       <a href="index.html#wholesale">Wholesale</a>
       <a class="nav-cta" href="index.html#wholesale">Contact</a>
@@ -65,7 +92,7 @@
   </div>
 </header>
 
-<div class="wrap back"><a id="back-link" href="cases.html">← Back to catalog</a></div>
+<div class="wrap back"><a id="back-link" href="cables.html">← Back to catalog</a></div>
 
 <section class="detail">
   <div class="wrap media">
@@ -107,8 +134,8 @@
     document.getElementById("title").textContent = p.name;
     document.getElementById("notes").textContent = p.notes;
     document.getElementById("price").textContent = p.price;
-    const backMap = { case: "cases.html", cable: "cables.html", adapter: "adapters.html", novelty: "adapters.html",
-                      cases: "cases.html", cables: "cables.html", adapters: "adapters.html",
+    const backMap = { case: "cables.html", cable: "cables.html", adapter: "adapters.html", novelty: "adapters.html",
+                      cases: "cables.html", cables: "cables.html", adapters: "adapters.html",
                       chargers: "chargers.html", power: "power.html", mounts: "mounts.html" };
     document.getElementById("back-link").href = backMap[p.cat] || "index.html";
 
@@ -163,6 +190,32 @@
       }
     }
   }
+</script>
+<script>
+(function () {
+  var dds = Array.prototype.slice.call(document.querySelectorAll('.dd'));
+  function closeAll(except) {
+    dds.forEach(function (d) {
+      if (d === except) return;
+      d.classList.remove('open');
+      var b = d.querySelector('.dd-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  dds.forEach(function (d) {
+    var btn = d.querySelector('.dd-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !d.classList.contains('open');
+      closeAll(d);
+      d.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function () { closeAll(null); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+})();
 </script>
 </body>
 </html>

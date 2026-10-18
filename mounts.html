@@ -25,7 +25,7 @@
   .nav-links a.on{color:var(--accent);}
   .nav-cta{border:1px solid var(--accent);color:var(--accent);padding:8px 16px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
   .nav-cta:hover{background:var(--accent);color:#0b0d10;}
-  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none;}}
+  @media(max-width:900px){.nav-links > a:not(.nav-cta){display:none;}}
   .jump{position:sticky;top:64px;z-index:40;background:rgba(11,13,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   .jump-in{display:flex;gap:8px;overflow-x:auto;padding:11px 0;scrollbar-width:none;}
   .jump-in::-webkit-scrollbar{display:none;}
@@ -79,13 +79,45 @@
   footer .mono{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;}
   footer .legal{font-family:var(--mono);font-size:11px;color:#4d545e;text-align:right;}
   footer b{color:var(--accent);font-weight:500;}
+  /* browse dropdowns */
+  .dd{position:relative;display:inline-block}
+  .dd-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;padding:8px 12px;border-radius:4px;border:1px solid var(--line,#232830);background:var(--surface2,#171b21);color:var(--ink,#e9e7e2);font-family:var(--mono,monospace);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;transition:.15s}
+  .dd-btn:hover{border-color:var(--ink,#e9e7e2)}
+  .dd-caret{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+  .dd.open .dd-caret{transform:rotate(-135deg) translate(-2px,-2px)}
+  .dd-menu{position:absolute;top:calc(100% + 14px);left:0;min-width:230px;display:none;padding:8px;z-index:70;background:var(--surface2,#171b21);border:1px solid var(--line,#232830);border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .dd.open .dd-menu{display:block}
+  .dd-menu a{display:block;padding:9px 11px;border-radius:4px;font-family:var(--mono,monospace);font-size:12.5px;color:var(--ink,#e9e7e2);text-decoration:none;text-transform:none}
+  .dd-menu a:hover{background:rgba(53,224,255,.08);color:var(--accent,#35e0ff)}
+  @media(max-width:900px){.dd-btn{font-size:10px;padding:6px 9px}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
     <a class="wordmark" href="index.html">MIKOSHI<b>▸</b>GEAR</a>
-    <nav class="nav-links"><a class="" href="cables.html">Cables</a><a class="" href="chargers.html">Chargers</a><a class="" href="cases.html">Cases</a><a class="on" href="mounts.html">Mounts</a><a class="" href="power.html">Power</a><a class="" href="adapters.html">Adapters</a><a class="" href="audio.html">Audio</a><a class="nav-cta" href="index.html#wholesale">Contact</a></nav>
+    <nav class="nav-links">
+      <div class="dd">
+        <button class="dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Product Categories <span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu" role="menu">
+          <a role="menuitem" href="cables.html">Cables</a>
+          <a role="menuitem" href="chargers.html">Chargers</a>
+          <a role="menuitem" href="mounts.html">Mounts</a>
+          <a role="menuitem" href="power.html">Power</a>
+          <a role="menuitem" href="adapters.html">Adapters</a>
+          <a role="menuitem" href="audio.html">Audio</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button class="dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Shop Type <span class="dd-caret" aria-hidden="true"></span></button>
+        <div class="dd-menu" role="menu">
+          <a role="menuitem" href="mobile-shops.html">Mobile / phone shops</a>
+          <a role="menuitem" href="computer-stores.html">Computer stores</a>
+          <a role="menuitem" href="convenience-stores.html">Convenience stores</a>
+        </div>
+      </div>
+      <a class="nav-cta" href="index.html#wholesale">Contact</a>
+    </nav>
   </div>
 </header>
 <div class="jump"><div class="wrap jump-in"><a href="#s0">Desk and tablet stands<b>5</b></a><a href="#s1">Car mounts and holders<b>5</b></a></div></div>
@@ -129,5 +161,31 @@
   <p class="legal">13718387 Canada Inc. o/a Mikoshi Gear<br>HST 752199703RT0001 · Toronto, Ontario · © 2026</p>
 </div></footer>
 <script src="catalog-admin.js"></script>
+<script>
+(function () {
+  var dds = Array.prototype.slice.call(document.querySelectorAll('.dd'));
+  function closeAll(except) {
+    dds.forEach(function (d) {
+      if (d === except) return;
+      d.classList.remove('open');
+      var b = d.querySelector('.dd-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  }
+  dds.forEach(function (d) {
+    var btn = d.querySelector('.dd-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !d.classList.contains('open');
+      closeAll(d);
+      d.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function () { closeAll(null); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+})();
+</script>
 </body>
 </html>
